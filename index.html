@@ -22,12 +22,39 @@
   <main>
     <div  class="builder-container">
       <header>
+        <h1>Непрерывные дроби</h1>
         <div  class="header-box">
-          Continued-fractions
+          <div  class="header-box__numb">
+            <p>Количество подходящих:</p>
+            <input id="kol-elementov" type="number" value="32" >
+          </div>
+
+          <button id="btn_graph" class="btn">Построить график</button>
+
+          <button id="btn_clear" class="btn">Отчистка</button>
+
+          <button id="btn_start" class="btn">Вычислить</button>
         </div>
       </header>
 
-      <div  class="builder-content">
+      <div class="builder-content">
+        <h2 class="tabl-name">Таблица</h2>
+
+        <table id="tabl_hed">
+           <thead id="thead">
+              <!-- <tr>
+                  <th scope="col" class="k0">Номер </br>подходящей</br>дроби</th>
+                  <th scope="col" class="col-name k1"></th>
+                  <th scope="col" class="col-name k2"></th>
+                  <th scope="col" class="col-name k3"></th>
+                  <th scope="col" class="col-name k4"></th>
+                  <th scope="col" class="col-name k5"></th>
+              </tr> -->
+          </thead>
+          <tbody id="main_tabl">
+
+          </tbody>
+        </table>
 
       </div>
 
@@ -40,5 +67,6 @@
   </main>
 
   <script src="dist/js/bundle-min.js"></script>
+  <!-- <script src="dist/js/bundle.js"></script> -->
 </body>
 </html>

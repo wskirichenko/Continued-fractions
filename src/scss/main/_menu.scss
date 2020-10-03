@@ -1,8 +1,60 @@
-.hover-color {
-	color: #00aeff;
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #00aeff;
+
+  h1 {
+    font-size: 34px;
+    margin-bottom: 20px;
+  }
+  .header-box {
+    width: 1440px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 20px;
+    padding-bottom: 10px;
+
+    &__numb {
+      display: flex;
+      align-items: center;
+      p {
+        margin-right: 10px;
+      }
+    }
+
+    input {
+      font-size: 20px;
+    }
+
+    .btn {
+      font-size: 20px;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      background-color: #0086f3;
+      padding: 5px 2%;
+      cursor: pointer;
+    }
+    #btn_start {
+      color: white;
+    }
+    #btn_start:hover {
+      background-color: #0070cc;
+      border-color: white;
+    }
+  }
+
 }
 
+@media only screen and (max-width: 1440px) {
+  header {
+    padding: 0 20px;
 
-@media only screen and (max-width: 414px) {
-
+    .header-box {
+      width: 100%;
+    }
+  }
 }
