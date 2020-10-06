@@ -27,7 +27,8 @@ const htmlFiles = [
 ];
 
 const jsFiles = [
-	'node_modules/jquery/dist/jquery.min.js',
+  'node_modules/jquery/dist/jquery.min.js',
+  'src/modules/**/*.js',
 	'src/js/**/*.js'
 ];
 
