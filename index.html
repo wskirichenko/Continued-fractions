@@ -39,7 +39,17 @@
 
       <div class="builder-content">
           <div class="left-panel">
-            <div class="chouse-block">
+            <div class="block">
+              <h3>Переменные</h3>
+              <div class="block__item">
+                <label for="fi_1">fi 1 =</label>
+                <input class="block__item__input" name="fi_1" type="number" value="1">
+                <label for="fi_1">fi 2 =</label>
+                <input class="block__item__input" name="fi_2" type="number" value="2">
+              </div>
+            </div>
+
+            <div class="block">
               <h3>Выбор функции</h3>
               <button class="func-chouse-btn" id="f_1" value="0">Функция 1</button>
               <button class="func-chouse-btn" id="f_2" value="1">Функция 2</button>
@@ -47,8 +57,9 @@
             </div>
           </div>
 
-          <div class="main-panel">
-            <h2 class="tabl-name">Таблица</h2>
+          <!-- Секция с таблицей -->
+          <div class="main-panel" id="main_panel">
+            <!-- <h2 class="tabl-name">Таблица</h2>
             <table id="tabl_hed">
               <thead id="thead">
 
@@ -56,7 +67,7 @@
               <tbody id="main_tabl">
 
               </tbody>
-            </table>
+            </table> -->
           </div>
       </div>
 
