@@ -38,10 +38,11 @@ header {
       padding: 5px 2%;
       cursor: pointer;
     }
-    #btn_start {
+    #btn_start, #btn_clear {
       color: white;
     }
-    #btn_start:hover {
+    #btn_start:hover,
+    #btn_clear:hover {
       background-color: #0070cc;
       border-color: white;
     }
