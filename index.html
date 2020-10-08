@@ -38,6 +38,8 @@
       </header>
 
       <div class="builder-content">
+
+      <!-- Секция левой панели -->
           <div class="left-panel">
             <div class="block">
               <h3>Переменные</h3>
@@ -50,6 +52,37 @@
             </div>
 
             <div class="block">
+              <h3>Вывод таблиц</h3>
+              <div class="block__item block__item-col">
+                <div>
+                  <input type="radio" id="one" name="one" value="one" checked>
+                  <label for="one">Вывод для 1 таблицы</label>
+                </div>
+
+                <div>
+                  <input type="radio" id="some" name="some" value="some">
+                  <label for="some">Вывод для нескольких таблиц</label>
+                </div>
+              </div>
+            </div>
+
+            <div id="block_interval" class="block display-hidden">
+              <h3>Выбор интервала</h3>
+              <div class="block__item block__item-col">
+                <div>
+                  <label for="int_ot">От</label>
+                  <input class="block__item__input" name="int_ot" type="number" value="1">
+                  <label for="int_do">До</label>
+                  <input class="block__item__input" name="int_do" type="number" value="3">
+                </div>
+                <div>
+                  <label for="interval">Интервал</label>
+                  <input class="block__item__input" name="interval" type="number" value="1">
+                </div>
+              </div>
+            </div>
+
+            <div class="block">
               <h3>Выбор функции</h3>
               <button class="func-chouse-btn" id="f_1" value="0">Функция 1</button>
               <button class="func-chouse-btn" id="f_2" value="1">Функция 2</button>
@@ -57,7 +90,7 @@
             </div>
           </div>
 
-          <!-- Секция с таблицей -->
+      <!-- Секция с таблицей -->
           <div class="main-panel" id="main_panel">
             <!-- <h2 class="tabl-name">Таблица</h2>
             <table id="tabl_hed">

@@ -11,7 +11,8 @@ $(document).ready(function () {
       btn = document.getElementById("btn_start"),           // Кнопка вычислить
       btn_clear = document.getElementById("btn_clear"),     // Кнопка отчистить
       vFunc = document.getElementsByClassName("func-chouse-btn"),  // Кнопки выбора Функции
-      sell = document.getElementsByClassName('s1');         // Ячейка таблицы
+      some = document.getElementById("some"),               // Переключатель для вычисления насколько значений
+      one =  document.getElementById("one")                // Переключатель для вычисления одного значения
   // ---------------------------------------------------------------------------
   vFunc[0].onclick = (e) => {
     numberFunc = e.currentTarget.getAttribute('value');
@@ -30,15 +31,26 @@ $(document).ready(function () {
     vibor(numberFunc, countPushs);
   };
 
-
   function vibor(numberFunc, countPushs) {
     tableMain.addHed(numberFunc, countPushs);
-
   };
 
-  function Vivod(col, cellNumber) {   // где cellNumber - порядковый номер ячейки табицы куда выводим
-    sell[cellNumber].innerHTML = cellNumber;
+  function Vivod(numberFunc, col, cellNumber) {   // где cellNumber - порядковый номер ячейки табицы куда выводим
+    // sell[cellNumber].innerHTML = cellNumber;
+    outDisplay.chouseColumn(numberFunc, col, cellNumber);
   };
+
+  // ---------------------------------------------------------------------------
+  //          Переключатели выбора вычисления 1 таблицы или нескольких
+  // ---------------------------------------------------------------------------
+  some.onclick = function() {
+    $('#block_interval').removeClass('display-hidden');
+    $("#one").prop("checked", false);
+  }
+  one.onclick = function() {
+    $('#block_interval').addClass('display-hidden');
+    $("#some").prop("checked", false);
+  }
 
   // ---------------------------------------------------------------------------
   //          Кнопка Вычислить
@@ -48,7 +60,7 @@ $(document).ready(function () {
       tableMain.createTr();
       for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
         tableMain.createTd(count);
-        Vivod(i, cellNumber);
+        Vivod(numberFunc, i, cellNumber);
         cellNumber +=1;
       }
       count +=1;
