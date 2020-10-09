@@ -56,16 +56,17 @@ $(document).ready(function () {
   //          Кнопка Вычислить
   // ---------------------------------------------------------------------------
   btn.onclick = function() {
-    for (var j = 0; j < kolN; j++) {
-      tableMain.createTr();
+    for (var j = 0; j < globalVar.get_kolN(); j++) {
+      tableMain.createTr();                 // Создаём строку в таблице
       for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
-        tableMain.createTd(count);
-        Vivod(numberFunc, i, cellNumber);
-        cellNumber +=1;
+        tableMain.createTd(count);          // Создаём ячейку в строке таблицы
+        Vivod(numberFunc, i, cellNumber);   // Выводим очередное значение в созданую ячейку с № cellNumber
+        cellNumber +=1;                     // Наращиваем номер ячейки cellNumber
       }
+      globalVar.Numb += 1;                  // Устанавливаем следующий номер строки для текущей таблицы
       count +=1;
-      console.log('count=',count, 'cellNumber=', cellNumber);
     };
+    globalVar.Numb = 1;                     // Устанавливаем в 1 номер строки для следующей таблицы
   };
 
 

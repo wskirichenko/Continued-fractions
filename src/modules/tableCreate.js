@@ -36,7 +36,8 @@ let tableHeader2 = {
 }
 tableMain = {
   description: "Create Table",
-  numberColumns(type_table) {
+
+  numberColumns(type_table) {                 // Вычисления кол-ва колонок для очередной таблицы
     return tableHeader2[type_table].headers.length;
   },
 
@@ -92,9 +93,9 @@ tableMain = {
 
   // Метод удаления заданного элемента
   clearElement(element) {
-    let elementLength = element.length;
+    let elementLength = element.length; // Получаем количество элементов
     for (let i = elementLength-1; i > -1; i--) {
-      element[i].remove();
+      element[i].remove();              // Удаляем очередной элемент из DOM дерева
     }
   }
 }
