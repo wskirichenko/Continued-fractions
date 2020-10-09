@@ -34,8 +34,8 @@ $(document).ready(function () {
   };
 
   // Функция вывода очередного значения в ячейку таблицы
-  function Vivod(numberFunc, col, cellNumber) {   // где cellNumber - порядковый номер ячейки табицы куда выводим
-    outDisplay.chouseColumn(numberFunc, col, cellNumber);
+  function Vivod(numberFunc, col, cellNumber, countPQ) {   // где cellNumber - порядковый номер ячейки табицы куда выводим
+    outDisplay.chouseColumn(numberFunc, col, cellNumber, countPQ);
   };
 
   // ---------------------------------------------------------------------------
@@ -54,17 +54,20 @@ $(document).ready(function () {
   //          Кнопка Вычислить
   // ---------------------------------------------------------------------------
   btn.onclick = () => {
+    let countPQ = 0;
     for (var j = 0; j < globalVar.getKolN(); j++) {
       tableMain.createTr();                 // Создаём строку в таблице
       for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
         tableMain.createTd(count);          // Создаём ячейку в строке таблицы
-        Vivod(numberFunc, i, cellNumber);   // Выводим очередное значение в созданую ячейку с № cellNumber
+        Vivod(numberFunc, i, cellNumber, countPQ);   // Выводим очередное значение в созданую ячейку с № cellNumber
         cellNumber +=1;                     // Наращиваем номер ячейки cellNumber
       }
+      countPQ += 1;
       globalVar.incNumb(1)                  // Устанавливаем следующий номер строки для текущей таблицы
       count +=1;
     };
     globalVar.setNumb(1);                   // Устанавливаем в 1 номер строки для следующей таблицы
+    countPQ = 0;
   };
 
   // ---------------------------------------------------------------------------
@@ -77,6 +80,9 @@ $(document).ready(function () {
     countPushs = -1;
     count = 0;
     cellNumber = 0;
+    rFiAlgoritm.clearRFi();
+    globalVar.massR = [];
+    globalVar.massFi = [];
   };
 
 

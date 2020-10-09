@@ -4,6 +4,8 @@ globalVar = {
   fi2  : 1,
   kolN : 1,
   numbTables : 0,     // Номер текущей таблицы (в которую будет производится вывод)
+  massR  : [],
+  massFi : [],
   setNumb(num) {
     this.Numb = num;
   },
@@ -33,5 +35,18 @@ globalVar = {
   getFi2() {
     this.fi2 = document.getElementsByName("fi_2")[0].value;
     return this.fi2;
-  }
+  },
+
+  getMassR(i) {
+    return this.massR[i];
+  },
+  setMassR(num, i) {
+    this.massR[i] = num;
+  },
+  getMassFi(i) {
+    return this.massFi[i];
+  },
+  setMassFi(num, i) {
+    this.massFi[i] = num;
+  },
 }
