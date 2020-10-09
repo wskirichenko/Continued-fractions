@@ -1,12 +1,37 @@
 globalVar = {
-  Numb : 1,           // Номер подходяшей (номер строки в табл, Первая колонка)
-  fi   : document.getElementsByName("fi_1")[0].value,
-  fi2  : document.getElementsByName("fi_2")[0].value,
-  kolN : document.getElementById("kol-elementov").value,
-  get_kolN() {
-    return kolN = document.getElementById("kol-elementov").value
+  Numb : 1,           // Номер строки в табл, Первая колонка
+  fi   : 1,
+  fi2  : 1,
+  kolN : 1,
+  numbTables : 0,     // Номер текущей таблицы (в которую будет производится вывод)
+  setNumb(num) {
+    this.Numb = num;
   },
-  get_fi() {
-    return fi = document.getElementsByName("fi_1")[0].value
+  getNumb() {
+    return this.Numb;
+  },
+  incNumb(i=1) {
+    this.Numb = this.Numb + i;
+  },
+  decNumb(i=1) {
+    this.Numb = this.Numb - i;
+  },
+  setNumbTables(num) {
+    this.numbTables = num;
+  },
+  getNumbTables() {
+    return this.numbTables;
+  },
+  getKolN() {
+    this.kolN = document.getElementById("kol-elementov").value;
+    return this.kolN;
+  },
+  getFi() {
+    this.fi = document.getElementsByName("fi_1")[0].value;
+    return this.fi;
+  },
+  getFi2() {
+    this.fi2 = document.getElementsByName("fi_2")[0].value;
+    return this.fi2;
   }
 }

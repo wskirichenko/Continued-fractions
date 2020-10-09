@@ -1,10 +1,7 @@
 "use strict";
- let col_tables = 0;
 $(document).ready(function () {
   // console.log(table.description);
-  let kolN = 10,        // Кол-во итераций
-      kolCol = 6,       // Кол-во колонок в табл
-      numberFunc = 0,   // Порядковый номер функции
+  let numberFunc = 0,   // Порядковый номер функции
       countPushs = -1,  // Кол-во нажатий на кнопки с функциями
       count = 0,
       cellNumber = 0,   // Номен ячейки в таблице для записи оченедного значения
@@ -12,7 +9,7 @@ $(document).ready(function () {
       btn_clear = document.getElementById("btn_clear"),     // Кнопка отчистить
       vFunc = document.getElementsByClassName("func-chouse-btn"),  // Кнопки выбора Функции
       some = document.getElementById("some"),               // Переключатель для вычисления насколько значений
-      one =  document.getElementById("one")                // Переключатель для вычисления одного значения
+      one =  document.getElementById("one")                 // Переключатель для вычисления одного значения
   // ---------------------------------------------------------------------------
   vFunc[0].onclick = (e) => {
     numberFunc = e.currentTarget.getAttribute('value');
@@ -31,23 +28,24 @@ $(document).ready(function () {
     vibor(numberFunc, countPushs);
   };
 
+  // Функция выбора типа таблицы из объекта tableHeader2
   function vibor(numberFunc, countPushs) {
     tableMain.addHed(numberFunc, countPushs);
   };
 
+  // Функция вывода очередного значения в ячейку таблицы
   function Vivod(numberFunc, col, cellNumber) {   // где cellNumber - порядковый номер ячейки табицы куда выводим
-    // sell[cellNumber].innerHTML = cellNumber;
     outDisplay.chouseColumn(numberFunc, col, cellNumber);
   };
 
   // ---------------------------------------------------------------------------
   //          Переключатели выбора вычисления 1 таблицы или нескольких
   // ---------------------------------------------------------------------------
-  some.onclick = function() {
+  some.onclick = () => {
     $('#block_interval').removeClass('display-hidden');
     $("#one").prop("checked", false);
   }
-  one.onclick = function() {
+  one.onclick = () => {
     $('#block_interval').addClass('display-hidden');
     $("#some").prop("checked", false);
   }
@@ -55,33 +53,31 @@ $(document).ready(function () {
   // ---------------------------------------------------------------------------
   //          Кнопка Вычислить
   // ---------------------------------------------------------------------------
-  btn.onclick = function() {
-    for (var j = 0; j < globalVar.get_kolN(); j++) {
+  btn.onclick = () => {
+    for (var j = 0; j < globalVar.getKolN(); j++) {
       tableMain.createTr();                 // Создаём строку в таблице
       for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
         tableMain.createTd(count);          // Создаём ячейку в строке таблицы
         Vivod(numberFunc, i, cellNumber);   // Выводим очередное значение в созданую ячейку с № cellNumber
         cellNumber +=1;                     // Наращиваем номер ячейки cellNumber
       }
-      globalVar.Numb += 1;                  // Устанавливаем следующий номер строки для текущей таблицы
+      globalVar.incNumb(1)                  // Устанавливаем следующий номер строки для текущей таблицы
       count +=1;
     };
-    globalVar.Numb = 1;                     // Устанавливаем в 1 номер строки для следующей таблицы
+    globalVar.setNumb(1);                   // Устанавливаем в 1 номер строки для следующей таблицы
   };
-
 
   // ---------------------------------------------------------------------------
   //          Кнопка отчистить
   // ---------------------------------------------------------------------------
-  btn_clear.onclick = function() {
+  btn_clear.onclick = () => {
     tableMain.clearElement(document.getElementsByTagName("table"));
     tableMain.clearElement(document.getElementsByTagName("h2"));
-    col_tables = 0;
+    globalVar.setNumbTables(0);
     countPushs = -1;
     count = 0;
     cellNumber = 0;
   };
-
 
 
   /* ---- For auto change Date ---- */

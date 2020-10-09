@@ -66,7 +66,8 @@ tableMain = {
       th = document.createElement('th');      // Создаём элемент th
       tr.appendChild(th);                     // Добавляем внутрь tr новый th
       th.className = 'th-hed';                // Присваеваем th класс
-      $(".th-hed")[col_tables+j].innerHTML = tableHeader2[type_table].headers[j]; // Добавляем заголовок из массива tableHeader2.headers
+      // $(".th-hed")[col_tables+j].innerHTML = tableHeader2[type_table].headers[j]; // Добавляем заголовок из массива tableHeader2.headers
+      $(".th-hed")[globalVar.getNumbTables() +j].innerHTML = tableHeader2[type_table].headers[j]; // Добавляем заголовок из массива tableHeader2.headers
     }
 
     tbody = document.createElement('tbody');  // Создаём элемент tbody
@@ -74,7 +75,8 @@ tableMain = {
     tbody.className = 'tbody';                // Присваеваем tbody класс
     $(".table-main")[i].appendChild(tbody);   // Добавляем внутрь 'table-main' новый tbody
 
-    col_tables = col_tables+number_of_columns;
+    //  col_tables = col_tables+number_of_columns;
+    globalVar.setNumbTables(globalVar.getNumbTables() + number_of_columns)
   },
 
   // Метод создания строки в main_tabl

@@ -8,7 +8,7 @@ function getColName(numberFunc, col) {
           return globalVar.Numb;
           break
       case 'pq' :           // Номер (2 столбца)
-          return trigonometFunc.sin(globalVar.Numb, globalVar.get_fi());
+          return trigonometFunc.sin(globalVar.Numb, globalVar.getFi());
           break
       case 'modulR' :       // Номер (3 столбца)
           return colName;
