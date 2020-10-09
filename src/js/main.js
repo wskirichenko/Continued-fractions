@@ -1,4 +1,5 @@
 "use strict";
+
 $(document).ready(function () {
   // console.log(table.description);
   let numberFunc = 0,   // Порядковый номер функции
@@ -50,11 +51,20 @@ $(document).ready(function () {
     $("#some").prop("checked", false);
   }
 
+  // Функция установки начальных параметров
+  clearAllVar = (countPQ) => {
+    rFiAlgoritm.clearRFi();
+    globalVar.massR = [];
+    globalVar.massFi = [];
+    globalVar.massPQ = [];
+    globalVar.setNumb(1);                   // Устанавливаем в 1 номер строки для следующей таблицы
+  }
+
   // ---------------------------------------------------------------------------
   //          Кнопка Вычислить
   // ---------------------------------------------------------------------------
   btn.onclick = () => {
-    let countPQ = 0;
+    let countPQ = 1;
     for (var j = 0; j < globalVar.getKolN(); j++) {
       tableMain.createTr();                 // Создаём строку в таблице
       for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
@@ -66,8 +76,8 @@ $(document).ready(function () {
       globalVar.incNumb(1)                  // Устанавливаем следующий номер строки для текущей таблицы
       count +=1;
     };
-    globalVar.setNumb(1);                   // Устанавливаем в 1 номер строки для следующей таблицы
-    countPQ = 0;
+    countPQ = 1;
+    clearAllVar();
   };
 
   // ---------------------------------------------------------------------------
@@ -80,9 +90,7 @@ $(document).ready(function () {
     countPushs = -1;
     count = 0;
     cellNumber = 0;
-    rFiAlgoritm.clearRFi();
-    globalVar.massR = [];
-    globalVar.massFi = [];
+    clearAllVar();
   };
 
 
