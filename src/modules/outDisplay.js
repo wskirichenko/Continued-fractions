@@ -6,6 +6,25 @@ outDisplay = {
   description: "Output on display",
   rTmp : 0,
   fiTmp : 0,
+  PQtemp : 0,
+
+  getFunction(numberFunc, countPQ) {                  // Вузываем функцию для вычисления в соответствии с нажатой кнопкой выбора функции
+    switch(numberFunc) {                              // где numberFunc - номер вызываемой функции для вычисления
+      case 0 :       //  Вычисления для функции 0
+          return trigonometFunc.sin( countPQ, globalVar.getFi() );
+          break;
+      case 1 :       //  Вычисления для функции 1
+          return trigonometFunc.summSin( countPQ, globalVar.getFi() );
+          break;
+      case 2 :       //  Вычисления для функции 1
+          return trigonometFunc.summCos( countPQ, globalVar.getFi() );
+          break;
+
+      default:
+            return 'Нет такой функции';
+            break
+      };
+  },
 
   getColName(numberFunc, col, countPQ) {
     colName = tableHeader2[numberFunc].colName[col];
@@ -15,24 +34,22 @@ outDisplay = {
           return globalVar.Numb;
           break;
       case 'pq' :           // Номер (2 столбца)
-          trigonometFunc.setZiroMassPQ();
-          trigonometFunc.sin(countPQ, globalVar.getFi());
-          return trigonometFunc.massPQ[countPQ];
-          break;
-      case 'pq2' :          // Номер (2 столбца)
-          trigonometFunc.setZiroMassPQ();
-          trigonometFunc.summSin(countPQ, globalVar.getFi());
-          return trigonometFunc.massPQ[countPQ];
+          trigonometFunc.setZiroMassPQ();           // Устанавливаем нулевой элемент массива massPQ в 0
+          this.PQtemp = this.getFunction(numberFunc, countPQ)
+          return this.PQtemp
+          //trigonometFunc.getMassPQ(countPQ);
           break;
       case 'modulR' :       // Номер (3 столбца)
-          globalVar.setMassR( trigonometFunc.massPQ[countPQ], countPQ );
-          this.rTmp = rFiAlgoritm.modulR(globalVar.getMassR(countPQ), countPQ);
-          return this.rTmp;
+          this.rTmp = rFiAlgoritm.modulR(trigonometFunc.massPQ[countPQ], countPQ);
+
+          rFiAlgoritm.setMassR( this.rTmp, countPQ );
+          return rFiAlgoritm.getMassR(countPQ);
           break
       case 'argumentFi' :   // Номер (4 столбца)
-          globalVar.setMassFi( trigonometFunc.massPQ[countPQ], countPQ );
-          this.fiTmp = rFiAlgoritm.argumentFi(globalVar.getMassFi(countPQ), countPQ);
-          return this.fiTmp;
+          this.fiTmp = rFiAlgoritm.argumentFi(trigonometFunc.massPQ[countPQ], countPQ);
+
+          rFiAlgoritm.setMassFi( this.fiTmp, countPQ );
+          return rFiAlgoritm.getMassFi(countPQ);
           break
       case 'eR' :           // Номер (5 столбца)
           return Math.abs( (1/(4*Math.sin(globalVar.getFi()/2))) - this.rTmp );

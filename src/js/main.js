@@ -13,18 +13,18 @@ $(document).ready(function () {
       one =  document.getElementById("one")                 // Переключатель для вычисления одного значения
   // ---------------------------------------------------------------------------
   vFunc[0].onclick = (e) => {
-    numberFunc = e.currentTarget.getAttribute('value');
+    numberFunc = parseInt(e.currentTarget.getAttribute('value'), 10);
     console.log('numberFunc=', numberFunc);
     countPushs = countPushs + 1;
     vibor(numberFunc, countPushs);
   };
   vFunc[1].onclick = (e) => {
-    numberFunc = e.currentTarget.getAttribute('value');
+    numberFunc = parseInt(e.currentTarget.getAttribute('value'), 10);
     countPushs = countPushs + 1;
     vibor(numberFunc, countPushs);
   };
   vFunc[2].onclick = (e) => {
-    numberFunc = e.currentTarget.getAttribute('value');
+    numberFunc = parseInt(e.currentTarget.getAttribute('value'), 10);
     countPushs = countPushs + 1;
     vibor(numberFunc, countPushs);
   };

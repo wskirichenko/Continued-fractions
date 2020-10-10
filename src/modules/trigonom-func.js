@@ -19,4 +19,12 @@ trigonometFunc = {
     this.massPQ[n] = this.massPQ[n-1] + Math.sin(n*fi);
     return this.massPQ[n];
   },
+  summCos(n, fi) {
+    this.massPQ[n] = this.massPQ[n-1] + Math.cos(n*fi);
+    return this.massPQ[n];
+  },
+
+  getMassPQ(i) {
+    return this.massPQ[i];
+  },
 };

@@ -20,7 +20,7 @@ let tableHeader2 = {
       "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
     ],
     colName: [
-      "number", "pq2", "modulR", "argumentFi", "eR", "eFi"
+      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
     ]
   },
   2 : { // Массив с заголоквами таблицы - 7 колонки
