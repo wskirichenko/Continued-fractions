@@ -4,8 +4,6 @@ $(document).ready(function () {
   // console.log(table.description);
   let numberFunc = 0,   // Порядковый номер функции
       countPushs = -1,  // Кол-во нажатий на кнопки с функциями
-      count = 0,
-      cellNumber = 0,   // Номен ячейки в таблице для записи оченедного значения
       btn = document.getElementById("btn_start"),           // Кнопка вычислить
       btn_clear = document.getElementById("btn_clear"),     // Кнопка отчистить
       vFunc = document.getElementsByClassName("func-chouse-btn"),  // Кнопки выбора Функции
@@ -35,9 +33,9 @@ $(document).ready(function () {
   };
 
   // Функция вывода очередного значения в ячейку таблицы
-  function Vivod(numberFunc, col, cellNumber, countPQ) {   // где cellNumber - порядковый номер ячейки табицы куда выводим
-    outDisplay.chouseColumn(numberFunc, col, cellNumber, countPQ);
-  };
+  // function Vivod(numberFunc, cellNumber, countPQ, j) {   // где cellNumber - порядковый номер ячейки табицы куда выводим
+  //   outDisplay.chouseColumn(numberFunc, cellNumber, countPQ, j);
+  // };
 
   // ---------------------------------------------------------------------------
   //          Переключатели выбора вычисления 1 таблицы или нескольких
@@ -66,15 +64,18 @@ $(document).ready(function () {
   btn.onclick = () => {
     let countPQ = 1;
     for (var j = 0; j < globalVar.getKolN(); j++) {
-      tableMain.createTr();                 // Создаём строку в таблице
-      for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
-        tableMain.createTd(count);          // Создаём ячейку в строке таблицы
-        Vivod(numberFunc, i, cellNumber, countPQ);   // Выводим очередное значение в созданую ячейку с № cellNumber
-        cellNumber +=1;                     // Наращиваем номер ячейки cellNumber
-      }
+      outDisplay.chouseColumn(numberFunc, countPQ, j);
+      //if (outDisplay.typeDisplaing(j) == true) {
+        // tableMain.createTr();                 // Создаём строку в таблице
+        // for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
+        //   tableMain.createTd(count);          // Создаём ячейку в строке таблицы
+        //   Vivod(numberFunc, i, cellNumber, countPQ, j);   // Выводим очередное значение в созданую ячейку с № cellNumber
+        //   cellNumber +=1;                     // Наращиваем номер ячейки cellNumber
+        // }
+        // count +=1;
+      //}
       countPQ += 1;
       globalVar.incNumb(1)                  // Устанавливаем следующий номер строки для текущей таблицы
-      count +=1;
     };
     countPQ = 1;
     clearAllVar();
@@ -88,8 +89,8 @@ $(document).ready(function () {
     tableMain.clearElement(document.getElementsByTagName("h2"));
     globalVar.setNumbTables(0);
     countPushs = -1;
-    count = 0;
-    cellNumber = 0;
+    outDisplay.count = 0;
+    globalVar.setCellNumber(0);
     clearAllVar();
   };
 

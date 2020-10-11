@@ -4,6 +4,7 @@ globalVar = {
   fi2  : 1,
   kolN : 1,
   numbTables : 0,     // Номер текущей таблицы (в которую будет производится вывод)
+  cellNumber : 0,     // Номен ячейки в таблице для записи оченедного значения 
   massR  : [],
   massFi : [],
   setNumb(num) {
@@ -48,5 +49,14 @@ globalVar = {
   },
   setMassFi(num, i) {
     this.massFi[i] = num;
+  },
+  getCellNumber() {
+    return this.cellNumber;
+  },
+  setCellNumber(num) {
+    this.cellNumber = num;
+  },
+  incCellNumber(i=1) {
+    this.cellNumber = this.cellNumber + i;
   },
 }
