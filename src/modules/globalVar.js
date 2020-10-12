@@ -3,7 +3,7 @@ globalVar = {
   fi   : 1,
   fi2  : 1,
   kolN : 1,
-  vivodStrok : 'podrad',
+  vivodStrok : 'stepen2',
   numbTables : 0,     // Номер текущей таблицы (в которую будет производится вывод)
   cellNumber : 0,     // Номен ячейки в таблице для записи оченедного значения
   massR  : [],

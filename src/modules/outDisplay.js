@@ -29,7 +29,7 @@ outDisplay = {
           return trigonometFunc.summSin( countPQ, globalVar.getFi() );
           break;
       case 2 :       //  Вычисления для функции 1
-          return trigonometFunc.summCos( countPQ, globalVar.getFi() );
+          return trigonometFunc.summSinNechet( countPQ, globalVar.getFi() );
           break;
 
       default:
@@ -87,7 +87,7 @@ outDisplay = {
           return globalVar.Numb;
           break;
       case 'pq' :           // Номер (2 столбца)
-          trigonometFunc.setZiroMassPQ();           // Устанавливаем нулевой элемент массива massPQ в 0
+          trigonometFunc.setZiroMassPQ(0);           // Устанавливаем нулевой элемент массива massPQ в 0
           this.PQtemp = this.getFunction(numberFunc, countPQ)
           return this.PQtemp
           //trigonometFunc.getMassPQ(countPQ);
@@ -120,7 +120,7 @@ outDisplay = {
     };
   },
   chouseColumn(numberFunc, countPQ, j) {            // Получения данных для текущей колонки для вывода на экран
-    if (this.typeDisplaing(globalVar.vivodStrok, j) == true) {      // Если ужно выводить на экран
+    if (this.typeDisplaing(globalVar.vivodStrok, j) == true) {      // Если строку нужно выводить на экран
         tableMain.createTr();                       // Создаём строку в таблице
         for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
           tableMain.createTd(this.count);           // Создаём ячейку в строке таблицы

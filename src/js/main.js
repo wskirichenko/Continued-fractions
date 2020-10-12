@@ -1,8 +1,7 @@
 "use strict";
 
 $(document).ready(function () {
-  // console.log(table.description);
-  let numberFunc = 0,   // Порядковый номер функции
+  let numberFunc = -1,   // Порядковый номер функции
       countPushs = -1,  // Кол-во нажатий на кнопки с функциями
       btn = document.getElementById("btn_start"),           // Кнопка вычислить
       btn_clear = document.getElementById("btn_clear"),     // Кнопка отчистить
@@ -35,11 +34,6 @@ $(document).ready(function () {
   function vibor(numberFunc, countPushs) {
     tableMain.addHed(numberFunc, countPushs);
   };
-
-  // Функция вывода очередного значения в ячейку таблицы
-  // function Vivod(numberFunc, cellNumber, countPQ, j) {   // где cellNumber - порядковый номер ячейки табицы куда выводим
-  //   outDisplay.chouseColumn(numberFunc, cellNumber, countPQ, j);
-  // };
 
   // ---------------------------------------------------------------------------
   //          Переключатели выбора вычисления 1 таблицы или нескольких
@@ -87,22 +81,17 @@ $(document).ready(function () {
   // ---------------------------------------------------------------------------
   btn.onclick = () => {
     let countPQ = 1;
-    for (var j = 0; j < globalVar.getKolN(); j++) {
-      outDisplay.chouseColumn(numberFunc, countPQ, j);
-      //if (outDisplay.typeDisplaing(j) == true) {
-        // tableMain.createTr();                 // Создаём строку в таблице
-        // for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
-        //   tableMain.createTd(count);          // Создаём ячейку в строке таблицы
-        //   Vivod(numberFunc, i, cellNumber, countPQ, j);   // Выводим очередное значение в созданую ячейку с № cellNumber
-        //   cellNumber +=1;                     // Наращиваем номер ячейки cellNumber
-        // }
-        // count +=1;
-      //}
-      countPQ += 1;
-      globalVar.incNumb(1)                  // Устанавливаем следующий номер строки для текущей таблицы
-    };
-    countPQ = 1;
-    clearAllVar();
+    if (numberFunc != -1) {
+      for (var j = 0; j < globalVar.getKolN(); j++) {
+        outDisplay.chouseColumn(numberFunc, countPQ, j);
+        countPQ += 1;
+        globalVar.incNumb(1)                  // Устанавливаем следующий номер строки для текущей таблицы
+      };
+      countPQ = 1;
+      clearAllVar();
+    } else {
+      alert("Выбирите одну из функций");
+    }
   };
 
   // ---------------------------------------------------------------------------
@@ -115,6 +104,7 @@ $(document).ready(function () {
     countPushs = -1;
     outDisplay.count = 0;
     globalVar.setCellNumber(0);
+    numberFunc = -1;
     clearAllVar();
   };
 

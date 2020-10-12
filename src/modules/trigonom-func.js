@@ -4,8 +4,8 @@ trigonometFunc = {
   description: "Trigonometric functions",
 
   massPQ : [],
-  setZiroMassPQ() {
-    this.massPQ[0] = 0;
+  setZiroMassPQ(i=0) {
+    this.massPQ[0] = i;
   },
   sin(n, fi) {
     this.massPQ[n] = Math.sin(n*fi);
@@ -17,6 +17,10 @@ trigonometFunc = {
   },
   summSin(n, fi) {
     this.massPQ[n] = this.massPQ[n-1] + Math.sin(n*fi);
+    return this.massPQ[n];
+  },
+  summSinNechet(n, fi) {
+    this.massPQ[n] = this.massPQ[n-1] + Math.sin((2*n-1)*fi);
     return this.massPQ[n];
   },
   summCos(n, fi) {
