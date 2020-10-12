@@ -27,7 +27,14 @@ trigonometFunc = {
     this.massPQ[n] = this.massPQ[n-1] + Math.cos(n*fi);
     return this.massPQ[n];
   },
-
+  summSinDiv(n, fi, constanta) {
+    if (n % 2 === 0) {
+      this.massPQ[n] = this.massPQ[n-1] - (Math.sin(n*fi)/constanta);
+    } else {
+      this.massPQ[n] = this.massPQ[n-1] + (Math.sin(n*fi)/constanta);
+    }
+    return this.massPQ[n];
+  },
   getMassPQ(i) {
     return this.massPQ[i];
   },

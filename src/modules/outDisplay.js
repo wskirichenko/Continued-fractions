@@ -31,7 +31,9 @@ outDisplay = {
       case 2 :       //  Вычисления для функции 1
           return trigonometFunc.summSinNechet( countPQ, globalVar.getFi() );
           break;
-
+      case 3 :       //  Вычисления для функции 1
+          return trigonometFunc.summSinDiv( countPQ, globalVar.getFi(), Math.sin(globalVar.getFi()) );
+          break;
       default:
             return 'Нет такой функции';
             break
