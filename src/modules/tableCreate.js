@@ -32,6 +32,16 @@ let tableHeader2 = {
     colName: [
       "number", "pq", "pqExp", "modulR", "argumentFi", "eR", "eFi"
     ]
+  },
+  3 : { // Массив с заголоквами таблицы - 6 колонки
+    title : "Tаблица - 6 колонки",
+    headers : [
+      "Номер №", "Значения подходящих", "Значения модуля r",
+      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
+    ],
+    colName: [
+      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
+    ]
   }
 }
 tableMain = {

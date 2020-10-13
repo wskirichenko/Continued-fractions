@@ -28,6 +28,11 @@ $(document).ready(function () {
     countPushs = countPushs + 1;
     vibor(numberFunc, countPushs);
   };
+  vFunc[3].onclick = (e) => {
+    numberFunc = parseInt(e.currentTarget.getAttribute('value'), 10);
+    countPushs = countPushs + 1;
+    vibor(numberFunc, countPushs);
+  };
 
   // Функция выбора типа таблицы из объекта tableHeader2
   function vibor(numberFunc, countPushs) {
