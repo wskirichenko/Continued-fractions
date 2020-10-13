@@ -8,6 +8,8 @@ globalVar = {
   cellNumber : 0,     // Номен ячейки в таблице для записи оченедного значения
   massR  : [],
   massFi : [],
+  flagTabl : false,
+
   setNumb(num) {
     this.Numb = num;
   },
@@ -20,6 +22,14 @@ globalVar = {
   decNumb(i=1) {
     this.Numb = this.Numb - i;
   },
+
+  getFlagTabl(){
+    return this.flagTabl;
+  },
+  setFlagTabl(num) {
+    this.flagTabl = num;
+  },
+
   setNumbTables(num) {
     this.numbTables = num;
   },

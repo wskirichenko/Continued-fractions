@@ -79,6 +79,20 @@ outDisplay = {
       }
     }
   },
+
+  stepСalculations() {
+    let rez = 1,
+        from =   parseInt(document.getElementsByName("int_ot")[0].value, 10),
+        before = parseInt(document.getElementsByName("int_do")[0].value, 10),
+        step =   parseInt(document.getElementsByName("interval_tab")[0].value, 10);
+    if (globalVar.getFlagTabl()) {
+      rez = Math.round((before - from)/step);
+    } else {
+      rez = 1;
+    }
+    return rez
+  },
+
   getColName(numberFunc, col, countPQ) {
     colName = tableHeader2[numberFunc].colName[col];
 
@@ -120,18 +134,18 @@ outDisplay = {
     };
   },
   chouseColumn(numberFunc, countPQ, j) {            // Получения данных для текущей колонки для вывода на экран
-    if (this.typeDisplaing(globalVar.vivodStrok, j) == true) {      // Если строку нужно выводить на экран
-        tableMain.createTr();                       // Создаём строку в таблице
-        for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
-          tableMain.createTd(this.count);           // Создаём ячейку в строке таблицы
-          sell[globalVar.getCellNumber()].innerHTML = this.getColName(numberFunc, i, countPQ);   // Выводим очередное значение в созданую ячейку с № cellNumber
-          globalVar.incCellNumber(1);               // Наращиваем номер ячейки cellNumber
-        }
-        this.count +=1;
-    } else {                                        // Иначе если не нужно выводить на экран всё равно производим расчёты
-        for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
-          this.temp1 = this.getColName(numberFunc, i, countPQ);
-        }
-    }
+      if (this.typeDisplaing(globalVar.vivodStrok, j) == true) {      // Если строку нужно выводить на экран
+          tableMain.createTr();                       // Создаём строку в таблице
+          for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
+            tableMain.createTd(this.count);           // Создаём ячейку в строке таблицы
+            sell[globalVar.getCellNumber()].innerHTML = this.getColName(numberFunc, i, countPQ);   // Выводим очередное значение в созданую ячейку с № cellNumber
+            globalVar.incCellNumber(1);               // Наращиваем номер ячейки cellNumber
+          }
+          this.count +=1;
+      } else {                                        // Иначе если не нужно выводить на экран всё равно производим расчёты
+          for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
+            this.temp1 = this.getColName(numberFunc, i, countPQ);
+          }
+      }
   }
 };

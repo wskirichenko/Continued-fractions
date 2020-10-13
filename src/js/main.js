@@ -1,8 +1,8 @@
 "use strict";
 
 $(document).ready(function () {
-  let numberFunc = -1,   // Порядковый номер функции
-      countPushs = -1,  // Кол-во нажатий на кнопки с функциями
+  let numberFunc = -1,    // Порядковый номер функции
+      countPushs = -1,    // Кол-во нажатий на кнопки с функциями
       btn = document.getElementById("btn_start"),           // Кнопка вычислить
       btn_clear = document.getElementById("btn_clear"),     // Кнопка отчистить
       vFunc = document.getElementsByClassName("func-chouse-btn"),  // Кнопки выбора Функции
@@ -11,7 +11,6 @@ $(document).ready(function () {
       podrad =  document.getElementById("podrad"),           // Переключатель для вывлда строк табл. подряд
       stepen2 =  document.getElementById("stepen2"),         // Переключатель для вывлда строк табл. по степени 2
       interval =  document.getElementById("interval");       // Переключатель для вывлда строк табл. на интервале
-
   // ---------------------------------------------------------------------------
   vFunc[0].onclick = (e) => {
     numberFunc = parseInt(e.currentTarget.getAttribute('value'), 10);
@@ -41,10 +40,12 @@ $(document).ready(function () {
   some.onclick = () => {
     $('#block_interval').removeClass('display-hidden');
     $("#one").prop("checked", false);
+    globalVar.setFlagTabl(true);
   }
   one.onclick = () => {
     $('#block_interval').addClass('display-hidden');
     $("#some").prop("checked", false);
+    globalVar.setFlagTabl(false);
   }
 
   // ---------------------------------------------------------------------------
@@ -66,7 +67,6 @@ $(document).ready(function () {
     globalVar.vivodStrok = 'interval';
   }
 
-
   // Функция установки начальных параметров
   clearAllVar = (countPQ) => {
     rFiAlgoritm.clearRFi();
@@ -80,16 +80,31 @@ $(document).ready(function () {
   //          Кнопка Вычислить
   // ---------------------------------------------------------------------------
   btn.onclick = () => {
-    let countPQ = 1;
-    if (numberFunc != -1) {
-      for (var j = 0; j < globalVar.getKolN(); j++) {
-        outDisplay.chouseColumn(numberFunc, countPQ, j);
-        countPQ += 1;
-        globalVar.incNumb(1)                  // Устанавливаем следующий номер строки для текущей таблицы
-      };
-      countPQ = 1;
-      clearAllVar();
-    } else {
+    let countPQ = 1;                        // Счётчик подходящих для массива massPQ
+    if (numberFunc != -1) {                 // Если выбрана функция для вычисления
+      if (globalVar.getFlagTabl()) {        // Если рассчитываем несколько таблиц
+        for (var i1 = 0; i1 < outDisplay.stepСalculations(); i1++) {
+          for (var j = 0; j < globalVar.getKolN(); j++) {
+            outDisplay.chouseColumn(numberFunc, countPQ, j);
+            countPQ += 1;                   // Наращиваем счётчик подходящих
+            globalVar.incNumb(1)            // Устанавливаем следующий номер строки для текущей таблицы
+          };
+          if ( i1 < (outDisplay.stepСalculations()-1) ) { // Не выводим лишний заголовок
+            tableMain.addHed(numberFunc, i1+1);
+          }
+          countPQ = 1;                      // После вычисления одной таблицы сбрасываем счётчик подходящих
+          clearAllVar();
+        }
+      } else {                              // Иначе рассчитёт ведётся только для одной таблицы
+          for (var j = 0; j < globalVar.getKolN(); j++) {
+            outDisplay.chouseColumn(numberFunc, countPQ, j);
+            countPQ += 1;                   // Наращиваем счётчик подходящих
+            globalVar.incNumb(1)            // Устанавливаем следующий номер строки для текущей таблицы
+          };
+          countPQ = 1;                      // После вычисления одной таблицы сбрасываем счётчик подходящих
+          clearAllVar();
+      }
+    } else {                                // Если ни одна из функций не выбрана
       alert("Выбирите одну из функций");
     }
   };
