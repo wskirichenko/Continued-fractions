@@ -1,7 +1,7 @@
 "use strict";
 let sell = document.getElementsByClassName('s1'),   // Ячейка таблицы
-    intEnterTablSrt_from =  parseInt(document.getElementsByName("interval_ot")[0].value, 10),   // Число выбранное пользователем для начала интервала вывода
-    intEnterTablSrt_before =  parseInt(document.getElementsByName("interval_do")[0].value, 10); // Число выбранное пользователем для конца интервала вывода
+    intEnterTablSrt_from =  parseFloat(document.getElementsByName("interval_ot")[0].value),   // Число выбранное пользователем для начала интервала вывода
+    intEnterTablSrt_before =  parseFloat(document.getElementsByName("interval_do")[0].value); // Число выбранное пользователем для конца интервала вывода
 
 outDisplay = {
   description: "Output on display",
@@ -12,27 +12,27 @@ outDisplay = {
   PQtemp : 0,
 
   getIntEnterTablSrt_from() {
-    intEnterTablSrt_from = parseInt(document.getElementsByName("interval_ot")[0].value, 10);
+    intEnterTablSrt_from = parseFloat(document.getElementsByName("interval_ot")[0].value);
     return intEnterTablSrt_from;
   },
   getIntEnterTablSrt_before() {
-    intEnterTablSrt_before = parseInt(document.getElementsByName("interval_do")[0].value, 10);
+    intEnterTablSrt_before = parseFloat(document.getElementsByName("interval_do")[0].value);
     return intEnterTablSrt_before;
   },
 
-  getFunction(numberFunc, countPQ) {                  // Вузываем функцию для вычисления в соответствии с нажатой кнопкой выбора функции
+  getFunction(numberFunc, countPQ, newX) {                  // Вузываем функцию для вычисления в соответствии с нажатой кнопкой выбора функции
     switch(numberFunc) {                              // где numberFunc - номер вызываемой функции для вычисления
       case 0 :       //  Вычисления для функции 0
-          return trigonometFunc.sin( countPQ, globalVar.getFi() );
+          return trigonometFunc.sin( countPQ, globalVar.getFi(newX) );
           break;
       case 1 :       //  Вычисления для функции 1
-          return trigonometFunc.summSin( countPQ, globalVar.getFi() );
+          return trigonometFunc.summSin( countPQ, globalVar.getFi(newX) );
           break;
       case 2 :       //  Вычисления для функции 1
-          return trigonometFunc.summSinNechet( countPQ, globalVar.getFi() );
+          return trigonometFunc.summSinNechet( countPQ, globalVar.getFi(newX) );
           break;
       case 3 :       //  Вычисления для функции 1
-          return trigonometFunc.summSinDiv( countPQ, globalVar.getFi(), Math.sin(globalVar.getFi()) );
+          return trigonometFunc.summSinDiv( countPQ, globalVar.getFi(newX), Math.sin(globalVar.getFi(newX)) );
           break;
       default:
             return 'Нет такой функции';
@@ -84,9 +84,9 @@ outDisplay = {
 
   stepСalculations() {
     let rez = 1,
-        from =   parseInt(document.getElementsByName("int_ot")[0].value, 10),
-        before = parseInt(document.getElementsByName("int_do")[0].value, 10),
-        step =   parseInt(document.getElementsByName("interval_tab")[0].value, 10);
+        from =   parseFloat(document.getElementsByName("int_ot")[0].value),
+        before = parseFloat(document.getElementsByName("int_do")[0].value),
+        step =   parseFloat(document.getElementsByName("interval_tab")[0].value);
     if (globalVar.getFlagTabl()) {
       rez = Math.round((before - from)/step);
     } else {
@@ -95,7 +95,7 @@ outDisplay = {
     return rez
   },
 
-  getColName(numberFunc, col, countPQ) {
+  getColName(numberFunc, col, countPQ, newX) {
     colName = tableHeader2[numberFunc].colName[col];
 
     switch(colName) {                               // где colName - имя колонки таблицы из массива tableHeader2
@@ -104,7 +104,7 @@ outDisplay = {
           break;
       case 'pq' :           // Номер (2 столбца)
           trigonometFunc.setZiroMassPQ(0);           // Устанавливаем нулевой элемент массива massPQ в 0
-          this.PQtemp = this.getFunction(numberFunc, countPQ)
+          this.PQtemp = this.getFunction(numberFunc, countPQ, newX)
           return this.PQtemp
           //trigonometFunc.getMassPQ(countPQ);
           break;
@@ -121,10 +121,10 @@ outDisplay = {
           return rFiAlgoritm.getMassFi(countPQ);
           break
       case 'eR' :           // Номер (5 столбца)
-          return Math.abs( (1/(4*Math.sin(globalVar.getFi()/2))) - this.rTmp );
+          return Math.abs( (1/(4*Math.sin(globalVar.getFi(newX)/2))) - this.rTmp );
           break
       case 'eFi' :           // Номер (6 столбца)
-          return Math.abs( globalVar.getFi()/2 - this.fiTmp );
+          return Math.abs( globalVar.getFi(newX)/2 - this.fiTmp );
           break
       case 'pqExp' :        // Номер (2-2 столбца)
           return colName;
@@ -135,18 +135,18 @@ outDisplay = {
           break
     };
   },
-  chouseColumn(numberFunc, countPQ, j) {            // Получения данных для текущей колонки для вывода на экран
-      if (this.typeDisplaing(globalVar.vivodStrok, j) == true) {      // Если строку нужно выводить на экран
+  chouseColumn(numberFunc, countPQ, numbCol, newX) {        // Получения данных для текущей колонки для вывода на экран
+      if (this.typeDisplaing(globalVar.vivodStrok, numbCol) == true) {      // Если строку нужно выводить на экран
           tableMain.createTr();                       // Создаём строку в таблице
           for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
             tableMain.createTd(this.count);           // Создаём ячейку в строке таблицы
-            sell[globalVar.getCellNumber()].innerHTML = this.getColName(numberFunc, i, countPQ);   // Выводим очередное значение в созданую ячейку с № cellNumber
+            sell[globalVar.getCellNumber()].innerHTML = this.getColName(numberFunc, i, countPQ, newX);   // Выводим очередное значение в созданую ячейку с № cellNumber
             globalVar.incCellNumber(1);               // Наращиваем номер ячейки cellNumber
           }
           this.count +=1;
       } else {                                        // Иначе если не нужно выводить на экран всё равно производим расчёты
           for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
-            this.temp1 = this.getColName(numberFunc, i, countPQ);
+            this.temp1 = this.getColName(numberFunc, i, countPQ, newX);
           }
       }
   }

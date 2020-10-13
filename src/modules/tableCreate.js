@@ -4,7 +4,7 @@
 // ---------------------------------------------------------------------------
 let tableHeader2 = {
   0 : { // Массив с заголоквами таблицы - 4 колонки
-    title : "Tаблица - 4 колонки",
+    title : "Tаблица ",
     headers : [
       "Номер №", "Значения подходящих", "Значения модуля r",
       "Значения аргумента fi"
@@ -14,7 +14,7 @@ let tableHeader2 = {
     ]
   },
   1 : { // Массив с заголоквами таблицы - 6 колонки
-    title : "Tаблица - 6 колонки",
+    title : "Tаблица ",
     headers : [
       "Номер №", "Значения подходящих", "Значения модуля r",
       "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
@@ -24,7 +24,7 @@ let tableHeader2 = {
     ]
   },
   2 : { // Массив с заголоквами таблицы - 7 колонки
-    title : "Tаблица - 7 колонки",
+    title : "Tаблица ",
     headers : [
       "Номер №", "Значения подходящих 2", "Значения экспоненты", "Значения модуля r",
       "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
@@ -34,7 +34,7 @@ let tableHeader2 = {
     ]
   },
   3 : { // Массив с заголоквами таблицы - 6 колонки
-    title : "Tаблица - 6 колонки",
+    title : "Tаблица ",
     headers : [
       "Номер №", "Значения подходящих", "Значения модуля r",
       "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
@@ -57,7 +57,12 @@ tableMain = {
     h2 = document.createElement('h2');        // Создаём элемент h2
     main_panel.appendChild(h2);               // Добавляем внутрь 'main_panel' новый h2
     h2.className = 'h2-table';                // Присваеваем h2 класс
-    $(".h2-table")[i].innerHTML = tableHeader2[type_table].title; // Добавляем title из массива tableHeader
+    $(".h2-table")[i].innerHTML = tableHeader2[type_table].title + (i+1); // Добавляем title из массива tableHeader
+
+    // p = document.createElement('p');          // Создаём элемент p
+    // main_panel.appendChild(p);                // Добавляем внутрь 'main_panel' новый p
+    // p.className = 'p-table';                  // Присваеваем p класс
+    // $(".p-table")[i].innerHTML = "fi =" + globalVar.getMassX(i); // Добавляем значения очередного х
 
     table = document.createElement('table');  // Создаём элемент table
     main_panel.appendChild(table);            // Добавляем внутрь 'main_panel' новый table

@@ -16,6 +16,7 @@ $(document).ready(function () {
     numberFunc = parseInt(e.currentTarget.getAttribute('value'), 10);
     console.log('numberFunc=', numberFunc);
     countPushs = countPushs + 1;
+    // globalVar.setMassX(parseFloat(document.getElementsByName("int_ot")[0].value))
     vibor(numberFunc, countPushs);
   };
   vFunc[1].onclick = (e) => {
@@ -78,6 +79,7 @@ $(document).ready(function () {
     globalVar.massR = [];
     globalVar.massFi = [];
     globalVar.massPQ = [];
+    // globalVar.massX = [];
     globalVar.setNumb(1);                   // Устанавливаем в 1 номер строки для следующей таблицы
   }
 
@@ -85,12 +87,14 @@ $(document).ready(function () {
   //          Кнопка Вычислить
   // ---------------------------------------------------------------------------
   btn.onclick = () => {
-    let countPQ = 1;                        // Счётчик подходящих для массива massPQ
+    let countPQ = 1,                        // Счётчик подходящих для массива massPQ
+        newX = 0;
     if (numberFunc != -1) {                 // Если выбрана функция для вычисления
       if (globalVar.getFlagTabl()) {        // Если рассчитываем несколько таблиц
-        for (var i1 = 0; i1 < outDisplay.stepСalculations(); i1++) {
-          for (var j = 0; j < globalVar.getKolN(); j++) {
-            outDisplay.chouseColumn(numberFunc, countPQ, j);
+        for (var i1 = 0; i1 < outDisplay.stepСalculations(); i1++) {  // Цикл вычисления нескольких таблиц
+          newX = globalVar.deltaFi(i1);
+          for (var numbCol = 0; numbCol < globalVar.getKolN(); numbCol++) {
+            outDisplay.chouseColumn(numberFunc, countPQ, numbCol, newX);
             countPQ += 1;                   // Наращиваем счётчик подходящих
             globalVar.incNumb(1)            // Устанавливаем следующий номер строки для текущей таблицы
           };
@@ -101,8 +105,8 @@ $(document).ready(function () {
           clearAllVar();
         }
       } else {                              // Иначе рассчитёт ведётся только для одной таблицы
-          for (var j = 0; j < globalVar.getKolN(); j++) {
-            outDisplay.chouseColumn(numberFunc, countPQ, j);
+          for (var numbCol = 0; numbCol < globalVar.getKolN(); numbCol++) {
+            outDisplay.chouseColumn(numberFunc, countPQ, numbCol, 0);
             countPQ += 1;                   // Наращиваем счётчик подходящих
             globalVar.incNumb(1)            // Устанавливаем следующий номер строки для текущей таблицы
           };
@@ -119,7 +123,8 @@ $(document).ready(function () {
   // ---------------------------------------------------------------------------
   btn_clear.onclick = () => {
     tableMain.clearElement(document.getElementsByTagName("table"));
-    tableMain.clearElement(document.getElementsByTagName("h2"));
+    tableMain.clearElement(document.getElementsByClassName("h2-table"));
+    tableMain.clearElement(document.getElementsByClassName("p-table"));
     globalVar.setNumbTables(0);
     countPushs = -1;
     outDisplay.count = 0;
