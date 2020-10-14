@@ -38,4 +38,7 @@ trigonometFunc = {
   getMassPQ(i) {
     return this.massPQ[i];
   },
+  clearMassPQ() {
+    this.massPQ = [];
+  }
 };

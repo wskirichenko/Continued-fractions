@@ -59,10 +59,10 @@ tableMain = {
     h2.className = 'h2-table';                // Присваеваем h2 класс
     $(".h2-table")[i].innerHTML = tableHeader2[type_table].title + (i+1); // Добавляем title из массива tableHeader
 
-    // p = document.createElement('p');          // Создаём элемент p
-    // main_panel.appendChild(p);                // Добавляем внутрь 'main_panel' новый p
-    // p.className = 'p-table';                  // Присваеваем p класс
-    // $(".p-table")[i].innerHTML = "fi =" + globalVar.getMassX(i); // Добавляем значения очередного х
+    p = document.createElement('p');          // Создаём элемент p
+    main_panel.appendChild(p);                // Добавляем внутрь 'main_panel' новый p
+    p.className = 'p-table';                  // Присваеваем p класс
+    $(".p-table")[i].innerHTML = "fi = " + globalVar.getMassX(i); // Добавляем значения очередного х
 
     table = document.createElement('table');  // Создаём элемент table
     main_panel.appendChild(table);            // Добавляем внутрь 'main_panel' новый table

@@ -7,7 +7,7 @@ outDisplay = {
   description: "Output on display",
   rTmp : 0,
   fiTmp : 0,
-  count : 0,
+  count : 0,          // Номер строки в таблице
   temp1 : 0,
   PQtemp : 0,
 
@@ -20,7 +20,7 @@ outDisplay = {
     return intEnterTablSrt_before;
   },
 
-  getFunction(numberFunc, countPQ, newX) {                  // Вузываем функцию для вычисления в соответствии с нажатой кнопкой выбора функции
+  getFunction(numberFunc, countPQ, newX) {            // Вызываем функцию для вычисления в соответствии с нажатой кнопкой выбора функции
     switch(numberFunc) {                              // где numberFunc - номер вызываемой функции для вычисления
       case 0 :       //  Вычисления для функции 0
           return trigonometFunc.sin( countPQ, globalVar.getFi(newX) );
@@ -139,15 +139,24 @@ outDisplay = {
       if (this.typeDisplaing(globalVar.vivodStrok, numbCol) == true) {      // Если строку нужно выводить на экран
           tableMain.createTr();                       // Создаём строку в таблице
           for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
-            tableMain.createTd(this.count);           // Создаём ячейку в строке таблицы
+            tableMain.createTd(this.getCount());           // Создаём ячейку в строке таблицы
             sell[globalVar.getCellNumber()].innerHTML = this.getColName(numberFunc, i, countPQ, newX);   // Выводим очередное значение в созданую ячейку с № cellNumber
             globalVar.incCellNumber(1);               // Наращиваем номер ячейки cellNumber
           }
-          this.count +=1;
+          this.incCount(1);
       } else {                                        // Иначе если не нужно выводить на экран всё равно производим расчёты
           for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
             this.temp1 = this.getColName(numberFunc, i, countPQ, newX);
           }
       }
+  },
+  getCount() {                    // Получаем номер очередной строки в таблице
+    return this.count;
+  },
+  setCount(num) {
+    this.count = num;
+  },
+  incCount(i=1) {                 // Наращиваем номер очередной строки в таблице на 1
+    this.count = this.count + i;
   }
 };
