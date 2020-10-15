@@ -104,9 +104,9 @@ const outDisplay = {
                 } else {
                     return newstr = 'Степень положительная, недописал пока';
                 }
-                return newstr = newstr.substring(0, kolcifr);
+                return newstr = newstr.substring(0, kolcifr).replace('.', ',');
             }
-            return newstr = str.substring(0, kolcifr);
+            return newstr = str.substring(0, kolcifr).replace('.', ',');
         }
         return str;
     } else {
@@ -151,10 +151,12 @@ const outDisplay = {
           return rFiAlgoritm.getMassFi(countPQ);
           break
       case 'eR' :           // Столбик таблицы с погрешностью при вычислении модуля r
-          return Math.abs( (1/(4*Math.sin(globalVar.getFi(newX)/2))) - this.rTmp );
+          //return Math.abs( (1/(4*Math.sin(globalVar.getFi(newX)/2))) - this.rTmp );
+          return Math.abs( 1 - this.rTmp );
           break
       case 'eFi' :          // Столбик таблицы с погрешностью при вычислении аргумента fi
-          return Math.abs( globalVar.getFi(newX)/2 - this.fiTmp );
+          // return Math.abs( globalVar.getFi(newX)/2 - this.fiTmp );
+          return Math.abs( globalVar.getFi(newX) - this.fiTmp );
           break
       case 'pqExp' :        // Пока не используется
           return colName;
