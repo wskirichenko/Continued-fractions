@@ -11,10 +11,10 @@ globalVar = {
   setZiroMassX(num) {
     this.massX[0] = num;  // Устанавлевая 0 элемент массива х в начальное значение
   },
-  setNumb(num) {
+  setNumb(num) {          // Функция установки Номера строки в табл (цифры в Первой колонке табл.)
     this.Numb = num;
   },
-  getNumb() {
+  getNumb() {             // Функция получения Номера строки в табл (цифры в Первой колонке табл.)
     return this.Numb;
   },
   incNumb(i=1) {
@@ -24,35 +24,26 @@ globalVar = {
     this.Numb = this.Numb - i;
   },
 
-  getFlagTabl(){
+  getFlagTabl(){          // Функция получения флага: Выводим 1 табл. или несколько табл.
     return this.flagTabl;
   },
-  setFlagTabl(num) {
+  setFlagTabl(num) {      // Функция установки флага: Выводим 1 табл. или несколько табл.
     this.flagTabl = num;
   },
 
-  setNumbTables(num) {
+  setNumbTables(num) {    // Устанка Номера текущей таблицы (в которую будет производится вывод)
     this.numbTables = num;
   },
-  getNumbTables() {
+  getNumbTables() {       // Получение Номера текущей таблицы (в которую будет производится вывод)
     return this.numbTables;
   },
-  getKolN() {
+  getKolN() {             // Получение Количество подходящих (число до которого производятся вычисления)
     this.kolN = document.getElementById("kol-elementov").value;
     return this.kolN;
   },
-  // deltaFi(i1, kolI) {
-  //   let from =   parseFloat(document.getElementsByName("int_ot")[0].value),
-  //       step =   parseFloat(document.getElementsByName("interval_tab")[0].value);
-  //   this.setZiroMassX(from);  // Устанавлевая стартовое значение для массива х равное начальному интервалу
-  //   if (i1 === 0){
-  //     this.massX[i1] = from;
-  //   } else {
-  //     this.massX[i1] = this.massX[i1-1]+step;
-  //   }
-  //   return this.massX[i1];
-  // },
-  setMassX(kolI) {
+
+  // При вычислении нескольких таблиц используем massX (а не fi)
+  setMassX(kolI) {  // где kolI кол-во таблиц для вывода
   let from =   parseFloat(document.getElementsByName("int_ot")[0].value),
       step =   parseFloat(document.getElementsByName("interval_tab")[0].value);
     this.setZiroMassX(from);  // Устанавлевая стартовое значение для массива х равное начальному интервалу
@@ -61,9 +52,9 @@ globalVar = {
     }
   },
   getFi(newX) {
-    if (this.getFlagTabl()) {
+    if (this.getFlagTabl()) {   // Если считаем несколько табл. то используем massX вместо fi
       this.fi = newX
-    } else {
+    } else {                    // Если считаем 1 табл. то используем fi
       this.fi = document.getElementsByName("fi_1")[0].value;
     }
     return this.fi;
@@ -74,13 +65,13 @@ globalVar = {
   },
   getMassX(i) {
     if (i == 0) {
-      if (this.getFlagTabl()) {
+      if (this.getFlagTabl()) { // Если считаем несколько табл. то massX[0] устанавливаем в значение из поля Выбор интервала От
         this.massX[0] = parseFloat(document.getElementsByName("int_ot")[0].value);
-      } else {
+      } else {                  // иначе massX[0] устанавливаем в значение из поля fi 1
         this.massX[0] = document.getElementsByName("fi_1")[0].value;
       };
     } else {
-      if (this.getFlagTabl() == false) {
+      if (this.getFlagTabl() == false) {  // Если считаем 1 табл. то massX[0] устанавливаем в значение из поля fi 1
         this.massX[0] = document.getElementsByName("fi_1")[0].value;
         return this.massX[0];
       }

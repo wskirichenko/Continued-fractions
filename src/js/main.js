@@ -7,10 +7,12 @@ $(document).ready(function () {
       btn_clear = document.getElementById("btn_clear"),     // Кнопка отчистить
       vFunc = document.getElementsByClassName("func-chouse-btn"),  // Кнопки выбора Функции
       some = document.getElementById("some"),               // Переключатель для вычисления насколько значений
-      one =  document.getElementById("one"),                 // Переключатель для вычисления одного значения
-      podrad =  document.getElementById("podrad"),           // Переключатель для вывлда строк табл. подряд
-      stepen2 =  document.getElementById("stepen2"),         // Переключатель для вывлда строк табл. по степени 2
-      interval =  document.getElementById("interval");       // Переключатель для вывлда строк табл. на интервале
+      one =  document.getElementById("one"),                // Переключатель для вычисления одного значения
+      podrad =  document.getElementById("podrad"),          // Переключатель для вывлда строк табл. подряд
+      stepen2 =  document.getElementById("stepen2"),        // Переключатель для вывлда строк табл. по степени 2
+      interval =  document.getElementById("interval");      // Переключатель для вывлда строк табл. на интервале
+      none_cifri = document.getElementById("none_cifri");   // Переключатель для вывода цифр в ячейки табл. без ограничений
+      kol_cifri  = document.getElementById("kol_cifri");    // Переключатель для вывода цифр в ячейки табл. с ограничениями
   // ---------------------------------------------------------------------------
   [].forEach.call( vFunc, function(e) { // Перебираем все Кнопки выбора функций и вешаем на них события
       e.onclick = function(e) {
@@ -68,6 +70,17 @@ $(document).ready(function () {
     globalVar.vivodStrok = 'interval';
   }
 
+  // ---------------------------------------------------------------------------
+  //  Переключатели выбора ограничения кол-ва цифр в выводимых в табл. числах
+  // ---------------------------------------------------------------------------
+  none_cifri.onclick = () => {
+    $("#kol_cifri").prop("checked", false);
+  }
+  kol_cifri.onclick = () => {
+    $("#none_cifri").prop("checked", false);
+    outDisplay.getKolСifr();
+  }
+
   // Функция установки начальных параметров
   clearAllVar = () => {
     rFiAlgoritm.clearRFi();
@@ -80,13 +93,13 @@ $(document).ready(function () {
   // ---------------------------------------------------------------------------
   btn.onclick = () => {
     let countPQ = 1,                        // Счётчик подходящих для массива massPQ
-        newX = 0;
+        newX = 0;                           // Значения из massX при выводы несколькоих табл.
     if (numberFunc != -1) {                 // Если выбрана функция для вычисления
       if (globalVar.getFlagTabl()) {        // Если рассчитываем несколько таблиц
         for (var i1 = 0; i1 < outDisplay.stepСalculations(); i1++) {  // Цикл вычисления нескольких таблиц
-          // newX = globalVar.deltaFi(i1, outDisplay.stepСalculations());
+          newX = globalVar.getMassX(i1);
           for (var numbCol = 0; numbCol < globalVar.getKolN(); numbCol++) {
-            outDisplay.chouseColumn(numberFunc, countPQ, numbCol, globalVar.getMassX(i1));
+            outDisplay.chouseColumn(numberFunc, countPQ, numbCol, newX);
             countPQ += 1;                   // Наращиваем счётчик подходящих
             globalVar.incNumb(1);           // Устанавливаем следующий номер строки для текущей таблицы
           };

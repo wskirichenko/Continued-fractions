@@ -1,9 +1,10 @@
 "use strict";
 let sell = document.getElementsByClassName('s1'),   // Ячейка таблицы
     intEnterTablSrt_from =  parseFloat(document.getElementsByName("interval_ot")[0].value),   // Число выбранное пользователем для начала интервала вывода
-    intEnterTablSrt_before =  parseFloat(document.getElementsByName("interval_do")[0].value); // Число выбранное пользователем для конца интервала вывода
+    intEnterTablSrt_before =  parseFloat(document.getElementsByName("interval_do")[0].value), // Число выбранное пользователем для конца интервала вывода
+    kolСifr =  parseInt(document.getElementsByName("kol_cifr")[0].value);     // Кол-во цифр при выводе в ячейку табл.
 
-outDisplay = {
+const outDisplay = {
   description: "Output on display",
   rTmp : 0,
   fiTmp : 0,
@@ -11,41 +12,31 @@ outDisplay = {
   temp1 : 0,
   PQtemp : 0,
 
+  // Получения номера строки с которой надо начинать вывод при выборе Выводить на интервале
   getIntEnterTablSrt_from() {
     intEnterTablSrt_from = parseFloat(document.getElementsByName("interval_ot")[0].value);
     return intEnterTablSrt_from;
   },
+  // Получения номера строки которой надо закончить вывод при выборе Выводить на интервале
   getIntEnterTablSrt_before() {
     intEnterTablSrt_before = parseFloat(document.getElementsByName("interval_do")[0].value);
     return intEnterTablSrt_before;
   },
-
-  getFunction(numberFunc, countPQ, newX) {            // Вызываем функцию для вычисления в соответствии с нажатой кнопкой выбора функции
-    switch(numberFunc) {                              // где numberFunc - номер вызываемой функции для вычисления
-      case 0 :       //  Вычисления для функции 0
-          return trigonometFunc.sin( countPQ, globalVar.getFi(newX) );
-          break;
-      case 1 :       //  Вычисления для функции 1
-          return trigonometFunc.summSin( countPQ, globalVar.getFi(newX) );
-          break;
-      case 2 :       //  Вычисления для функции 1
-          return trigonometFunc.summSinNechet( countPQ, globalVar.getFi(newX) );
-          break;
-      case 3 :       //  Вычисления для функции 1
-          return trigonometFunc.summSinDiv( countPQ, globalVar.getFi(newX), Math.sin(globalVar.getFi(newX)) );
-          break;
-      default:
-            return 'Нет такой функции';
-            break
-      };
+  getKolСifr() {                    // Получаем kол-во цифр при выводе в ячейку табл.
+    return this.kolСifr = parseInt(document.getElementsByName("kol_cifr")[0].value);
+  },
+  getFlagСifr() {                    // Проверяем переключатель ограничения вывода цифр
+    return $("#kol_cifri").prop("checked");
   },
 
   // Выбор типа вывода строк в таблице (подряд, кратно степени 2 и на интервале)
-  typeDisplaing(vivodStrok, i){
+  typeDisplaing(vivodStrok, i) {
+    // Если выбран переключатель "Вывод строк подряд"
     if (vivodStrok === 'podrad') {
       if ( (i >= 0) && (i < 1000) ) { return true; }
     };
-    if (vivodStrok === 'stepen2') {   // Функция проверки кратности степени 2
+    // Если выбран переключатель "Выводить кратно степени 2"
+    if (vivodStrok === 'stepen2') {
       if (i==0) return true;
       if (i==1) return true;
       if (i==3) return true;
@@ -70,15 +61,56 @@ outDisplay = {
       if (i==2097151) return true;
       if (i==4194303) return true;
     };
+    // Если выбран переключатель "Выводить в интервале"
     if (vivodStrok === 'interval') {
       let intFrom =  this.getIntEnterTablSrt_from(),
           intBefor = this.getIntEnterTablSrt_before();
-      if ((intBefor - intFrom) > 1025) {   // Ограничения вывода неболее 1025 подряд
+      if ((intBefor - intFrom) > 1025) {   // Ограничения вывода не более 1025 подряд
         intBefor = intFrom + 1025;
         if ( (i >= intFrom-1) && (i < intBefor) ) { return true; }
       } else {
         if ( (i >= intFrom-1) && (i < intBefor) ) { return true; }
       }
+    }
+  },
+
+  obrezkaStr(a, kolcifr) {
+    let stepen = 0,
+        kol = 0,
+        str = a.toString(),
+        newstr = '',
+        e = str.indexOf("e");
+    if ( outDisplay.getFlagСifr() ) {
+        if (str.length > 10) {
+            if (e != -1) {
+                newstr = str.substring(e+1, str.length);
+                kol = str.length-e;
+                stepen = +newstr;
+                if (stepen<0) {
+                    if (a>0) {
+                        newstr = '0.';
+                        for (i = 0; i < (Math.abs(stepen)-1); i++) {
+                        newstr = newstr+'0';
+                        }
+                        newstr = newstr+str[0]+str.substring(2, str.length-kol);
+                    }
+                    if (a<0) {
+                        newstr = '-0.';
+                        for (i = 0; i < (Math.abs(stepen)-1); i++) {
+                        newstr = newstr+'0';
+                        }
+                        newstr = newstr+str[1]+str.substring(3, str.length-kol);
+                    }
+                } else {
+                    return newstr = 'Степень положительная, недописал пока';
+                }
+                return newstr = newstr.substring(0, kolcifr);
+            }
+            return newstr = str.substring(0, kolcifr);
+        }
+        return str;
+    } else {
+      return a;
     }
   },
 
@@ -98,35 +130,33 @@ outDisplay = {
   getColName(numberFunc, col, countPQ, newX) {
     colName = tableHeader2[numberFunc].colName[col];
 
-    switch(colName) {                               // где colName - имя колонки таблицы из массива tableHeader2
-      case 'number' :       // Номер (1 столбца)
+    switch(colName) {       // где colName - имя колонки таблицы из массива tableHeader2
+      case 'number' :       // Столбик таблицы с Номером подходящих
           return globalVar.Numb;
           break;
-      case 'pq' :           // Номер (2 столбца)
+      case 'pq' :           // Столбик таблицы с результатами основной функцией вычисления (massPQ)
           trigonometFunc.setZiroMassPQ(0);           // Устанавливаем нулевой элемент массива massPQ в 0
-          this.PQtemp = this.getFunction(numberFunc, countPQ, newX)
+          this.PQtemp = trigonometFunc.getFunction(numberFunc, countPQ, newX)
           return this.PQtemp
-          //trigonometFunc.getMassPQ(countPQ);
           break;
-      case 'modulR' :       // Номер (3 столбца)
+      case 'modulR' :       // Столбик таблицы с результатами вычисления модуля r (massR)
           this.rTmp = rFiAlgoritm.modulR(trigonometFunc.massPQ[countPQ], countPQ);
 
           rFiAlgoritm.setMassR( this.rTmp, countPQ );
           return rFiAlgoritm.getMassR(countPQ);
           break
-      case 'argumentFi' :   // Номер (4 столбца)
+      case 'argumentFi' :   // Столбик таблицы с результатами вычисления аргумента fi (massFi)
           this.fiTmp = rFiAlgoritm.argumentFi(trigonometFunc.massPQ[countPQ], countPQ);
-
           rFiAlgoritm.setMassFi( this.fiTmp, countPQ );
           return rFiAlgoritm.getMassFi(countPQ);
           break
-      case 'eR' :           // Номер (5 столбца)
+      case 'eR' :           // Столбик таблицы с погрешностью при вычислении модуля r
           return Math.abs( (1/(4*Math.sin(globalVar.getFi(newX)/2))) - this.rTmp );
           break
-      case 'eFi' :           // Номер (6 столбца)
+      case 'eFi' :          // Столбик таблицы с погрешностью при вычислении аргумента fi
           return Math.abs( globalVar.getFi(newX)/2 - this.fiTmp );
           break
-      case 'pqExp' :        // Номер (2-2 столбца)
+      case 'pqExp' :        // Пока не используется
           return colName;
           break
 
@@ -136,11 +166,11 @@ outDisplay = {
     };
   },
   chouseColumn(numberFunc, countPQ, numbCol, newX) {        // Получения данных для текущей колонки для вывода на экран
-      if (this.typeDisplaing(globalVar.vivodStrok, numbCol) == true) {      // Если строку нужно выводить на экран
+      if (this.typeDisplaing(globalVar.vivodStrok, numbCol) == true) {  // Если строку нужно выводить на экран
           tableMain.createTr();                       // Создаём строку в таблице
           for (var i = 0; i < tableMain.numberColumns(numberFunc); i++) {
             tableMain.createTd(this.getCount());           // Создаём ячейку в строке таблицы
-            sell[globalVar.getCellNumber()].innerHTML = this.getColName(numberFunc, i, countPQ, newX);   // Выводим очередное значение в созданую ячейку с № cellNumber
+            sell[globalVar.getCellNumber()].innerHTML = this.obrezkaStr(this.getColName(numberFunc, i, countPQ, newX), this.getKolСifr() );   // Выводим очередное значение в созданую ячейку с № cellNumber
             globalVar.incCellNumber(1);               // Наращиваем номер ячейки cellNumber
           }
           this.incCount(1);
@@ -153,7 +183,7 @@ outDisplay = {
   getCount() {                    // Получаем номер очередной строки в таблице
     return this.count;
   },
-  setCount(num) {
+  setCount(num) {                 // Устанавливаем номер очередной строки в таблице
     this.count = num;
   },
   incCount(i=1) {                 // Наращиваем номер очередной строки в таблице на 1

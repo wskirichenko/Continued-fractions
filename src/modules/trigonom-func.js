@@ -4,6 +4,27 @@ trigonometFunc = {
   description: "Trigonometric functions",
 
   massPQ : [],
+
+  getFunction(numberFunc, countPQ, newX) {            // Вызываем функцию для вычисления в соответствии с нажатой кнопкой выбора функции
+    switch(numberFunc) {                              // где numberFunc - номер вызываемой функции для вычисления
+      case 0 :       //  Вычисления для функции 0
+          return trigonometFunc.sin( countPQ, globalVar.getFi(newX) );
+          break;
+      case 1 :       //  Вычисления для функции 1
+          return trigonometFunc.summSin( countPQ, globalVar.getFi(newX) );
+          break;
+      case 2 :       //  Вычисления для функции 2
+          return trigonometFunc.summSinNechet( countPQ, globalVar.getFi(newX) );
+          break;
+      case 3 :       //  Вычисления для функции 3
+          return trigonometFunc.summSinDiv( countPQ, globalVar.getFi(newX), Math.sin(globalVar.getFi(newX)) );
+          break;
+      default:
+            return 'Нет такой функции';
+            break
+      };
+  },
+
   setZiroMassPQ(i=0) {
     this.massPQ[0] = i;
   },

@@ -66,6 +66,14 @@
               </div>
             </div>
 
+            <div class="block">
+              <h3>Выбор функции</h3>
+              <button class="func-chouse-btn" id="f_1" value="0">Функция 1</button>
+              <button class="func-chouse-btn" id="f_2" value="1">Функция 2</button>
+              <button class="func-chouse-btn" id="f_3" value="2">Функция 3</button>
+              <button class="func-chouse-btn" id="f_4" value="3">Функция 4</button>
+            </div>
+
             <div id="block_interval" class="block display-hidden">
               <h3>Выбор интервала</h3>
               <div class="block__item block__item-col">
@@ -109,12 +117,24 @@
             </div>
 
             <div class="block">
-              <h3>Выбор функции</h3>
-              <button class="func-chouse-btn" id="f_1" value="0">Функция 1</button>
-              <button class="func-chouse-btn" id="f_2" value="1">Функция 2</button>
-              <button class="func-chouse-btn" id="f_3" value="2">Функция 3</button>
-              <button class="func-chouse-btn" id="f_4" value="3">Функция 4</button>
+              <h3>Обработка чисел</h3>
+              <div class="block__item block__item-col">
+                <div>
+                  <input type="radio" id="none_cifri" name="none_cifri" value="none_cifri" >
+                  <label for="none_cifri">Выод без ограничения</label>
+                </div>
+                <div>
+                  <input type="radio" id="kol_cifri" name="kol_cifri" value="kol_cifri" checked>
+                  <label for="kol_cifri">Выод с ограничениями</label>
+                </div>
+
+                <div>
+                  <label for="interval_ot">Кол-во цифр в ячейке</label>
+                  <input class="block__item__input" name="kol_cifr" type="number" value="14">
+                </div>
+              </div>
             </div>
+
           </div>
 
       <!-- Секция с таблицей -->
