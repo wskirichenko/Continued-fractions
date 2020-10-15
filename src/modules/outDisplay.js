@@ -152,11 +152,11 @@ const outDisplay = {
           break
       case 'eR' :           // Столбик таблицы с погрешностью при вычислении модуля r
           //return Math.abs( (1/(4*Math.sin(globalVar.getFi(newX)/2))) - this.rTmp );
-          return Math.abs( 1 - this.rTmp );
+          return rFiAlgoritm.getPogreshnR(numberFunc, this.rTmp, newX);
           break
       case 'eFi' :          // Столбик таблицы с погрешностью при вычислении аргумента fi
           // return Math.abs( globalVar.getFi(newX)/2 - this.fiTmp );
-          return Math.abs( globalVar.getFi(newX) - this.fiTmp );
+          return rFiAlgoritm.getPogreshnFi(numberFunc, this.fiTmp, newX);
           break
       case 'pqExp' :        // Пока не используется
           return colName;
