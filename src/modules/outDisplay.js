@@ -135,7 +135,11 @@ const outDisplay = {
           return globalVar.Numb;
           break;
       case 'pq' :           // Столбик таблицы с результатами основной функцией вычисления (massPQ)
-          trigonometFunc.setZiroMassPQ(0);           // Устанавливаем нулевой элемент массива massPQ в 0
+          if (numberFunc == 9) {
+            trigonometFunc.setZiroMassPQ(1);           // Устанавливаем нулевой элемент массива massPQ в 0
+          } else {
+            trigonometFunc.setZiroMassPQ(0);           // Устанавливаем нулевой элемент массива massPQ в 0
+          }
           this.PQtemp = trigonometFunc.getFunction(numberFunc, countPQ, newX)
           return this.PQtemp
           break;

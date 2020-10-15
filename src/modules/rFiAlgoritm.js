@@ -75,6 +75,14 @@ rFiAlgoritm = {
           pogresnost = Math.abs( (1/(4*Math.abs(Math.cos(globalVar.getFi(newX)/2)))) - arg );
           return pogresnost;
           break;
+      case 8 :       //  Погрешность для  2(cos(fi) - cos((2n+1)fi))
+          pogresnost = Math.abs( 1 - arg );
+          return pogresnost;
+          break;
+      case 9 :       //  Погрешность для  sin(n fi)/sin(n-1 fi)
+          pogresnost = Math.abs( 1 - arg );
+          return pogresnost;
+          break;
       default:
         return 'Нет погрешности для r';
         break
@@ -113,6 +121,14 @@ rFiAlgoritm = {
           return pogresnost;
           break;
       case 7 :       //  Погрешность для суммы знакопеременного cos
+          pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+          return pogresnost;
+          break;
+      case 8 :       //  Погрешность для  2(cos(fi) - cos((2n+1)fi))
+          pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+          return pogresnost;
+          break;
+      case 9 :       //  Погрешность для  sin(n fi)/sin(n-1 fi)
           pogresnost = Math.abs( globalVar.getFi(newX) - arg );
           return pogresnost;
           break;

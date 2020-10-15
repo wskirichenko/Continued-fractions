@@ -82,7 +82,28 @@ const tableHeader2 = {
     colName: [
       "number", "pq", "modulR", "argumentFi", "eR", "eFi"
     ]
+  },
+  8 : { // Массив с заголоквами таблицы - 6 колонки
+    title : "Tаблица ",
+    headers : [
+      "Номер №", "Значения частичных сумм, a_n", "Значения модуля r",
+      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
+    ],
+    colName: [
+      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
+    ]
+  },
+  9 : { // Массив с заголоквами таблицы - 6 колонки
+    title : "Tаблица ",
+    headers : [
+      "Номер №", "Значения частичных сумм, a_n", "Значения модуля r",
+      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
+    ],
+    colName: [
+      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
+    ]
   }
+
 };
 const tableMain = {
   description: "Create Table",

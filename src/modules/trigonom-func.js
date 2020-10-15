@@ -31,6 +31,13 @@ const trigonometFunc = {
       case 7 :       //  Вычисления для функции 1
           return this.summCosZnakoPeremen( countPQ, globalVar.getFi(newX) );
           break;
+      case 8 :       //  Вычисления для  2(cos(fi) - cos((2n+1)fi))
+          return this.cosRaznost( countPQ, globalVar.getFi(newX) );
+          break;
+      case 9 :       //  Вычисления для  sin(n fi)/sin(n-1 fi)
+          return this.sinDiv( countPQ, globalVar.getFi(newX) );
+          break;
+
       default:
             return 'Нет такой функции';
             break
@@ -88,6 +95,15 @@ const trigonometFunc = {
     this.massPQ[n] = 4 * Math.sin((n+1)*fi) * Math.sin(n*fi);
     return this.massPQ[n];
   },
+  cosRaznost(n, fi) {
+    this.massPQ[n] = 2 * (Math.cos(fi) - Math.cos((2*n+1)*fi) );
+    return this.massPQ[n];
+  },
+  sinDiv(n, fi) {
+    this.massPQ[n] = Math.sin((n+1)*fi) / Math.sin(n*fi);
+    return this.massPQ[n];
+  },
+
   getMassPQ(i) {
     return this.massPQ[i];
   },
