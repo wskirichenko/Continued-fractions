@@ -105,6 +105,68 @@ const tableHeader2 = {
   }
 
 };
+const funcIamges = {
+  0 : {
+    mainImg :   "../../img/func-00.png",
+    secondImg : "../../img/func-00.png",
+    altImgText: 'sin(n fi)',
+    text: 'Функция синус sin(n fi)'
+  },
+  1 : {
+    mainImg :   "../../img/func-01.png",
+    secondImg : "../../img/func-01.png",
+    altImgText: 'summSin(n fi)',
+    text: 'Функция сумма синусов sin(n fi)'
+  },
+  2 : {
+    mainImg :   "../../img/func-02.png",
+    secondImg : "../../img/func-02.png",
+    altImgText: 'summSinNechet(n fi)',
+    text: 'Функция сумма нечётных синусов sin(n fi)'
+  },
+  3 : {
+    mainImg :   "../../img/func-03.png",
+    secondImg : "../../img/func-03.png",
+    altImgText: 'summSinNechet(n fi)',
+    text: 'Функция сумма нечётных синусов sin(n fi)'
+  },
+  4 : {
+    mainImg :   "../../img/func-04.png",
+    secondImg : "../../img/func-04.png",
+    altImgText: 'summSinNechet(n fi)',
+    text: 'Функция сумма нечётных синусов sin(n fi)'
+  },
+  5 : {
+    mainImg :   "../../img/func-05.png",
+    secondImg : "../../img/func-05.png",
+    altImgText: 'summSinNechet(n fi)',
+    text: 'Функция сумма нечётных синусов sin(n fi)'
+  },
+  6 : {
+    mainImg :   "../../img/func-06.png",
+    secondImg : "../../img/func-06.png",
+    altImgText: 'summSinNechet(n fi)',
+    text: 'Функция сумма нечётных синусов sin(n fi)'
+  },
+  7 : {
+    mainImg :   "../../img/func-07.png",
+    secondImg : "../../img/func-07.png",
+    altImgText: 'summSinNechet(n fi)',
+    text: 'Функция сумма нечётных синусов sin(n fi)'
+  },
+  8 : {
+    mainImg :   "../../img/func-08.png",
+    secondImg : "../../img/func-08.png",
+    altImgText: 'summSinNechet(n fi)',
+    text: 'Функция сумма нечётных синусов sin(n fi)'
+  },
+  9 : {
+    mainImg :   "../../img/func-09.png",
+    secondImg : "../../img/func-09.png",
+    altImgText: 'summSinNechet(n fi)',
+    text: 'Функция сумма нечётных синусов sin(n fi)'
+  },
+};
 const tableMain = {
   description: "Create Table",
 
@@ -175,5 +237,14 @@ const tableMain = {
     for (let i = elementLength-1; i > -1; i--) {
       element[i].remove();              // Удаляем очередной элемент из DOM дерева
     }
+  }
+};
+
+const descripFunc = {
+  description: "Description function",
+  descript(numberFunc) {
+    console.log('background-image= ', funcIamges[numberFunc].mainImg);
+    $("#img_func").css("backgroundImage", 'url(' + funcIamges[numberFunc].mainImg + ')' );
+    $(".modal-func__top__text")[0].innerHTML = funcIamges[numberFunc].text;
   }
 }
