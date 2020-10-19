@@ -21,14 +21,21 @@ $(document).ready(function () {
   [].forEach.call( vFunc, function(e) { // Перебираем все Кнопки выбора функций и вешаем на них события
       e.onclick = function(e) {
         numberFunc = parseInt(e.currentTarget.getAttribute('value'), 10);
-        // $('.func')[numberFunc].css('borderColor', 'blue');
-        console.log('numberFunc=', numberFunc);
+        // console.log('e=', e);
+        claerClass(document.querySelectorAll(".select"));
+        e.srcElement.classList.add("select");
         countPushs = countPushs + 1;
         globalVar.setMassX(outDisplay.stepСalculations());  //  Вычисляем интервал х для нескольких таблиц и записываем его в массив massX
         descripFunc.descript(numberFunc);
         vibor(numberFunc, countPushs);
       }
   });
+
+  claerClass= (elemSelect) => {
+    for (var i = 0; i < elemSelect.length; i++) {
+      elemSelect[i].classList.remove('select')
+    }
+  }
 
   // vFunc[0].onclick = (e) => {
   //   numberFunc = parseInt(e.currentTarget.getAttribute('value'), 10);
