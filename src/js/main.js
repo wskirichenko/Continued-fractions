@@ -1,14 +1,16 @@
 "use strict";
 
 $(document).ready(function () {
-  let numberFunc = -1,    // Порядковый номер функции
+  let numberFunc = 0,    // Порядковый номер функции
       countPushs = -1,    // Кол-во нажатий на кнопки с функциями
       btn = document.getElementById("btn_start"),           // Кнопка вычислить
       btn_clear = document.getElementById("btn_clear"),     // Кнопка отчистить
       //vFunc = document.getElementsByClassName("func-chouse-btn"),  // Кнопки выбора Функции
-      vFunc = document.getElementsByClassName("func"),  // Кнопки выбора Функции
+      vFunc = document.getElementsByClassName("func"),      // Кнопки выбора Функции
       chose_funk =  document.getElementById("chose_funk"),  // Кнопки вызова окна для выбора функций
       cancel =  document.getElementById("cancel"),          // Кнопки закрытия окна для выбора функций
+      selectFunc =  document.getElementById("sel_func"),     // Кнопки закрытия окна для выбора функций
+      close_modal = document.getElementById("close_modal"),
 
       some = document.getElementById("some"),               // Переключатель для вычисления насколько значений
       one =  document.getElementById("one"),                // Переключатель для вычисления одного значения
@@ -20,18 +22,14 @@ $(document).ready(function () {
   // ---------------------------------------------------------------------------
   [].forEach.call( vFunc, function(e) { // Перебираем все Кнопки выбора функций и вешаем на них события
       e.onclick = function(e) {
-        numberFunc = parseInt(e.currentTarget.getAttribute('value'), 10);
-        // console.log('e=', e);
-        claerClass(document.querySelectorAll(".select"));
-        e.srcElement.classList.add("select");
-        countPushs = countPushs + 1;
-        globalVar.setMassX(outDisplay.stepСalculations());  //  Вычисляем интервал х для нескольких таблиц и записываем его в массив massX
-        descripFunc.descript(numberFunc);
-        vibor(numberFunc, countPushs);
+        numberFunc = parseInt(e.currentTarget.getAttribute('value'), 10); // Запоменаем номер-идентификатор выбранной функции
+        claerClass(document.querySelectorAll(".select"));   // Удаляем отрображения что функция выбрана для всех функций
+        e.srcElement.classList.add("select");               // Добавляем отрображения выбора для выбранной функции
+        descripFunc.descript(numberFunc);                   // Меняем описание в разделе описания для выбранной функции
       }
   });
 
-  claerClass= (elemSelect) => {
+  claerClass = (elemSelect) => {
     for (var i = 0; i < elemSelect.length; i++) {
       elemSelect[i].classList.remove('select')
     }
@@ -46,22 +44,36 @@ $(document).ready(function () {
   // };
 
   // ---------------------------------------------------------------------------
+  //          Кнопка подтверждения выбор функции
+  // ---------------------------------------------------------------------------
+  selectFunc.onclick = () => {
+    countPushs = countPushs + 1;                          // Наращиваем чсётчик количества выбора для текущей функции
+    globalVar.setMassX(outDisplay.stepСalculations());    // Вычисляем интервал х для нескольких таблиц и записываем его в массив massX
+    vibor(numberFunc, countPushs);
+    $('#modal_func').addClass('display-hidden');          // Закрываем окно выбора функции
+  }
+
+  // ---------------------------------------------------------------------------
   //          Открываем окно выбора функций
   // ---------------------------------------------------------------------------
   chose_funk.onclick = (e) => {
     $('#modal_func').removeClass('display-hidden');
+    descripFunc.descript(numberFunc);                   // Меняем описание в разделе описания для выбранной функции
+
   }
   // ---------------------------------------------------------------------------
   //          Закрываем окно выбора функций
   // ---------------------------------------------------------------------------
-  cancel.onclick = (e) => {
+  cancel.onclick = () => {
+    $('#modal_func').addClass('display-hidden');
+  };
+  close_modal.onclick = () => {
     $('#modal_func').addClass('display-hidden');
   }
 
   // Функция выбора типа таблицы из объекта tableHeader2
   function vibor(numberFunc, countPushs) {
     tableMain.addHed(numberFunc, countPushs);
-
   };
 
   // ---------------------------------------------------------------------------
@@ -162,7 +174,7 @@ $(document).ready(function () {
     countPushs = -1;
     outDisplay.setCount(0);
     globalVar.setCellNumber(0);
-    numberFunc = -1;
+    numberFunc = 0;
     clearAllVar();
   };
 

@@ -66,7 +66,7 @@
               </div>
             </div>
 
-            <div class="block">
+            <!-- <div class="block">
               <h3>Выбор функции</h3>
               <button class="func-chouse-btn" id="f_1" value="0">Функция 1</button>
               <button class="func-chouse-btn" id="f_2" value="1">Summ Sin</button>
@@ -78,12 +78,7 @@
               <button class="func-chouse-btn" id="f_8" value="7">Summ Cos ZnakoPeremen</button>
               <button class="func-chouse-btn" id="f_9" value="8">2(cos(fi)-cos((2n+1)fi))</button>
               <button class="func-chouse-btn" id="f_10"value="9">sin(n fi)/sin(n-1 fi)</button>
-            </div>
-
-            <div class="block">
-              <h3>Выбор функции</h3>
-              <button class="func-chouse-btn" id="chose_funk">Выборать функцию</button>
-            </div>
+            </div> -->
 
             <div id="block_interval" class="block display-hidden">
               <h3>Выбор интервала</h3>
@@ -99,6 +94,11 @@
                   <input class="block__item__input" name="interval_tab" type="number" value="1">
                 </div>
               </div>
+            </div>
+
+            <div class="block">
+              <h3>Выбор функции</h3>
+              <button class="func-chouse-btn" id="chose_funk">Выборать функцию</button>
             </div>
 
             <div class="block">
@@ -162,55 +162,58 @@
           </div>
 
       <!-- Модальное окно для выбора функции -->
-          <div class="modal-func display-hidden" id="modal_func">
-            <h2>Окно выбора функции</h2>
-            <div class="modal-func__top" id="func_description">
-              <div class="modal-func__top__img" id="img_func"></div>
-              <div class="modal-func__top__text">Описание функции</div>
+          <section class="modal-back display-hidden" id="modal_func">
+            <div class="modal-func" >
+              <div class="modal-close" id="close_modal">X</div>
+              <h2>Окно выбора функции</h2>
+              <div class="modal-func__top" id="func_description">
+                <div class="modal-func__top__img" id="img_func"></div>
+                <div class="modal-func__top__text">Описание функции</div>
+              </div>
+
+              <div class="modal-func__main">
+                <h3>Выбирите функцию из предложенных ниже</h3>
+
+                <div class="modal-func__main__row">
+                  <div class="func func-00" value="0"></div>
+                  <div class="func func-01" value="1"></div>
+                  <div class="func func-02" value="2"></div>
+                  <div class="func func-03" value="3"></div>
+                  <div class="func func-04" value="4"></div>
+                </div>
+
+                <div class="modal-func__main__row">
+                  <div class="func func-05" value="5"></div>
+                  <div class="func func-06" value="6"></div>
+                  <div class="func func-07" value="7"></div>
+                  <div class="func func-08" value="8"></div>
+                  <div class="func func-09" value="9"></div>
+                </div>
+
+                <div class="modal-func__main__row">
+                  <div class="func func-10"></div>
+                  <div class="func func-11"></div>
+                  <div class="func func-12"></div>
+                  <div class="func func-13"></div>
+                  <div class="func func-14"></div>
+                </div>
+
+                <div class="modal-func__main__row">
+                  <div class="func func-15"></div>
+                  <div class="func func-16"></div>
+                  <div class="func func-17"></div>
+                  <div class="func func-18"></div>
+                  <div class="func func-19"></div>
+                </div>
+
+              </div>
+
+              <div class="modal-func__bottom">
+                <button id="cancel" class="btn">Отмена</button>
+                <button id="sel_func" class="btn">Выбрать</button>
+              </div>
             </div>
-
-            <div class="modal-func__main">
-              <h3>Выбирите функцию из предложенных ниже</h3>
-
-              <div class="modal-func__main__row">
-                <div class="func func-00" value="0"></div>
-                <div class="func func-01" value="1"></div>
-                <div class="func func-02" value="2"></div>
-                <div class="func func-03" value="3"></div>
-                <div class="func func-04" value="4"></div>
-              </div>
-
-              <div class="modal-func__main__row">
-                <div class="func func-05" value="5"></div>
-                <div class="func func-06" value="6"></div>
-                <div class="func func-07" value="7"></div>
-                <div class="func func-08" value="8"></div>
-                <div class="func func-09" value="9"></div>
-              </div>
-
-              <div class="modal-func__main__row">
-                <div class="func func-10"></div>
-                <div class="func func-11"></div>
-                <div class="func func-12"></div>
-                <div class="func func-13"></div>
-                <div class="func func-14"></div>
-              </div>
-
-              <div class="modal-func__main__row">
-                <div class="func func-15"></div>
-                <div class="func func-16"></div>
-                <div class="func func-17"></div>
-                <div class="func func-18"></div>
-                <div class="func func-19"></div>
-              </div>
-
-            </div>
-
-            <div class="modal-func__bottom">
-              <button id="cancel">Отмена</button>
-              <button>Выбрать</button>
-            </div>
-          </div>
+          </section>
 
       </div>
 
