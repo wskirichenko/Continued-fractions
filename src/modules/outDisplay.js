@@ -135,11 +135,11 @@ const outDisplay = {
           return globalVar.Numb;
           break;
       case 'pq' :           // Столбик таблицы с результатами основной функцией вычисления (massPQ)
-          if (numberFunc == 9) {
-            trigonometFunc.setZiroMassPQ(1);           // Устанавливаем нулевой элемент массива massPQ в 0
-          } else {
+          // if (numberFunc == 9) {
+          //   trigonometFunc.setZiroMassPQ(1);           // Устанавливаем нулевой элемент массива massPQ в 1
+          // } else {
             trigonometFunc.setZiroMassPQ(0);           // Устанавливаем нулевой элемент массива massPQ в 0
-          }
+          // }
           this.PQtemp = trigonometFunc.getFunction(numberFunc, countPQ, newX)
           return this.PQtemp
           break;
@@ -194,5 +194,12 @@ const outDisplay = {
   },
   incCount(i=1) {                 // Наращиваем номер очередной строки в таблице на 1
     this.count = this.count + i;
+  },
+
+  calculationTime(tStart, tFinish) {
+    p = document.createElement('p');          // Создаём элемент p
+    main_panel.appendChild(p);                // Добавляем внутрь 'main_panel' новый p
+    p.className = 'p-time-calc';                  // Присваеваем p класс
+    $(".p-time-calc")[0].innerHTML = "Время вычислений составило " + this.obrezkaStr( (tFinish - tStart)/1000, 8 ) + " секунд."; // Добавляем значения очередного х
   }
 };

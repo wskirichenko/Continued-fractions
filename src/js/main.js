@@ -84,7 +84,7 @@ $(document).ready(function () {
   }
 
   // Функция выбора типа таблицы из объекта tableHeader2
-  function vibor(numberFunc, countPushs) {
+  vibor = (numberFunc, countPushs) => {
     tableMain.addHed(numberFunc, countPushs);
   };
 
@@ -155,7 +155,9 @@ $(document).ready(function () {
   // ---------------------------------------------------------------------------
   btn.onclick = () => {
     let countPQ = 1,                        // Счётчик подходящих для массива massPQ
-        newX = 0;                           // Значения из massX при выводы несколькоих табл.
+        newX = 0,                           // Значения из massX при выводы несколькоих табл.
+        t0 = performance.now();             // Время начала вычислений
+
     if (numberFunc != -1) {                 // Если выбрана функция для вычисления
       if (globalVar.getFlagTabl()) {        // Если рассчитываем несколько таблиц
         for (var i1 = 0; i1 < outDisplay.stepСalculations(); i1++) {  // Цикл вычисления нескольких таблиц
@@ -184,6 +186,8 @@ $(document).ready(function () {
     } else {                                // Если ни одна из функций не выбрана
       alert("Выбирите одну из функций");
     }
+    let t1 = performance.now();             // Время окончания вычислений
+    outDisplay.calculationTime(t0, t1);     // Расчёт времени вычислений
   };
 
   // ---------------------------------------------------------------------------
@@ -193,6 +197,7 @@ $(document).ready(function () {
     tableMain.clearElement(document.getElementsByTagName("table"));
     tableMain.clearElement(document.getElementsByClassName("h2-table"));
     tableMain.clearElement(document.getElementsByClassName("p-table"));
+    tableMain.clearElement(document.getElementsByClassName("p-time-calc"));
     globalVar.setNumbTables(0);
     countPushs = -1;
     outDisplay.setCount(0);
