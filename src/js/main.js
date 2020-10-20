@@ -1,7 +1,7 @@
 "use strict";
 
 $(document).ready(function () {
-  let numberFunc = 0,    // Порядковый номер функции
+  let numberFunc = -1,    // Порядковый номер функции
       countPushs = -1,    // Кол-во нажатий на кнопки с функциями
       btn = document.getElementById("btn_start"),           // Кнопка вычислить
       btn_clear = document.getElementById("btn_clear"),     // Кнопка отчистить
@@ -9,8 +9,11 @@ $(document).ready(function () {
       vFunc = document.getElementsByClassName("func"),      // Кнопки выбора Функции
       chose_funk =  document.getElementById("chose_funk"),  // Кнопки вызова окна для выбора функций
       cancel =  document.getElementById("cancel"),          // Кнопки закрытия окна для выбора функций
-      selectFunc =  document.getElementById("sel_func"),     // Кнопки закрытия окна для выбора функций
+      selectFunc =  document.getElementById("sel_func"),    // Кнопки закрытия окна для выбора функций
       close_modal = document.getElementById("close_modal"),
+      input_fi = document.getElementsByName("fi_1")[0],     // Поля для ввода значения fi
+      input_int_ot = document.getElementsByName("interval_ot")[0],  // Поля для ввода интервала ОТ при выводе строк
+      input_int_do = document.getElementsByName("interval_do")[0],  // Поля для ввода интервала ДО при выводе строк
 
       some = document.getElementById("some"),               // Переключатель для вычисления насколько значений
       one =  document.getElementById("one"),                // Переключатель для вычисления одного значения
@@ -19,6 +22,10 @@ $(document).ready(function () {
       interval =  document.getElementById("interval");      // Переключатель для вывлда строк табл. на интервале
       none_cifri = document.getElementById("none_cifri");   // Переключатель для вывода цифр в ячейки табл. без ограничений
       kol_cifri  = document.getElementById("kol_cifri");    // Переключатель для вывода цифр в ячейки табл. с ограничениями
+  // ---------------------------------------------------------------------------
+
+  // ---------------------------------------------------------------------------
+  //          Кнопки выбора функций в модальном окне
   // ---------------------------------------------------------------------------
   [].forEach.call( vFunc, function(e) { // Перебираем все Кнопки выбора функций и вешаем на них события
       e.onclick = function(e) {
@@ -34,6 +41,11 @@ $(document).ready(function () {
       elemSelect[i].classList.remove('select')
     }
   }
+
+  // input_fi.oninput = function() {
+  //   globalVar.getFi(input_fi.value);
+  //   console.log('fi = ', globalVar.fi);
+  // };
 
   // vFunc[0].onclick = (e) => {
   //   numberFunc = parseInt(e.currentTarget.getAttribute('value'), 10);
@@ -57,7 +69,7 @@ $(document).ready(function () {
   //          Открываем окно выбора функций
   // ---------------------------------------------------------------------------
   chose_funk.onclick = (e) => {
-    $('#modal_func').removeClass('display-hidden');
+    $('#modal_func').removeClass('display-hidden');     // Закрываем окно выбора функции
     descripFunc.descript(numberFunc);                   // Меняем описание в разделе описания для выбранной функции
 
   }
@@ -80,32 +92,43 @@ $(document).ready(function () {
   //          Переключатели выбора вычисления 1 таблицы или нескольких
   // ---------------------------------------------------------------------------
   some.onclick = () => {
-    $('#block_interval').removeClass('display-hidden');
+    $('#block_interval').removeClass('display-hidden'); // Показываем поле для ввода значений для вычисления нескольких таблиц
+    input_fi.disabled = true;                     // Блокируем поля для ввода fi
     $("#one").prop("checked", false);
-    globalVar.setFlagTabl(true);
+    globalVar.setFlagTabl(true);                  // Устанавливаем флаг, выбов вычислений для нескольких таблиц
   }
   one.onclick = () => {
-    $('#block_interval').addClass('display-hidden');
+    $('#block_interval').addClass('display-hidden');    // Скрываем поле для ввода значений для вычисления нескольких таблиц
+    input_fi.disabled = false;                    // Разблокирываем поля для ввода fi
     $("#some").prop("checked", false);
-    globalVar.setFlagTabl(false);
+    globalVar.setFlagTabl(false);                 // Устанавливаем флаг, выбов вычислений для одной таблицы
   }
 
   // ---------------------------------------------------------------------------
   //  Переключатели выбора отображения строк в таблице (подряд, кратно степени 2 и на интервале)
   // ---------------------------------------------------------------------------
+  input_int_ot.disabled = true;
+  input_int_do.disabled = true;
+
   podrad.onclick = () => {
     $("#stepen2").prop("checked", false);
     $("#interval").prop("checked", false);
+    input_int_ot.disabled = true;
+    input_int_do.disabled = true;
     globalVar.vivodStrok = 'podrad';
   }
   stepen2.onclick = () => {
     $("#podrad").prop("checked", false);
     $("#interval").prop("checked", false);
+    input_int_ot.disabled = true;
+    input_int_do.disabled = true;
     globalVar.vivodStrok = 'stepen2';
   }
   interval.onclick = () => {
     $("#podrad").prop("checked", false);
     $("#stepen2").prop("checked", false);
+    input_int_ot.disabled = false;
+    input_int_do.disabled = false;
     globalVar.vivodStrok = 'interval';
   }
 
@@ -148,7 +171,7 @@ $(document).ready(function () {
           countPQ = 1;                      // После вычисления одной таблицы сбрасываем счётчик подходящих
           clearAllVar();
         };
-        globalVar.clearMassX();                       // После расчёта всех таблиц сбрасываем массив с х
+        globalVar.clearMassX();             // После расчёта всех таблиц сбрасываем массив с х
       } else {                              // Иначе рассчитёт ведётся только для одной таблицы
           for (var numbCol = 0; numbCol < globalVar.getKolN(); numbCol++) {
             outDisplay.chouseColumn(numberFunc, countPQ, numbCol, 0);
@@ -174,8 +197,9 @@ $(document).ready(function () {
     countPushs = -1;
     outDisplay.setCount(0);
     globalVar.setCellNumber(0);
-    numberFunc = 0;
+    numberFunc = -1;
     clearAllVar();
+    claerClass(document.querySelectorAll(".select"));
   };
 
 

@@ -106,6 +106,12 @@ const tableHeader2 = {
 
 };
 const funcIamges = {
+  '-1' : {
+    mainImg :   "",
+    secondImg : "",
+    altImgText: 'Нет функции',
+    text: 'Ни одна функция не выбрана'
+  },
   0 : {
     mainImg :   "../../img/func-00.png",
     secondImg : "../../img/func-00.png",
