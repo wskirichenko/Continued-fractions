@@ -22,13 +22,13 @@ const trigonometFunc = {
       case 4 :       //  Вычисления для функции 4
           return this.sinProd( countPQ, globalVar.getFi(newX), Math.sin(globalVar.getFi(newX)) );
           break;
-      case 5 :       //  Вычисления для функции 1
+      case 5 :       //  Вычисления для функции 5
           return this.summCos( countPQ, globalVar.getFi(newX) );
           break;
-      case 6 :       //  Вычисления для функции 1
+      case 6 :       //  Вычисления для функции 6
           return this.summSinZnakoPeremen( countPQ, globalVar.getFi(newX) );
           break;
-      case 7 :       //  Вычисления для функции 1
+      case 7 :       //  Вычисления для функции 7
           return this.summCosZnakoPeremen( countPQ, globalVar.getFi(newX) );
           break;
       case 8 :       //  Вычисления для  2(cos(fi) - cos((2n+1)fi))

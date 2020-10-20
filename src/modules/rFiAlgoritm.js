@@ -105,7 +105,7 @@ rFiAlgoritm = {
           return pogresnost;
           break;
       case 3 :       //  Погрешность для суммы summSinDiv
-          pogresnost = Math.abs( (Math.PI/2 - arg/2) - arg ); // Неверно вычислена
+          pogresnost = Math.abs( (Math.PI/2 - globalVar.getFi(newX)/2) - arg ); // Неверно вычислена
           return pogresnost;
           break;
       case 4 :       //  Погрешность для суммы произведений sinProd
@@ -113,23 +113,23 @@ rFiAlgoritm = {
           return pogresnost;
           break;
       case 5 :       //  Погрешность для суммы cos
-          pogresnost = Math.abs( globalVar.getFi(newX) - arg ); // Неверно вычислена
+          pogresnost = Math.abs( globalVar.getFi(newX) - arg );   // Неверно вычислена
           return pogresnost;
           break;
       case 6 :       //  Погрешность для суммы знакопеременного Sin
-          pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+          pogresnost = Math.abs( globalVar.getFi(newX)/2 - arg );
           return pogresnost;
           break;
       case 7 :       //  Погрешность для суммы знакопеременного cos
-          pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+          pogresnost = Math.abs( globalVar.getFi(newX)/2 - arg );
           return pogresnost;
           break;
       case 8 :       //  Погрешность для  2(cos(fi) - cos((2n+1)fi))
-          pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+          pogresnost = Math.abs( globalVar.getFi(newX) - arg );   // Проверить
           return pogresnost;
           break;
       case 9 :       //  Погрешность для  sin(n fi)/sin(n-1 fi)
-          pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+          pogresnost = Math.abs( globalVar.getFi(newX) - arg );   // Проверить
           return pogresnost;
           break;
       default:
