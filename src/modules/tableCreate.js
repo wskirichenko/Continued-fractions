@@ -2,6 +2,27 @@
 // ---------------------------------------------------------------------------
 //          Модуль таблиц с метадими его создания
 // ---------------------------------------------------------------------------
+const standartHeder = { // Массив с заголоквами таблицы - 6 колонки
+  title : "Tаблица ",
+  headers : [
+    "Номер №", "Значения частичных сумм, a_n", "Значения модуля r",
+    "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
+  ],
+  colName: [
+    "number", "pq", "modulR", "argumentFi", "eR", "eFi"
+  ]
+};
+const col7_Header = {   // Массив с заголоквами таблицы - 7 колонки
+  title : "Tаблица ",
+  headers : [
+    "Номер №", "Значения подходящих 2", "Значения экспоненты", "Значения модуля r",
+    "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
+  ],
+  colName: [
+    "number", "pq", "pqExp", "modulR", "argumentFi", "eR", "eFi"
+  ]
+};
+
 const tableHeader2 = {
   0 : { // Массив с заголоквами таблицы - 4 колонки
     title : "Tаблица ",
@@ -13,98 +34,19 @@ const tableHeader2 = {
       "number", "pq", "modulR", "argumentFi"
     ]
   },
-  1 : { // Массив с заголоквами таблицы - 6 колонки
-    title : "Tаблица ",
-    headers : [
-      "Номер №", "Значения частичных сумм, a_n", "Значения модуля r",
-      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
-    ],
-    colName: [
-      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
-    ]
-  },
-  2 : { // Массив с заголоквами таблицы - 7 колонки
-    title : "Tаблица ",
-    headers : [
-      "Номер №", "Значения подходящих 2", "Значения экспоненты", "Значения модуля r",
-      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
-    ],
-    colName: [
-      "number", "pq", "pqExp", "modulR", "argumentFi", "eR", "eFi"
-    ]
-  },
-  3 : { // Массив с заголоквами таблицы - 6 колонки
-    title : "Tаблица ",
-    headers : [
-      "Номер №", "Значения подходящих", "Значения модуля r",
-      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
-    ],
-    colName: [
-      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
-    ]
-  },
-  4 : { // Массив с заголоквами таблицы - Определение значения предела Никипорца
-    title : "Tаблица ",
-    headers : [
-      "Номер, n", "Значения частичных сумм, a_n", "Значения модуля r",
-      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
-    ],
-    colName: [
-      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
-    ]
-  },
-  5 : { // Массив с заголоквами таблицы - 6 колонки
-    title : "Tаблица ",
-    headers : [
-      "Номер №", "Значения частичных сумм, a_n", "Значения модуля r",
-      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
-    ],
-    colName: [
-      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
-    ]
-  },
-  6 : { // Массив с заголоквами таблицы - 6 колонки
-    title : "Tаблица ",
-    headers : [
-      "Номер №", "Значения частичных сумм, a_n", "Значения модуля r",
-      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
-    ],
-    colName: [
-      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
-    ]
-  },
-  7 : { // Массив с заголоквами таблицы - 6 колонки
-    title : "Tаблица ",
-    headers : [
-      "Номер №", "Значения частичных сумм, a_n", "Значения модуля r",
-      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
-    ],
-    colName: [
-      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
-    ]
-  },
-  8 : { // Массив с заголоквами таблицы - 6 колонки
-    title : "Tаблица ",
-    headers : [
-      "Номер №", "Значения частичных сумм, a_n", "Значения модуля r",
-      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
-    ],
-    colName: [
-      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
-    ]
-  },
-  9 : { // Массив с заголоквами таблицы - 6 колонки
-    title : "Tаблица ",
-    headers : [
-      "Номер №", "Значения частичных сумм, a_n", "Значения модуля r",
-      "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
-    ],
-    colName: [
-      "number", "pq", "modulR", "argumentFi", "eR", "eFi"
-    ]
-  }
-
+  1  : standartHeder,
+  2  : standartHeder,
+  3  : standartHeder,
+  4  : standartHeder,
+  5  : standartHeder,
+  6  : standartHeder,
+  7  : standartHeder,
+  8  : standartHeder,
+  9  : standartHeder,
+  10 : standartHeder,
+  11 : standartHeder
 };
+
 const funcIamges = {
   '-1' : {
     mainImg :   "",
@@ -133,46 +75,59 @@ const funcIamges = {
   3 : {
     mainImg :   "../../img/func-03.png",
     secondImg : "../../img/func-03.png",
-    altImgText: 'summSinNechet(n fi)',
-    text: 'Функция сумма нечётных синусов sin(n fi)'
+    altImgText: 'summSinDiv(n fi, sin(fi))',
+    text: 'Функция сумма знкопеременного деления синусов sin(n fi)/sin(fi)'
   },
   4 : {
     mainImg :   "../../img/func-04.png",
     secondImg : "../../img/func-04.png",
     altImgText: 'summSinNechet(n fi)',
-    text: 'Функция сумма нечётных синусов sin(n fi)'
+    text: 'Функция предел Никипорца через произведение sin(n fi) * sin(fi)'
   },
   5 : {
     mainImg :   "../../img/func-05.png",
     secondImg : "../../img/func-05.png",
-    altImgText: 'summSinNechet(n fi)',
-    text: 'Функция сумма нечётных синусов sin(n fi)'
+    altImgText: 'summCos(n fi)',
+    text: 'Функция сумма косинусов cos(n fi)'
   },
   6 : {
     mainImg :   "../../img/func-06.png",
     secondImg : "../../img/func-06.png",
-    altImgText: 'summSinNechet(n fi)',
-    text: 'Функция сумма нечётных синусов sin(n fi)'
+    altImgText: 'summSinZnakoPeremen(n fi)',
+    text: 'Функция сумма знакопеременых синусов (-1)^(n+1) sin(n fi)'
   },
   7 : {
     mainImg :   "../../img/func-07.png",
     secondImg : "../../img/func-07.png",
-    altImgText: 'summSinNechet(n fi)',
-    text: 'Функция сумма нечётных синусов sin(n fi)'
+    altImgText: 'summCosZnakoPeremen(n fi)',
+    text: 'Функция сумма знакопеременых косинусов (-1)^(n+1) cos(n fi)'
   },
   8 : {
     mainImg :   "../../img/func-08.png",
     secondImg : "../../img/func-08.png",
-    altImgText: 'summSinNechet(n fi)',
-    text: 'Функция сумма нечётных синусов sin(n fi)'
+    altImgText: 'cosRaznost(n fi)',
+    text: 'Функция разность косинусов 2( cos(fi) - cos((2n+1)fi) )'
   },
   9 : {
     mainImg :   "../../img/func-09.png",
     secondImg : "../../img/func-09.png",
-    altImgText: 'summSinNechet(n fi)',
-    text: 'Функция сумма нечётных синусов sin(n fi)'
+    altImgText: 'sinDiv(n fi)',
+    text: 'Функция предел Никипорца sin(n fi)/sin((n-1)fi)'
+  },
+  10 : {
+    mainImg :   "../../img/func-10.png",
+    secondImg : "../../img/func-10.png",
+    altImgText: 'summSinNechetZnakoPeremen(n fi)',
+    text: 'Функция сумма нечётных знакопеременных синусов sin((2n-1) fi)'
+  },
+  11 : {
+    mainImg :   "../../img/func-11.png",
+    secondImg : "../../img/func-11.png",
+    altImgText: 'summCosNechetZnakoPeremen(n fi)',
+    text: 'Функция сумма нечётных знакопеременных косинусов cos((2n-1) fi)'
   },
 };
+
 const tableMain = {
   description: "Create Table",
 

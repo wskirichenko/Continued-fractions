@@ -20,7 +20,7 @@ const trigonometFunc = {
           return this.summSinDiv( countPQ, globalVar.getFi(newX), Math.sin(globalVar.getFi(newX)) );
           break;
       case 4 :       //  Вычисления для функции 4
-          return this.sinProd( countPQ, globalVar.getFi(newX), Math.sin(globalVar.getFi(newX)) );
+          return this.sinProd( countPQ, globalVar.getFi(newX) );
           break;
       case 5 :       //  Вычисления для функции 5
           return this.summCos( countPQ, globalVar.getFi(newX) );
@@ -36,6 +36,12 @@ const trigonometFunc = {
           break;
       case 9 :       //  Вычисления для  sin(n fi)/sin(n-1 fi)
           return this.sinDiv( countPQ, globalVar.getFi(newX) );
+          break;
+      case 10 :       //  Вычисления для Summ( sin((2*n-1)fi) )
+          return this.summSinNechetZnakoPeremen( countPQ, globalVar.getFi(newX) );
+          break;
+      case 11 :       //  Вычисления для Summ( cos((2*n-1)fi) )
+          return this.summCosNechetZnakoPeremen( countPQ, globalVar.getFi(newX) );
           break;
 
       default:
@@ -64,6 +70,22 @@ const trigonometFunc = {
       this.massPQ[n] = this.massPQ[n-1] - Math.sin(n*fi);
     } else {
       this.massPQ[n] = this.massPQ[n-1] + Math.sin(n*fi);
+    }
+    return this.massPQ[n];
+  },
+  summSinNechetZnakoPeremen(n, fi) {
+    if (n % 2 === 0) {
+      this.massPQ[n] = this.massPQ[n-1] - Math.sin((2*n-1)*fi);
+    } else {
+      this.massPQ[n] = this.massPQ[n-1] + Math.sin((2*n-1)*fi);
+    }
+    return this.massPQ[n];
+  },
+  summCosNechetZnakoPeremen(n, fi) {
+    if (n % 2 === 0) {
+      this.massPQ[n] = this.massPQ[n-1] - Math.cos((2*n-1)*fi);
+    } else {
+      this.massPQ[n] = this.massPQ[n-1] + Math.cos((2*n-1)*fi);
     }
     return this.massPQ[n];
   },
