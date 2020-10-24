@@ -198,6 +198,7 @@ $(document).ready(function () {
     tableMain.clearElement(document.getElementsByClassName("h2-table"));
     tableMain.clearElement(document.getElementsByClassName("p-table"));
     tableMain.clearElement(document.getElementsByClassName("p-time-calc"));
+    tableMain.clearElement(document.getElementsByClassName("func-img"));
     globalVar.setNumbTables(0);
     countPushs = -1;
     outDisplay.setCount(0);

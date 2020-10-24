@@ -84,11 +84,11 @@ rFiAlgoritm = {
           return pogresnost;
           break;
       case 10 :       //  Погрешность для суммы знакопеременного cos
-          pogresnost = Math.abs( (1/(4*Math.abs(Math.cos(globalVar.getFi(newX))))) - arg ); 
+          pogresnost = Math.abs( (1/(4*Math.abs(Math.cos(globalVar.getFi(newX))))) - arg );
           return pogresnost;
           break;
       case 11 :       //  Погрешность для суммы знакопеременного cos
-          pogresnost = Math.abs( (1/(4*Math.abs(Math.cos(globalVar.getFi(newX))))) - arg ); 
+          pogresnost = Math.abs( (1/(4*Math.abs(Math.cos(globalVar.getFi(newX))))) - arg );
           return pogresnost;
           break;
       default:
