@@ -44,7 +44,11 @@ const tableHeader2 = {
   8  : standartHeder,
   9  : standartHeder,
   10 : standartHeder,
-  11 : standartHeder
+  11 : standartHeder,
+  12 : standartHeder,
+  13 : standartHeder,
+  14 : standartHeder,
+  15 : standartHeder
 };
 
 const funcIamges = {
@@ -125,6 +129,30 @@ const funcIamges = {
     secondImg : "../../img/func-11.png",
     altImgText: 'summCosNechetZnakoPeremen(n fi)',
     text: 'Функция сумма нечётных знакопеременных косинусов cos((2n-1) fi)'
+  },
+  12 : {
+    mainImg :   "../../img/func-12.png",
+    secondImg : "../../img/func-12.png",
+    altImgText: 'summSinChetn(n fi)',
+    text: 'Функция сумма чётных синусов sin((2n) fi)'
+  },
+  13 : {
+    mainImg :   "../../img/func-13.png",
+    secondImg : "../../img/func-13.png",
+    altImgText: 'summCosChetn(n fi)',
+    text: 'Функция сумма чётных косинусов cos((2n) fi)'
+  },
+  14 : {
+    mainImg :   "../../img/func-14.png",
+    secondImg : "../../img/func-14.png",
+    altImgText: 'summSinChetnZnakoPeremen(n fi)',
+    text: 'Функция сумма чётных знакопеременных синусов sin((2n) fi)'
+  },
+  15 : {
+    mainImg :   "../../img/func-15.png",
+    secondImg : "../../img/func-15.png",
+    altImgText: 'summCosChetnZnakoPeremen(n fi)',
+    text: 'Функция сумма чётных знакопеременных косинусов cos((2n) fi)'
   },
 };
 

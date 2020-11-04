@@ -43,6 +43,18 @@ const trigonometFunc = {
       case 11 :       //  Вычисления для Summ( cos((2*n-1)fi) )
           return this.summCosNechetZnakoPeremen( countPQ, globalVar.getFi(newX) );
           break;
+      case 12 :       //  Вычисления для чётного синуса
+          return this.summSinChetniy( countPQ, globalVar.getFi(newX) );
+          break;
+      case 13 :       //  Вычисления для чётного Косинуса
+          return this.summCosChetniy( countPQ, globalVar.getFi(newX) );
+          break;
+      case 14 :       //  Вычисления для Summ( sin((2*n)fi) )
+          return this.summSinChetnZnakoPeremen( countPQ, globalVar.getFi(newX) );
+          break;
+      case 15 :       //  Вычисления для Summ( cos((2*n)fi) )
+          return this.summCosChetnZnakoPeremen( countPQ, globalVar.getFi(newX) );
+          break;
 
       default:
             return 'Нет такой функции';
@@ -89,6 +101,22 @@ const trigonometFunc = {
     }
     return this.massPQ[n];
   },
+  summSinChetnZnakoPeremen(n, fi) {
+    if (n % 2 === 0) {
+      this.massPQ[n] = this.massPQ[n-1] - Math.sin((2*n)*fi);
+    } else {
+      this.massPQ[n] = this.massPQ[n-1] + Math.sin((2*n)*fi);
+    }
+    return this.massPQ[n];
+  },
+  summCosChetnZnakoPeremen(n, fi) {
+    if (n % 2 === 0) {
+      this.massPQ[n] = this.massPQ[n-1] - Math.cos((2*n)*fi);
+    } else {
+      this.massPQ[n] = this.massPQ[n-1] + Math.cos((2*n)*fi);
+    }
+    return this.massPQ[n];
+  },
   summCosZnakoPeremen(n, fi) {
     if (n % 2 === 0) {
       this.massPQ[n] = this.massPQ[n-1] - Math.cos(n*fi);
@@ -99,6 +127,14 @@ const trigonometFunc = {
   },
   summSinNechet(n, fi) {
     this.massPQ[n] = this.massPQ[n-1] + Math.sin((2*n-1)*fi);
+    return this.massPQ[n];
+  },
+  summSinChetniy(n, fi) {
+    this.massPQ[n] = this.massPQ[n-1] + Math.sin((2*n)*fi);
+    return this.massPQ[n];
+  },
+  summCosChetniy(n, fi) {
+    this.massPQ[n] = this.massPQ[n-1] + Math.cos((2*n)*fi);
     return this.massPQ[n];
   },
   summCos(n, fi) {
