@@ -155,7 +155,7 @@ const funcIamges = {
     text: 'Функция сумма чётных знакопеременных косинусов cos((2n) fi)'
   },
 };
-
+let tableWidth = 1200;
 const tableMain = {
   description: "Create Table",
 
@@ -171,7 +171,16 @@ const tableMain = {
     h2.className = 'h2-table';                // Присваеваем h2 класс
     $(".h2-table")[i].innerHTML = tableHeader2[type_table].title + (i+1); // Добавляем title из массива tableHeader
 
-    p = document.createElement('p');          // Создаём элемент p
+    div = document.createElement('div');      // Создаём элемент div (в котором будет картинка формулы с текущей функцией)
+    main_panel.appendChild(div);              // Добавляем внутрь 'main_panel' новый div
+    div.className = 'func-img';               // Присваеваем div класс
+    if (type_table < 10) {
+      $(".func-img").addClass(`func-0${type_table}`); // Добавляем класс c изображением формулы текущей функции
+    } else {
+      $(".func-img").addClass(`func-${type_table}`);  // Добавляем класс c изображением формулы текущей функции
+    }
+
+    p = document.createElement('p');          // Создаём элемент p (в котором будет значения текущего fi)
     main_panel.appendChild(p);                // Добавляем внутрь 'main_panel' новый p
     p.className = 'p-table';                  // Присваеваем p класс
     $(".p-table")[i].innerHTML = "fi = " + globalVar.getMassX(i); // Добавляем значения очередного х
@@ -202,7 +211,10 @@ const tableMain = {
     tbody.className = 'tbody';                // Присваеваем tbody класс
     $(".table-main")[i].appendChild(tbody);   // Добавляем внутрь 'table-main' новый tbody
 
-    //  col_tables = col_tables+number_of_columns;
+    // Вычисляем ширину таблицы
+    tableWidth = $("thead").outerWidth()
+    $(".func-img").width(tableWidth);         // Устанавливаем ширену изображения формулы равной ширене таблицы
+
     globalVar.setNumbTables(globalVar.getNumbTables() + number_of_columns)
   },
 
