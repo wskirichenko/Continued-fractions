@@ -49,10 +49,10 @@ const trigonometFunc = {
       case 13 :       //  Вычисления для чётного Косинуса
           return this.summCosChetniy( countPQ, globalVar.getFi(newX) );
           break;
-      case 14 :       //  Вычисления для Summ( sin((2*n)fi) )
+      case 14 :       //  Вычисления для знакопеременного Summ( sin((2*n)fi) )
           return this.summSinChetnZnakoPeremen( countPQ, globalVar.getFi(newX) );
           break;
-      case 15 :       //  Вычисления для Summ( cos((2*n)fi) )
+      case 15 :       //  Вычисления для знакопеременного Summ( cos((2*n)fi) )
           return this.summCosChetnZnakoPeremen( countPQ, globalVar.getFi(newX) );
           break;
 

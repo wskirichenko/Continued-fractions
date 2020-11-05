@@ -39,6 +39,16 @@ rFiAlgoritm = {
   setMassFi(num, i) {
     this.massFi[i] = num;
   },
+  kratnoPi(pi1, fi, arg) {
+    while (Math.abs(fi) > Math.PI) {
+      fi = fi / Math.PI
+    }
+    if ( Math.abs(fi) < pi1 ) {
+      return Math.abs( Math.abs(fi) - arg );
+    } else {
+      return Math.abs( Math.PI - Math.abs(fi) - arg );
+    }
+  },
 
   getPogreshnR(numberFunc, arg, newX) {            // Вызываем функцию для вычисления в погрешности модуля r
     let pogresnost = 0;
@@ -92,11 +102,19 @@ rFiAlgoritm = {
           return pogresnost;
           break;
       case 12 :       //  Погрешность для суммы Чётного sin
-          pogresnost = Math.abs( (1/(4*Math.abs(Math.sin(globalVar.getFi(newX))))) - arg ); 
+          pogresnost = Math.abs( (1/(4*Math.abs(Math.sin(globalVar.getFi(newX))))) - arg );
           return pogresnost;
           break;
       case 13 :       //  Погрешность для суммы Чётного cos
-          pogresnost = Math.abs( (1/(4*Math.abs(Math.sin(globalVar.getFi(newX))))) - arg ); 
+          pogresnost = Math.abs( (1/(4*Math.abs(Math.sin(globalVar.getFi(newX))))) - arg );
+          return pogresnost;
+          break;
+      case 14 :       //  Погрешность для суммы Знакопеременного чётного sin
+          pogresnost = Math.abs( (1/(4*Math.abs(Math.sin(globalVar.getFi(newX)/2)))) - arg );
+          return pogresnost;
+          break;
+      case 15 :       //  Погрешность для суммы Знакопеременного чётного cos
+          pogresnost = Math.abs( (1/(4*Math.abs(Math.sin(globalVar.getFi(newX)/2)))) - arg );
           return pogresnost;
           break;
 
@@ -165,16 +183,21 @@ rFiAlgoritm = {
           }
           return pogresnost;
           break;
-      case 13 :       //  Погрешность для суммы знакопеременного cos
-          pogresnost = Math.abs( (  Math.PI/2 - globalVar.getFi(newX)/2 ) - arg );
+      case 13 :       //  Погрешность для суммы Чётного cos
+          pogresnost = Math.abs( (Math.PI/2 - globalVar.getFi(newX)/2) - arg );
           return pogresnost;
           break;
-      case 14 :       //  Погрешность для суммы знакопеременного cos
-          pogresnost = Math.abs( 0 - arg );
+      case 14 :       //  Погрешность для суммы знакопеременного чётного sin
+          pogresnost = Math.abs( (Math.PI/2 - globalVar.getFi(newX)) - arg );
           return pogresnost;
-          break; 
-      case 15 :       //  Погрешность для суммы знакопеременного cos
-          pogresnost = Math.abs( 0 - arg );
+          break;
+      case 15 :       //  Погрешность для суммы знакопеременного чётного cos
+          // if ( Math.abs(globalVar.getFi(newX)) < (Math.PI/2) ) {
+          //   pogresnost = Math.abs( Math.abs(globalVar.getFi(newX)) - arg );
+          // } else {
+          //   pogresnost = Math.abs( Math.PI - Math.abs(globalVar.getFi(newX)) - arg );
+          // }
+          pogresnost = this.kratnoPi(Math.PI/2, globalVar.getFi(newX), arg);
           return pogresnost;
           break;
 
