@@ -55,6 +55,9 @@ const trigonometFunc = {
       case 15 :       //  Вычисления для знакопеременного Summ( cos((2*n)fi) )
           return this.summCosChetnZnakoPeremen( countPQ, globalVar.getFi(newX) );
           break;
+      case 16 :       //  Вычисления для знакопеременного Summ( cos((2*n)fi) )
+          return this.summSin4n_1( countPQ, globalVar.getFi(newX) );
+          break;
 
       default:
             return 'Нет такой функции';
@@ -75,6 +78,10 @@ const trigonometFunc = {
   },
   summSin(n, fi) {
     this.massPQ[n] = this.massPQ[n-1] + Math.sin(n*fi);
+    return this.massPQ[n];
+  },
+  summSin4n_1(n, fi) {
+    this.massPQ[n] = this.massPQ[n-1] + Math.sin((4*n-1)*fi);
     return this.massPQ[n];
   },
   summSinZnakoPeremen(n, fi) {

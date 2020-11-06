@@ -48,7 +48,8 @@ const tableHeader2 = {
   12 : standartHeder,
   13 : standartHeder,
   14 : standartHeder,
-  15 : standartHeder
+  15 : standartHeder,
+  16 : standartHeder
 };
 
 const funcIamges = {
@@ -154,6 +155,12 @@ const funcIamges = {
     altImgText: 'summCosChetnZnakoPeremen(n fi)',
     text: 'Функция сумма чётных знакопеременных косинусов cos((2n) fi)'
   },
+  16 : {
+    mainImg :   "../../img/func-15.png",
+    secondImg : "../../img/func-15.png",
+    altImgText: 'summCosChetnZnakoPeremen(n fi)',
+    text: 'Функция сумма чётных знакопеременных косинусов cos((2n) fi)'
+  }
 };
 let tableWidth = 1200;
 const tableMain = {

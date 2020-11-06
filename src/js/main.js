@@ -169,7 +169,7 @@ $(document).ready(function () {
           };
           if ( i1 < (outDisplay.stepСalculations()-1) ) { // Не выводим лишний заголовок
             tableMain.addHed(numberFunc, i1+1);
-          }
+          };
           countPQ = 1;                      // После вычисления одной таблицы сбрасываем счётчик подходящих
           clearAllVar();
         };

@@ -1,4 +1,11 @@
 "use strict";
+let resultTable = {
+  r   : [],
+  fi  : [],
+  eR  : [],
+  eFi : [],
+  countStr : 0
+};
 
 rFiAlgoritm = {
   description: "rFi-Algoritm",
@@ -117,7 +124,10 @@ rFiAlgoritm = {
           pogresnost = Math.abs( (1/(4*Math.abs(Math.sin(globalVar.getFi(newX)/2)))) - arg );
           return pogresnost;
           break;
-
+      case 16 :       //  Погрешность для суммы sin(4k-1)
+          pogresnost = Math.abs( (1/(4*Math.abs(Math.cos(globalVar.getFi(newX)/2)))) - arg );
+          return pogresnost;
+          break;
       default:
         return 'Нет погрешности для r';
         break
@@ -200,10 +210,38 @@ rFiAlgoritm = {
           pogresnost = this.kratnoPi(Math.PI/2, globalVar.getFi(newX), arg);
           return pogresnost;
           break;
+      case 16 :       //  Погрешность для суммы sin(4k-1)
+          pogresnost = Math.abs(globalVar.getFi(newX) - arg );
+          return pogresnost;
+          break;
 
       default:
         return 'Нет погрешности для r';
         break
     }
-  }
+  },
+
+  // getResult(colTab, value) {            //
+  //   switch(colTab) {                // где colTab -
+  //     case 'r' :       // r
+  //         resultTable.r[resultTable.countStr] = value;
+  //         resultTable.countStr += resultTable.countStr;
+  //         break;
+  //     case 'fi' :      // fi
+  //         resultTable.fi[resultTable.countStr] = value;
+  //         resultTable.countStr += resultTable.countStr;
+  //         break;
+  //     case 'er' :      // Погрешность r
+  //         resultTable.eR[resultTable.countStr] = value;
+  //         resultTable.countStr += resultTable.countStr;
+  //         break;
+  //     case 'efi' :     // Погрешность fi
+  //         resultTable.eFi[resultTable.countStr] = value;
+  //         resultTable.countStr += resultTable.countStr;
+  //         break;
+
+  //     default:
+  //       return 'Нет такой колонки';
+  //       break
+  // }
 };
