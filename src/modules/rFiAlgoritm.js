@@ -211,7 +211,8 @@ rFiAlgoritm = {
           return pogresnost;
           break;
       case 16 :       //  Погрешность для суммы sin(4k-1)
-          pogresnost = Math.abs(globalVar.getFi(newX) - arg );
+            pogresnost = this.kratnoPi(Math.PI/2, globalVar.getFi(newX), arg);
+        //   pogresnost = Math.abs(globalVar.getFi(newX) - arg );
           return pogresnost;
           break;
 

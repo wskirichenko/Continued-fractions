@@ -58,7 +58,9 @@ const trigonometFunc = {
       case 16 :       //  Вычисления для знакопеременного Summ( cos((2*n)fi) )
           return this.summSin4n_1( countPQ, globalVar.getFi(newX) );
           break;
-
+      case 17 :       //  Вычисления для знакопеременного Summ( cos((2*n)fi) )
+          return this.summCosDivSin( countPQ, globalVar.getFi(newX) );
+          break;
       default:
             return 'Нет такой функции';
             break
@@ -81,7 +83,7 @@ const trigonometFunc = {
     return this.massPQ[n];
   },
   summSin4n_1(n, fi) {
-    this.massPQ[n] = this.massPQ[n-1] + Math.sin((4*n-1)*fi);
+    this.massPQ[n] = this.massPQ[n-1] + Math.sin((4*n-3)*fi);
     return this.massPQ[n];
   },
   summSinZnakoPeremen(n, fi) {
@@ -166,6 +168,14 @@ const trigonometFunc = {
   },
   sinDiv(n, fi) {
     this.massPQ[n] = Math.sin((n+1)*fi) / Math.sin(n*fi);
+    return this.massPQ[n];
+  },
+  summCosDivSin(n, fi) {
+    if (n % 2 === 0) {
+      this.massPQ[n] = this.massPQ[n-1] - Math.cos((2*n+1)*fi) / Math.sin((2*n+1)*fi);
+    } else {
+      this.massPQ[n] = this.massPQ[n-1] + Math.cos((2*n+1)*fi) / Math.sin((2*n+1)*fi);
+    }
     return this.massPQ[n];
   },
 
