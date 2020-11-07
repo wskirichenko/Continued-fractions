@@ -125,7 +125,15 @@ rFiAlgoritm = {
           return pogresnost;
           break;
       case 16 :       //  Погрешность для суммы sin(4k-1)
-          pogresnost = Math.abs( (1/(4*Math.abs(Math.cos(globalVar.getFi(newX)/2)))) - arg );
+          pogresnost = Math.abs( (1/(4*Math.abs(Math.cos(2*globalVar.getFi(newX))))) - arg );
+          return pogresnost;
+          break;
+      case 17 :       //  Погрешность для суммы sin(2k-1)fi /cos(2k-1)fi
+          pogresnost = Math.abs( 1 - arg );
+          return pogresnost;
+          break;
+      case 18 :       //  Погрешность для суммы sin(2k-1)fi /cos(2k-1)fi
+          pogresnost = Math.abs( Math.tan(globalVar.getFi(newX)) - arg );
           return pogresnost;
           break;
       default:
@@ -213,6 +221,14 @@ rFiAlgoritm = {
       case 16 :       //  Погрешность для суммы sin(4k-1)
             pogresnost = this.kratnoPi(Math.PI/2, globalVar.getFi(newX), arg);
         //   pogresnost = Math.abs(globalVar.getFi(newX) - arg );
+          return pogresnost;
+          break;
+      case 17 :       //  Погрешность для суммы cos(2k-1)fi /sin(2k-1)fi
+          pogresnost = Math.abs( Math.PI/2 - arg );
+          return pogresnost;
+          break;
+      case 18 :       //  Погрешность для суммы знакопеременного cos(2k-1)fi /sin(2k-1)fi
+          pogresnost = Math.abs( 0 - arg );
           return pogresnost;
           break;
 

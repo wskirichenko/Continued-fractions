@@ -4,6 +4,8 @@ const trigonometFunc = {
   description: "Trigonometric functions",
 
   massPQ : [],
+  massPQ2 : [],
+  massPQ3 : [],
 
   getFunction(numberFunc, countPQ, newX) {            // Вызываем функцию для вычисления в соответствии с нажатой кнопкой выбора функции
     switch(numberFunc) {                              // где numberFunc - номер вызываемой функции для вычисления
@@ -55,12 +57,16 @@ const trigonometFunc = {
       case 15 :       //  Вычисления для знакопеременного Summ( cos((2*n)fi) )
           return this.summCosChetnZnakoPeremen( countPQ, globalVar.getFi(newX) );
           break;
-      case 16 :       //  Вычисления для знакопеременного Summ( cos((2*n)fi) )
+      case 16 :       //  Вычисления для суммы sin(4k-1)
           return this.summSin4n_1( countPQ, globalVar.getFi(newX) );
           break;
-      case 17 :       //  Вычисления для знакопеременного Summ( cos((2*n)fi) )
+      case 17 :       //  Вычисления для суммы cos(2k-1)fi /sin(2k-1)fi
           return this.summCosDivSin( countPQ, globalVar.getFi(newX) );
           break;
+      case 18 :       //  Вычисления для суммы знакопеременного cos(2k-1)fi /sin(2k-1)fi
+          return this.summCosZnakoPeremen_DivSin( countPQ, globalVar.getFi(newX) );
+          break;
+
       default:
             return 'Нет такой функции';
             break
@@ -69,6 +75,8 @@ const trigonometFunc = {
 
   setZiroMassPQ(i=0) {
     this.massPQ[0] = i;
+    this.massPQ2[0] = i;
+    this.massPQ3[0] = i;
   },
   sin(n, fi) {
     this.massPQ[n] = Math.sin(n*fi);
@@ -138,6 +146,10 @@ const trigonometFunc = {
     this.massPQ[n] = this.massPQ[n-1] + Math.sin((2*n-1)*fi);
     return this.massPQ[n];
   },
+  summCosNechet(n, fi) {
+    this.massPQ[n] = this.massPQ[n-1] + Math.cos((2*n-1)*fi);
+    return this.massPQ[n];
+  },
   summSinChetniy(n, fi) {
     this.massPQ[n] = this.massPQ[n-1] + Math.sin((2*n)*fi);
     return this.massPQ[n];
@@ -171,11 +183,19 @@ const trigonometFunc = {
     return this.massPQ[n];
   },
   summCosDivSin(n, fi) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n-1)*fi);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n-1)*fi);
+    this.massPQ[n] = this.massPQ2[n] / this.massPQ3[n];
+    return this.massPQ[n];
+  },
+  summCosZnakoPeremen_DivSin(n, fi) {
     if (n % 2 === 0) {
-      this.massPQ[n] = this.massPQ[n-1] - Math.cos((2*n+1)*fi) / Math.sin((2*n+1)*fi);
+      this.massPQ2[n] = this.massPQ2[n-1] - Math.cos((2*n-1)*fi);
     } else {
-      this.massPQ[n] = this.massPQ[n-1] + Math.cos((2*n+1)*fi) / Math.sin((2*n+1)*fi);
+      this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n-1)*fi);
     }
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n-1)*fi);
+    this.massPQ[n] = this.massPQ2[n] / this.massPQ3[n];
     return this.massPQ[n];
   },
 
@@ -184,5 +204,7 @@ const trigonometFunc = {
   },
   clearMassPQ() {
     this.massPQ = [];
+    this.massPQ2 = [];
+    this.massPQ3 = [];
   }
 };
