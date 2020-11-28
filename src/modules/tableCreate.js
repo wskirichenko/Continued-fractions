@@ -51,7 +51,11 @@ const tableHeader2 = {
   15 : standartHeder,
   16 : standartHeder,
   17 : standartHeder,
-  18 : standartHeder
+  18 : standartHeder,
+  19 : standartHeder,
+  20 : standartHeder,
+  21 : standartHeder,
+  22 : standartHeder
 };
 
 const funcIamges = {
@@ -166,14 +170,38 @@ const funcIamges = {
   17 : {
     mainImg :   "../../img/func-17.png",
     secondImg : "../../img/func-17.png",
-    altImgText: 'summCosDivSin((2n-1) fi)',
-    text: 'Функция сумма  cos((2n-1) fi) / sin((2n-1) fi)'
+    altImgText: 'summNecet_Cos_Div_NecetSin((2k-1)fi)',
+    text: 'Функция сумма дроби нечётных знакопеременных косинусов на синусы cos((2n-1) fi) / sin((2n-1) fi)'
   },
   18 : {
     mainImg :   "../../img/func-18.png",
     secondImg : "../../img/func-18.png",
+    altImgText: 'summCosZnakoPeremen_DivSin((2k-1)fi)',
+    text: 'Функция сумма  дроби  знакопеременного косинуса на синус ( (-1)^(n+1) * cos((2n-1) fi) ) / sin((2n-1) fi)'
+  },
+  19 : {
+    mainImg :   "../../img/func-19.png",
+    secondImg : "../../img/func-19.png",
     altImgText: 'summCosDivSin((2n-1) fi)',
-    text: 'Функция сумма  ( (-1)^(n+1) * cos((2n-1) fi) ) / sin((2n-1) fi)'
+    text: 'Функция сумма  cos((n fi) / sin(n fi)'
+  },
+  20 : {
+    mainImg :   "../../img/func-20.png",
+    secondImg : "../../img/func-20.png",
+    altImgText: 'summChetnSinDivNecetSin((2n) fi)',
+    text: 'Функция сумма дроби чётного синуса на нечётный синус sin((n fi) / sin((2n-1) fi)'
+  },
+  21 : {
+    mainImg :   "../../img/func-21.png",
+    secondImg : "../../img/func-21.png",
+    altImgText: 'summCosZnakoPeremen_DivSin((2n) fi)',
+    text: 'Функция сумма дроби знакопеременного нечётного косинуса на нечётный синус cos((2n-1) fi) / sin((2n-1) fi)'
+  },
+  22 : {
+    mainImg :   "../../img/func-22.png",
+    secondImg : "../../img/func-22.png",
+    altImgText: 'summ_N_Sin(n fi)',
+    text: 'Функция сумма  (1+1/n)*sin(n fi)'
   }
 };
 let tableWidth = 1200;

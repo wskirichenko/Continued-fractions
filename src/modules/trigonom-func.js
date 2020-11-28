@@ -61,13 +61,23 @@ const trigonometFunc = {
           return this.summSin4n_1( countPQ, globalVar.getFi(newX) );
           break;
       case 17 :       //  Вычисления для суммы cos(2k-1)fi /sin(2k-1)fi
-          // return this.summCosDivSin3( countPQ, globalVar.getFi(newX) );
-          return this.summ_N_Sin( countPQ, globalVar.getFi(newX) );
+          return this.summNecet_Cos_Div_NecetSin( countPQ, globalVar.getFi(newX) );
           break;
-      case 18 :       //  Вычисления для суммы знакопеременного cos(2k-1)fi /sin(2k-1)fi
+      case 18 :       //  Вычисления для суммы знакопеременного (-1)^(n+1)cos(2k-1)fi /sin(2k-1)fi
           return this.summCosZnakoPeremen_DivSin( countPQ, globalVar.getFi(newX) );
           break;
-
+      case 19 :       //  Вычисления для суммы cos(k fi) /sin(k fi)
+          return this.summCosDivSin( countPQ, globalVar.getFi(newX) );
+          break;
+      case 20 :       //  Вычисления для суммы sin(2k)fi /sin(2k-1)fi
+          return this.summChetnSinDivNecetSin( countPQ, globalVar.getFi(newX) );
+          break;
+      case 21 :       //  Вычисления для суммы знакопеременного (-1)^(n+1)cos(2k-1)fi /(-1)^(n+1)sin(2k-1)fi
+          return this.summCosZnakoPeremen_DivSin( countPQ, globalVar.getFi(newX) );
+          break;
+      case 22 :       //  Вычисления для суммы  (1+1/n)*sin(k fi)
+          return this.summ_N_Sin( countPQ, globalVar.getFi(newX) );
+          break;
       default:
             return 'Нет такой функции';
             break
@@ -183,19 +193,19 @@ const trigonometFunc = {
     this.massPQ[n] = Math.sin((n+1)*fi) / Math.sin(n*fi);
     return this.massPQ[n];
   },
-  summCosDivSin(n, fi) {
+  summNecet_Cos_Div_NecetSin(n, fi) {
     this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n-1)*fi);
     this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n-1)*fi);
     this.massPQ[n] = this.massPQ2[n] / this.massPQ3[n];
     return this.massPQ[n];
   },
-  summCosDivSin2(n, fi) {
+  summCosDivSin(n, fi) {
     this.massPQ2[n] = this.massPQ2[n-1] + Math.cos(n*fi);
     this.massPQ3[n] = this.massPQ3[n-1] + Math.sin(n*fi);
     this.massPQ[n] = this.massPQ2[n] / this.massPQ3[n];
     return this.massPQ[n];
   },
-  summCosDivSin3(n, fi) {
+  summChetnSinDivNecetSin(n, fi) {
     this.massPQ2[n] = this.massPQ2[n-1] + Math.sin((2*n)*fi);
     this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n-1)*fi);
     this.massPQ[n] = this.massPQ2[n] / this.massPQ3[n];
@@ -212,7 +222,7 @@ const trigonometFunc = {
     return this.massPQ[n];
   },
 
-  summCosZnakoPeremen_DivSin2(n, fi) {
+  summZnPeremCos_Div_ZnPeremSin(n, fi) {
     if (n % 2 === 0) {
       this.massPQ2[n] = this.massPQ2[n-1] - Math.cos((2*n-1)*fi);
     } else {

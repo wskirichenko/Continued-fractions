@@ -136,6 +136,18 @@ rFiAlgoritm = {
           pogresnost = Math.abs( Math.tan(globalVar.getFi(newX)) - arg );
           return pogresnost;
           break;
+      case 19 :       //  Погрешность для суммы sin(2k-1)fi /cos(2k-1)fi
+          pogresnost = Math.abs( 1 - arg );
+          return pogresnost;
+          break;
+      case 20 :       //  Погрешность для суммы
+          pogresnost = Math.abs( 1 - arg );
+          return pogresnost;
+          break;
+      case 21 :       //  Погрешность для суммы
+          pogresnost = Math.abs( Math.tan(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
       default:
         return 'Нет погрешности для r';
         break
@@ -220,11 +232,9 @@ rFiAlgoritm = {
           break;
       case 16 :       //  Погрешность для суммы sin(4k-1)
             pogresnost = this.kratnoPi(Math.PI/2, globalVar.getFi(newX), arg);
-        //   pogresnost = Math.abs(globalVar.getFi(newX) - arg );
           return pogresnost;
           break;
       case 17 :       //  Погрешность для суммы cos(2k-1)fi /sin(2k-1)fi
-        //   pogresnost = Math.abs( Math.PI/2 - arg );
           pogresnost = Math.abs( Math.tan(globalVar.getFi(newX)) - arg );
           return pogresnost;
           break;
@@ -232,34 +242,26 @@ rFiAlgoritm = {
           pogresnost = Math.abs( 0 - arg );
           return pogresnost;
           break;
+      case 19 :       //  Погрешность для суммы cos(2k-1)fi /sin(2k-1)fi
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;
+      case 20 :       //  Погрешность
+        pogresnost = Math.abs( Math.abs(globalVar.getFi(newX)) - arg );
+        return pogresnost;
+        break;
+      case 21 :       //  Погрешность
+        pogresnost = Math.abs( 0 - arg );
+        return pogresnost;
+        break;
+      case 22 :       //  Погрешность
+        pogresnost = Math.abs( 0 - arg );
+        return pogresnost;
+        break;
 
       default:
         return 'Нет погрешности для r';
         break
     }
   },
-
-  // getResult(colTab, value) {            //
-  //   switch(colTab) {                // где colTab -
-  //     case 'r' :       // r
-  //         resultTable.r[resultTable.countStr] = value;
-  //         resultTable.countStr += resultTable.countStr;
-  //         break;
-  //     case 'fi' :      // fi
-  //         resultTable.fi[resultTable.countStr] = value;
-  //         resultTable.countStr += resultTable.countStr;
-  //         break;
-  //     case 'er' :      // Погрешность r
-  //         resultTable.eR[resultTable.countStr] = value;
-  //         resultTable.countStr += resultTable.countStr;
-  //         break;
-  //     case 'efi' :     // Погрешность fi
-  //         resultTable.eFi[resultTable.countStr] = value;
-  //         resultTable.countStr += resultTable.countStr;
-  //         break;
-
-  //     default:
-  //       return 'Нет такой колонки';
-  //       break
-  // }
 };
