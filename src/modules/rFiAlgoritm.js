@@ -224,7 +224,8 @@ rFiAlgoritm = {
           return pogresnost;
           break;
       case 17 :       //  Погрешность для суммы cos(2k-1)fi /sin(2k-1)fi
-          pogresnost = Math.abs( Math.PI/2 - arg );
+        //   pogresnost = Math.abs( Math.PI/2 - arg );
+          pogresnost = Math.abs( Math.tan(globalVar.getFi(newX)) - arg );
           return pogresnost;
           break;
       case 18 :       //  Погрешность для суммы знакопеременного cos(2k-1)fi /sin(2k-1)fi

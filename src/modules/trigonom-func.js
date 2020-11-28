@@ -61,7 +61,8 @@ const trigonometFunc = {
           return this.summSin4n_1( countPQ, globalVar.getFi(newX) );
           break;
       case 17 :       //  Вычисления для суммы cos(2k-1)fi /sin(2k-1)fi
-          return this.summCosDivSin( countPQ, globalVar.getFi(newX) );
+          // return this.summCosDivSin3( countPQ, globalVar.getFi(newX) );
+          return this.summ_N_Sin( countPQ, globalVar.getFi(newX) );
           break;
       case 18 :       //  Вычисления для суммы знакопеременного cos(2k-1)fi /sin(2k-1)fi
           return this.summCosZnakoPeremen_DivSin( countPQ, globalVar.getFi(newX) );
@@ -188,6 +189,18 @@ const trigonometFunc = {
     this.massPQ[n] = this.massPQ2[n] / this.massPQ3[n];
     return this.massPQ[n];
   },
+  summCosDivSin2(n, fi) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos(n*fi);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin(n*fi);
+    this.massPQ[n] = this.massPQ2[n] / this.massPQ3[n];
+    return this.massPQ[n];
+  },
+  summCosDivSin3(n, fi) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.sin((2*n)*fi);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n-1)*fi);
+    this.massPQ[n] = this.massPQ2[n] / this.massPQ3[n];
+    return this.massPQ[n];
+  },
   summCosZnakoPeremen_DivSin(n, fi) {
     if (n % 2 === 0) {
       this.massPQ2[n] = this.massPQ2[n-1] - Math.cos((2*n-1)*fi);
@@ -196,6 +209,26 @@ const trigonometFunc = {
     }
     this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n-1)*fi);
     this.massPQ[n] = this.massPQ2[n] / this.massPQ3[n];
+    return this.massPQ[n];
+  },
+
+  summCosZnakoPeremen_DivSin2(n, fi) {
+    if (n % 2 === 0) {
+      this.massPQ2[n] = this.massPQ2[n-1] - Math.cos((2*n-1)*fi);
+    } else {
+      this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n-1)*fi);
+    }
+    if (n % 2 === 0) {
+      this.massPQ3[n] = this.massPQ3[n-1] - Math.sin((2*n-1)*fi);
+    } else {
+      this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n-1)*fi);
+    }
+    this.massPQ[n] = this.massPQ2[n] / this.massPQ3[n];
+    return this.massPQ[n];
+  },
+
+  summ_N_Sin(n, fi) {
+    this.massPQ[n] = this.massPQ[n-1] + (1+1/n)*Math.sin(n*fi);
     return this.massPQ[n];
   },
 
