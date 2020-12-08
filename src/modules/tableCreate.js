@@ -55,7 +55,8 @@ const tableHeader2 = {
   19 : standartHeder,
   20 : standartHeder,
   21 : standartHeder,
-  22 : standartHeder
+  22 : standartHeder,
+  23 : standartHeder
 };
 
 const funcIamges = {
@@ -202,6 +203,12 @@ const funcIamges = {
     secondImg : "../../img/func-22.png",
     altImgText: 'summ_N_Sin(n fi)',
     text: 'Функция сумма  (1+1/n)*sin(n fi)'
+  },
+  23 : {
+    mainImg :   "../../img/func-23.png",
+    secondImg : "../../img/func-23.png",
+    altImgText: 'summ_N_Sin(n fi)',
+    text: 'Функция сумма  (1/2)+sin(n fi) Ряд Дирихле'
   }
 };
 let tableWidth = 1200;

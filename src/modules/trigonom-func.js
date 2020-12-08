@@ -78,6 +78,9 @@ const trigonometFunc = {
       case 22 :       //  Вычисления для суммы  (1+1/n)*sin(k fi)
           return this.summ_N_Sin( countPQ, globalVar.getFi(newX), 1 );
           break;
+      case 23 :       //  Вычисления для суммы  (1+1/n)*sin(k fi)
+          return 1/2 + this.summSin( countPQ, globalVar.getFi(newX) );
+          break;
       default:
             return 'Нет такой функции';
             break
