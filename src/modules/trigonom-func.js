@@ -76,10 +76,16 @@ const trigonometFunc = {
           return this.summCosZnakoPeremen_DivSin( countPQ, globalVar.getFi(newX) );
           break;
       case 22 :       //  Вычисления для суммы  (1+1/n)*sin(k fi)
-          return this.summ_N_Sin( countPQ, globalVar.getFi(newX), 1 );
+          return this.summ_N_Sin( countPQ, globalVar.getFi(newX), 10 );
           break;
       case 23 :       //  Вычисления для суммы  (1+1/n)*sin(k fi)
           return 1/2 + this.summSin( countPQ, globalVar.getFi(newX) );
+          break;
+      case 24 :       //  Вычисления для суммы  (1+1/n)*sin(k fi)
+          return 1/2 + this.summCos( countPQ, globalVar.getFi(newX) );
+          break;
+      case 25 :       //  Вычисления для суммы  (1+1/n)*cos(k fi)
+          return this.summ_N_Cos( countPQ, globalVar.getFi(newX), 1 );
           break;
       default:
             return 'Нет такой функции';
@@ -242,6 +248,10 @@ const trigonometFunc = {
 
   summ_N_Sin(n, fi, konst) {
     this.massPQ[n] = this.massPQ[n-1] + (konst+1/n)*Math.sin(n*fi);
+    return this.massPQ[n];
+  },
+  summ_N_Cos(n, fi, konst) {
+    this.massPQ[n] = this.massPQ[n-1] + (konst+1/n)*Math.cos(n*fi);
     return this.massPQ[n];
   },
 

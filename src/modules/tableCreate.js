@@ -56,7 +56,9 @@ const tableHeader2 = {
   20 : standartHeder,
   21 : standartHeder,
   22 : standartHeder,
-  23 : standartHeder
+  23 : standartHeder,
+  24 : standartHeder,
+  25 : standartHeder
 };
 
 const funcIamges = {
@@ -202,13 +204,25 @@ const funcIamges = {
     mainImg :   "../../img/func-22.png",
     secondImg : "../../img/func-22.png",
     altImgText: 'summ_N_Sin(n fi)',
-    text: 'Функция сумма  (1+1/n)*sin(n fi)'
+    text: 'Функция суммы (1+1/n)*sin(n fi)'
   },
   23 : {
     mainImg :   "../../img/func-23.png",
     secondImg : "../../img/func-23.png",
-    altImgText: 'summ_N_Sin(n fi)',
+    altImgText: '1/2+summSin(n fi)',
     text: 'Функция сумма  (1/2)+sin(n fi) Ряд Дирихле'
+  },
+  24 : {
+    mainImg :   "../../img/func-24.png",
+    secondImg : "../../img/func-24.png",
+    altImgText: '1/2+summCos(n fi)',
+    text: 'Функция сумма  (1/2)+cos(n fi) Ряд Дирихле'
+  },
+  25 : {
+    mainImg :   "../../img/func-25.png",
+    secondImg : "../../img/func-25.png",
+    altImgText: 'summ_N_Cos(n fi)',
+    text: 'Функция суммы (1+1/n)*cos(n fi)'
   }
 };
 let tableWidth = 1200;
