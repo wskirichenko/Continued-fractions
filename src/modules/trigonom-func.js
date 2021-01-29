@@ -87,6 +87,9 @@ const trigonometFunc = {
       case 25 :       //  Вычисления для суммы  (1+1/n)*cos(k fi)
           return this.summ_N_Cos( countPQ, globalVar.getFi(newX), 1 );
           break;
+      case 26 :       //  Вычисления для суммы  (1+1/n)*cos(k fi)
+          return this.cos_sin_arctg( countPQ, Math.atan(1) );
+          break;
       default:
             return 'Нет такой функции';
             break
@@ -253,6 +256,19 @@ const trigonometFunc = {
   summ_N_Cos(n, fi, konst) {
     this.massPQ[n] = this.massPQ[n-1] + (konst+1/n)*Math.cos(n*fi);
     return this.massPQ[n];
+  },
+  cos_sin_arctg(n, konst) {
+    this.massPQ[n] = Math.cos( Math.sqrt(2) * (Math.sin((n+1) * konst)/Math.sin(n * konst)) ) - 1;
+    return this.massPQ[n] = this.changedZiro(this.massPQ[n]);
+  },
+
+
+  changedZiro(x) {
+    if (x==0) {
+      return 0.000001;
+    } else {
+      return x;
+    }
   },
 
   getMassPQ(i) {
