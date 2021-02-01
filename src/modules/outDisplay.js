@@ -139,6 +139,10 @@ const outDisplay = {
           //   trigonometFunc.setZiroMassPQ(1);           // Устанавливаем нулевой элемент массива massPQ в 1
           // } else {
             trigonometFunc.setZiroMassPQ(0);           // Устанавливаем нулевой элемент массива massPQ в 0
+
+            if (numberFunc == 27) {
+              trigonometFunc.setMassPQ2();
+            }
           // }
           this.PQtemp = trigonometFunc.getFunction(numberFunc, countPQ, newX)
           return this.PQtemp

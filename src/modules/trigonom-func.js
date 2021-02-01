@@ -90,6 +90,9 @@ const trigonometFunc = {
       case 26 :       //  Вычисления для суммы  (1+1/n)*cos(k fi)
           return this.cos_sin_arctg( countPQ, Math.atan(1) );
           break;
+      case 27 :       //  Вычисления для суммы  (1+1/n)*cos(k fi)
+          return this.cos_Drob( countPQ, 2, 5, 4 );
+          break;
       default:
             return 'Нет такой функции';
             break
@@ -100,6 +103,10 @@ const trigonometFunc = {
     this.massPQ[0] = i;
     this.massPQ2[0] = i;
     this.massPQ3[0] = i;
+  },
+  setMassPQ2() {
+    this.massPQ2[0] = 0;
+    this.massPQ[1] = Math.cos(2);
   },
   sin(n, fi) {
     this.massPQ[n] = Math.sin(n*fi);
@@ -260,6 +267,21 @@ const trigonometFunc = {
   cos_sin_arctg(n, konst) {
     this.massPQ[n] = Math.cos( Math.sqrt(2) * (Math.sin((n+1) * konst)/Math.sin(n * konst)) ) - 1;
     return this.massPQ[n] = this.changedZiro(this.massPQ[n]);
+  },
+  cos_Drob(n, pq1, pqCh, pqZ) {
+    for (var i = 1; i < n ; i++) {
+      for (var i2 = i; i2 > 0 ; i2--) {
+          if (i2 === i) {
+              this.massPQ2[i2] = pqCh/pqZ;
+          } else {
+              this.massPQ2[i2] = pqCh/(pqZ-this.massPQ2[i2+1]);
+          }
+          if (i2 === 1) {
+            this.massPQ[n] = Math.cos(pq1 - this.massPQ2[1]);
+          }
+      }
+    }
+    return this.massPQ[n];
   },
 
 

@@ -59,7 +59,8 @@ const tableHeader2 = {
   23 : standartHeder,
   24 : standartHeder,
   25 : standartHeder,
-  26 : standartHeder
+  26 : standartHeder,
+  27 : standartHeder
 };
 
 const funcIamges = {
@@ -230,6 +231,12 @@ const funcIamges = {
     secondImg : "../../img/func-26.png",
     altImgText: 'cos_sin_arctan(n konst)',
     text: 'Функция  cos( sqrt(2) * (sin((n+1) * arctan(1))/sin(n * arctan(1))) ) - 1'
+  },
+  27 : {
+    mainImg :   "../../img/func-26.png",
+    secondImg : "../../img/func-26.png",
+    altImgText: 'cos_sin_arctan(n konst)',
+    text: 'Функция  cos(Дроби)'
   }
 };
 let tableWidth = 1200;
