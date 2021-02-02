@@ -87,11 +87,17 @@ const trigonometFunc = {
       case 25 :       //  Вычисления для суммы  (1+1/n)*cos(k fi)
           return this.summ_N_Cos( countPQ, globalVar.getFi(newX), 1 );
           break;
-      case 26 :       //  Вычисления для суммы  (1+1/n)*cos(k fi)
-          return this.cos_sin_arctg( countPQ, Math.atan(1) );
+      case 26 :       //  Вычисления для cos_sin_arctan(n, fi, a)
+          return this.cos_sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
-      case 27 :       //  Вычисления для суммы  (1+1/n)*cos(k fi)
-          return this.cos_Drob( countPQ, 2, 5, 4 );
+      case 27 :       //  Вычисления для дроби a+( (a^2+fi^2)/(2a - (a^2+fi^2)/2a - ...) )
+          return this.cepnayaDrob( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 127 :       //  Вычисления для дроби cos(a+( (a^2+fi^2)/(2a - (a^2+fi^2)/2a - ...) ))
+          return this.cos_Drob( countPQ );
+          break;
+      case 28 :       //  Вычисления для дроби (a^2+fi^2)/(2a - (a^2+fi^2)/2a - ...) )
+          return this.cepnayaDrob( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
       default:
             return 'Нет такой функции';
@@ -106,7 +112,8 @@ const trigonometFunc = {
   },
   setMassPQ2() {
     this.massPQ2[0] = 0;
-    this.massPQ[1] = Math.cos(2);
+    // this.massPQ[1] = Math.cos(2);
+    this.massPQ[1] = globalVar.getFi2();
   },
   sin(n, fi) {
     this.massPQ[n] = Math.sin(n*fi);
@@ -264,11 +271,15 @@ const trigonometFunc = {
     this.massPQ[n] = this.massPQ[n-1] + (konst+1/n)*Math.cos(n*fi);
     return this.massPQ[n];
   },
-  cos_sin_arctg(n, konst) {
-    this.massPQ[n] = Math.cos( Math.sqrt(2) * (Math.sin((n+1) * konst)/Math.sin(n * konst)) ) - 1;
-    return this.massPQ[n] = this.changedZiro(this.massPQ[n]);
+  cos_sin_arctg(n, fi, a) {
+    this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
+    // return this.massPQ[n] = this.changedZiro(this.massPQ[n]);
+    return this.massPQ[n] = this.massPQ[n];
   },
-  cos_Drob(n, pq1, pqCh, pqZ) {
+  cepnayaDrob(n, fi, a) {
+    let pq1 = a,
+        pqCh = a*a + fi*fi,
+        pqZ = 2*a;
     for (var i = 1; i < n ; i++) {
       for (var i2 = i; i2 > 0 ; i2--) {
           if (i2 === i) {
@@ -277,10 +288,15 @@ const trigonometFunc = {
               this.massPQ2[i2] = pqCh/(pqZ-this.massPQ2[i2+1]);
           }
           if (i2 === 1) {
-            this.massPQ[n] = Math.cos(pq1 - this.massPQ2[1]);
+            this.massPQ[n] = pq1 - this.massPQ2[1];
           }
       }
     }
+    return this.massPQ[n];
+  },
+
+  cos_Drob(n) {
+    this.massPQ[n] = Math.cos(this.massPQ[n]);
     return this.massPQ[n];
   },
 

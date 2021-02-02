@@ -143,6 +143,9 @@ const outDisplay = {
             if (numberFunc == 27) {
               trigonometFunc.setMassPQ2();
             }
+            if (numberFunc == 28) {
+              trigonometFunc.setMassPQ2();
+            }
           // }
           this.PQtemp = trigonometFunc.getFunction(numberFunc, countPQ, newX)
           return this.PQtemp
@@ -166,8 +169,9 @@ const outDisplay = {
           // return Math.abs( globalVar.getFi(newX)/2 - this.fiTmp );
           return rFiAlgoritm.getPogreshnFi(numberFunc, this.fiTmp, newX);
           break
-      case 'pqExp' :        // Пока не используется
-          return colName;
+      case 'pqExp' :        // Пока используется только для функции 127
+          this.PQtemp = trigonometFunc.getFunction(127, countPQ, newX)
+          return this.PQtemp
           break
 
       default:

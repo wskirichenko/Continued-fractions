@@ -15,7 +15,7 @@ const standartHeder = { // Массив с заголоквами таблицы
 const col7_Header = {   // Массив с заголоквами таблицы - 7 колонки
   title : "Tаблица ",
   headers : [
-    "Номер №", "Значения подходящих 2", "Значения экспоненты", "Значения модуля r",
+    "Номер №", "Значения дроби Pn/Qn", "Значения cos(Pn/Qn)", "Значения модуля r",
     "Значения аргумента fi", "Погрешность модуля r", "Погрешность модуля fi"
   ],
   colName: [
@@ -60,7 +60,9 @@ const tableHeader2 = {
   24 : standartHeder,
   25 : standartHeder,
   26 : standartHeder,
-  27 : standartHeder
+  27 : col7_Header,
+  28 : standartHeder
+
 };
 
 const funcIamges = {
@@ -229,13 +231,19 @@ const funcIamges = {
   26 : {
     mainImg :   "../../img/func-26.png",
     secondImg : "../../img/func-26.png",
-    altImgText: 'cos_sin_arctan(n konst)',
-    text: 'Функция  cos( sqrt(2) * (sin((n+1) * arctan(1))/sin(n * arctan(1))) ) - 1'
+    altImgText: 'cos_sin_arctan(n, fi, a)',
+    text: 'Функция  sqrt(a*a + fi*fi) * ( sin((n+1)*atan(fi/a)) / sin(n * atan(fi/a)) ) - a;'
   },
   27 : {
-    mainImg :   "../../img/func-26.png",
-    secondImg : "../../img/func-26.png",
-    altImgText: 'cos_sin_arctan(n konst)',
+    mainImg :   "../../img/func-27.png",
+    secondImg : "../../img/func-27.png",
+    altImgText: 'Drob(n, pq1, pqCh, pqZ)',
+    text: 'Функция Дроби a+( (a^2+fi^2)/(2a - (a^2+fi^2)/2a - ...) )'
+  },
+  28 : {
+    mainImg :   "../../img/func-28.png",
+    secondImg : "../../img/func-28.png",
+    altImgText: 'cos_Drob(n, pq1, pqCh, pqZ)',
     text: 'Функция  cos(Дроби)'
   }
 };
