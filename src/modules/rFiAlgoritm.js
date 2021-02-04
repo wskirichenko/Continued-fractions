@@ -156,6 +156,11 @@ rFiAlgoritm = {
           pogresnost = Math.abs( (1/(4*Math.abs(Math.sin(globalVar.getFi(newX)/2)))) - arg );
           return pogresnost;
           break;
+
+      case 26 :       //  Погрешность для суммы 1/2+cos
+          pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+          return pogresnost;
+          break;
       default:
         return 'Нет погрешности для r';
         break
@@ -274,6 +279,10 @@ rFiAlgoritm = {
         pogresnost = Math.abs(  Math.PI/2 + Math.abs(globalVar.getFi(newX)/2) - arg );
         return pogresnost;
         break;
+
+      case 26 :       //  Погрешность
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
 
       default:
         return 'Нет погрешности для fi';
