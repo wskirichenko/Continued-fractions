@@ -61,7 +61,8 @@ const tableHeader2 = {
   25 : standartHeder,
   26 : standartHeder,
   27 : col7_Header,
-  28 : standartHeder
+  28 : standartHeder,
+  29 : standartHeder
 
 };
 
@@ -245,7 +246,13 @@ const funcIamges = {
     secondImg : "../../img/func-28.png",
     altImgText: 'cos_Drob(n, pq1, pqCh, pqZ)',
     text: 'Функция  cos(Дроби)'
-  }
+  },
+  29 : {
+    mainImg :   "../../img/func-29.png",
+    secondImg : "../../img/func-29.png",
+    altImgText: 'sin_Sin_arctan(n, fi, a)',
+    text: 'Функция sin( sqrt(a*a + fi*fi) * ( sin((n+1)*atan(fi/a)) / sin(n * atan(fi/a)) ) - a );'
+  },
 };
 let tableWidth = 1200;
 const tableMain = {

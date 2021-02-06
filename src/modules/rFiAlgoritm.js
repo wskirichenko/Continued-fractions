@@ -157,8 +157,13 @@ rFiAlgoritm = {
           return pogresnost;
           break;
 
-      case 26 :       //  Погрешность для суммы 1/2+cos
+      case 26 :       //  Погрешность для
           pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+          return pogresnost;
+          break;
+
+      case 29 :       //  Погрешность для sin(sin_arctan(n, fi, a))
+          pogresnost = Math.abs( 0.5 - arg );
           return pogresnost;
           break;
       default:
@@ -281,6 +286,10 @@ rFiAlgoritm = {
         break;
 
       case 26 :       //  Погрешность
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+
+      case 29 :       //  Погрешность sin(sin_arctan(n, fi, a))
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
 

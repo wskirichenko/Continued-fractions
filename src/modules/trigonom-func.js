@@ -99,6 +99,9 @@ const trigonometFunc = {
       case 28 :       //  Вычисления для дроби (a^2+fi^2)/(2a - (a^2+fi^2)/2a - ...) )
           return this.cepnayaDrob( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
+      case 29 :       //  Вычисления для sin(sin_arctan(n, fi, a))
+          return this.sin_Sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
       default:
             return 'Нет такой функции';
             break
@@ -274,7 +277,7 @@ const trigonometFunc = {
   cos_sin_arctg(n, fi, a) {
     this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
     // return this.massPQ[n] = this.changedZiro(this.massPQ[n]);
-    return this.massPQ[n] = this.massPQ[n];
+    return this.massPQ[n] = Math.cos(this.massPQ[n]);
   },
   cepnayaDrob(n, fi, a) {
     let pq1 = a,
@@ -293,6 +296,10 @@ const trigonometFunc = {
       }
     }
     return this.massPQ[n];
+  },
+  sin_Sin_arctg(n, fi, a) {
+    this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
+    return this.massPQ[n] = Math.sin(this.massPQ[n]);
   },
 
   cos_Drob(n) {
