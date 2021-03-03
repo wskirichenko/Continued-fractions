@@ -105,6 +105,9 @@ const trigonometFunc = {
       case 30 :       //  Вычисления для ch(sin_arctan(n, fi, a))
           return this.ch_Sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
+      case 31 :       //  Вычисления для Sh(sin_arctan(n, fi, a)) -- Не проверено
+          return this.sh_Sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
       default:
             return 'Нет такой функции';
             break
@@ -316,7 +319,15 @@ const trigonometFunc = {
     }
     return this.massPQ[n]
   },
-
+  sh_Sin_arctg(n, fi, a) {
+    this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
+    if (Math.sinh(this.massPQ[n]) > 1000000) {
+      this.massPQ[n] = 1000000
+    } else {
+      this.massPQ[n] = Math.sinh(this.massPQ[n]);
+    }
+    return this.massPQ[n]
+  },
   cos_Drob(n) {
     this.massPQ[n] = Math.cos(this.massPQ[n]);
     return this.massPQ[n];

@@ -63,7 +63,8 @@ const tableHeader2 = {
   27 : col7_Header,
   28 : standartHeder,
   29 : standartHeder,
-  30 : standartHeder
+  30 : standartHeder,
+  31 : standartHeder
 };
 
 const funcIamges = {
@@ -258,6 +259,12 @@ const funcIamges = {
     secondImg : "../../img/func-30.png",
     altImgText: 'ch_Sin_arctan(n, fi, a)',
     text: 'Функция ch( sqrt(a*a + fi*fi) * ( sin((n+1)*atan(fi/a)) / sin(n * atan(fi/a)) ) - a );'
+  },
+  31 : {
+    mainImg :   "../../img/func-31.png",
+    secondImg : "../../img/func-31.png",
+    altImgText: 'sh_Sin_arctan(n, fi, a)',
+    text: 'Функция sh( sqrt(a*a + fi*fi) * ( sin((n+1)*atan(fi/a)) / sin(n * atan(fi/a)) ) - a );'
   },
 };
 let tableWidth = 1200;
