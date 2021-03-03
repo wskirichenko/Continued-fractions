@@ -108,6 +108,9 @@ const trigonometFunc = {
       case 31 :       //  Вычисления для Sh(sin_arctan(n, fi, a)) -- Не проверено
           return this.sh_Sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
+      case 32 :       //  Вычисления для exp(sin_arctan(n, fi, a)) --
+          return this.exp_Sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
       default:
             return 'Нет такой функции';
             break
@@ -324,10 +327,29 @@ const trigonometFunc = {
     if (Math.sinh(this.massPQ[n]) > 1000000) {
       this.massPQ[n] = 1000000
     } else {
-      this.massPQ[n] = Math.sinh(this.massPQ[n]);
+      if ( Math.abs(Math.exp(this.massPQ[n])) < 0.000001) {
+        this.massPQ[n] = 0.000001
+      } else {
+        this.massPQ[n] = Math.sinh(this.massPQ[n]);
+      }
     }
     return this.massPQ[n]
   },
+  exp_Sin_arctg(n, fi, a) {
+    this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
+    if (Math.exp(this.massPQ[n]) > 1000000) {
+      this.massPQ[n] = 1000000
+    } else {
+      if ( Math.abs(Math.exp(this.massPQ[n])) < 0.000001) {
+        this.massPQ[n] = 0.000001
+      } else {
+        this.massPQ[n] = Math.exp(this.massPQ[n]);
+      }
+    }
+
+    return this.massPQ[n]
+  },
+
   cos_Drob(n) {
     this.massPQ[n] = Math.cos(this.massPQ[n]);
     return this.massPQ[n];

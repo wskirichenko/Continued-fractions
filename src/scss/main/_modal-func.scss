@@ -78,12 +78,12 @@
         width: 19%;
         height: 100px;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-end;
+        align-items: flex-end;
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-
+        color: #00aeff;
         background-color: rgb(255, 255, 255);
         border: 2px solid transparent;
       }
