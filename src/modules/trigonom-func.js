@@ -102,6 +102,9 @@ const trigonometFunc = {
       case 29 :       //  Вычисления для sin(sin_arctan(n, fi, a))
           return this.sin_Sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
+      case 30 :       //  Вычисления для ch(sin_arctan(n, fi, a))
+          return this.ch_Sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
       default:
             return 'Нет такой функции';
             break
@@ -275,9 +278,11 @@ const trigonometFunc = {
     return this.massPQ[n];
   },
   cos_sin_arctg(n, fi, a) {
-    this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
+    // this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
     // return this.massPQ[n] = this.changedZiro(this.massPQ[n]);
-    return this.massPQ[n] = Math.cos(this.massPQ[n]);
+    this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
+
+    return this.massPQ[n] //= this.massPQ[n] * (Math.sqrt(a*a + 4) * ( Math.sin((n+1)*Math.atan(2/a))/Math.sin(n * Math.atan(2/a)) ) - a);
   },
   cepnayaDrob(n, fi, a) {
     let pq1 = a,
@@ -300,6 +305,16 @@ const trigonometFunc = {
   sin_Sin_arctg(n, fi, a) {
     this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
     return this.massPQ[n] = Math.sin(this.massPQ[n]);
+  },
+  ch_Sin_arctg(n, fi, a) {
+    let temp1 = 0;
+    this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
+    if (Math.cosh(this.massPQ[n]) > 1000000) {
+      this.massPQ[n] = 1000000
+    } else {
+      this.massPQ[n] = Math.cosh(this.massPQ[n]);
+    }
+    return this.massPQ[n]
   },
 
   cos_Drob(n) {
