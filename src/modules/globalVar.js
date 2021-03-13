@@ -57,11 +57,11 @@ const globalVar = {
     } else {                    // Если считаем 1 табл. то используем fi
       this.fi = document.getElementsByName("fi_1")[0].value;
     }
-    return this.fi;
+    return +(this.fi);
   },
   getFi2() {
     this.fi2 = document.getElementsByName("fi_2")[0].value;
-    return this.fi2;
+    return +(this.fi2);
   },
   getMassX(i) {
     if (i == 0) {

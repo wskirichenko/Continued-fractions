@@ -146,6 +146,9 @@ const outDisplay = {
             if (numberFunc == 28) {
               trigonometFunc.setMassPQ2();
             }
+            // if (numberFunc == 33) {
+            //   trigonometFunc.setMassPQ2();
+            // }
           // }
           this.PQtemp = trigonometFunc.getFunction(numberFunc, countPQ, newX)
           return this.PQtemp

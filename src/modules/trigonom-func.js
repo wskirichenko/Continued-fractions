@@ -111,6 +111,15 @@ const trigonometFunc = {
       case 32 :       //  Вычисления для exp(sin_arctan(n, fi, a)) --
           return this.exp_Sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
+      case 33 :       //  Вычисления для дроби по сокращённому алгоритму
+          return this.Drob_smal( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 34 :       //  Вычисления для Cos(дроби) по сокращённому алгоритму
+          return this.Drob_smal_cos( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 35 :       //  Вычисления для Cos(дроби) по сокращённому алгоритму
+          return this.Drob_smal_sin( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
       default:
             return 'Нет такой функции';
             break
@@ -125,7 +134,7 @@ const trigonometFunc = {
   setMassPQ2() {
     this.massPQ2[0] = 0;
     // this.massPQ[1] = Math.cos(2);
-    this.massPQ[1] = globalVar.getFi2();
+    this.massPQ[1] = +(globalVar.getFi2());
   },
   sin(n, fi) {
     this.massPQ[n] = Math.sin(n*fi);
@@ -288,7 +297,7 @@ const trigonometFunc = {
     // return this.massPQ[n] = this.changedZiro(this.massPQ[n]);
     this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
 
-    return this.massPQ[n] //= this.massPQ[n] * (Math.sqrt(a*a + 4) * ( Math.sin((n+1)*Math.atan(2/a))/Math.sin(n * Math.atan(2/a)) ) - a);
+    return this.massPQ[n] = Math.cos(this.massPQ[n]) //= this.massPQ[n] * (Math.sqrt(a*a + 4) * ( Math.sin((n+1)*Math.atan(2/a))/Math.sin(n * Math.atan(2/a)) ) - a);
   },
   cepnayaDrob(n, fi, a) {
     let pq1 = a,
@@ -353,6 +362,39 @@ const trigonometFunc = {
   cos_Drob(n) {
     this.massPQ[n] = Math.cos(this.massPQ[n]);
     return this.massPQ[n];
+  },
+  Drob_smal(n, fi, a) {
+    let pq1 = a,
+        pqCh = a*a + fi*fi;
+
+    if (n === 1) {
+      this.massPQ[n] = pq1;
+    } else {
+      this.massPQ[n] = pq1 - (pqCh/(pq1+this.massPQ[n-1]));
+    }
+    return this.massPQ[n];
+  },
+  Drob_smal_cos(n, fi, a) {
+    let pq1 = a,
+    pqCh = a*a + fi*fi;
+
+    if (n === 1) {
+      this.massPQ2[n] = pq1;
+    } else {
+      this.massPQ2[n] = pq1 - (pqCh/(pq1+this.massPQ2[n-1]));
+    }
+    return this.massPQ[n] = Math.cos(this.massPQ2[n]);
+  },
+  Drob_smal_sin(n, fi, a) {
+    let pq1 = a,
+    pqCh = a*a + fi*fi;
+
+    if (n === 1) {
+      this.massPQ2[n] = pq1;
+    } else {
+      this.massPQ2[n] = pq1 - (pqCh/(pq1+this.massPQ2[n-1]));
+    }
+    return this.massPQ[n] = Math.sin(this.massPQ2[n]);
   },
 
 

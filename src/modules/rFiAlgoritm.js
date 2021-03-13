@@ -158,12 +158,30 @@ rFiAlgoritm = {
           break;
 
       case 26 :       //  Погрешность для
-          pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+          pogresnost = Math.abs( Math.cosh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+
           return pogresnost;
           break;
 
+      case 28 :       //  Погрешность для дроби
+          pogresnost = Math.abs( 1 - arg );
+          return pogresnost;
+          break;
       case 29 :       //  Погрешность для sin(sin_arctan(n, fi, a))
           pogresnost = Math.abs( 0.5 - arg );
+          return pogresnost;
+          break;
+
+      case 33 :       //  Погрешность для дроби
+          pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+          return pogresnost;
+          break;
+      case 34 :       //  Погрешность для дроби cos
+          pogresnost = Math.abs( Math.cosh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
+      case 35 :       //  Погрешность для дроби sin
+          pogresnost = Math.abs( Math.cosh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
           return pogresnost;
           break;
       default:
@@ -286,10 +304,25 @@ rFiAlgoritm = {
         break;
 
       case 26 :       //  Погрешность
+        pogresnost = Math.abs( Math.atan(Math.sinh(globalVar.getFi(newX))) - arg );
+        return pogresnost;
+      case 28 :       //  Погрешность для дроби
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;
+
+      case 29 :       //  Погрешность sin(sin_arctan(n, fi, a))
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
 
-      case 29 :       //  Погрешность sin(sin_arctan(n, fi, a))
+      case 33 :       //  Погрешность для дроби
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;
+      case 34 :       //  Погрешность sin(sin_arctan(n, fi, a))
+        pogresnost = Math.abs( Math.atan(Math.sinh(globalVar.getFi(newX))) - arg );
+        return pogresnost;
+      case 35 :       //  Погрешность для дроби
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
 

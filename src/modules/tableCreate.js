@@ -65,7 +65,10 @@ const tableHeader2 = {
   29 : standartHeder,
   30 : standartHeder,
   31 : standartHeder,
-  32 : standartHeder
+  32 : standartHeder,
+  33 : standartHeder,
+  34 : standartHeder,
+  35 : standartHeder
 };
 
 const funcIamges = {
@@ -272,6 +275,24 @@ const funcIamges = {
     secondImg : "../../img/func-32.png",
     altImgText: 'exp_Sin_arctan(n, fi, a)',
     text: 'Функция exp( sqrt(a*a + fi*fi) * ( sin((n+1)*atan(fi/a)) / sin(n * atan(fi/a)) ) - a );'
+  },
+  33 : {
+    mainImg :   "../../img/func-28.png",
+    secondImg : "../../img/func-28.png",
+    altImgText: 'Drob_smal(n, pq1, pqCh, pqZ)',
+    text: 'Функция  Вычисления Дроби по сокращённому алгоритму'
+  },
+  34 : {
+    mainImg :   "../../img/func-34.png",
+    secondImg : "../../img/func-34.png",
+    altImgText: 'Drob_smal_cos(n, pq1, pqCh, pqZ)',
+    text: 'Функция  Вычисления cos(Дроби) по сокращённому алгоритму'
+  },
+  35 : {
+    mainImg :   "../../img/func-34.png",
+    secondImg : "../../img/func-34.png",
+    altImgText: 'Drob_smal_sin(n, pq1, pqCh, pqZ)',
+    text: 'Функция  Вычисления sin(Дроби) по сокращённому алгоритму'
   },
 };
 let tableWidth = 1200;
