@@ -120,6 +120,15 @@ const trigonometFunc = {
       case 35 :       //  Вычисления для Cos(дроби) по сокращённому алгоритму
           return this.Drob_smal_sin( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
+      case 36 :       //  Вычисления для tg(дроби) по сокращённому алгоритму
+          return this.Drob_smal_tg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 37 :       //  Вычисления для sin(sin_arctan(n, fi, a))
+          return this.tg_Sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 38 :       //  Вычисления для th(дроби) по сокращённому алгоритму
+          return this.Drob_smal_th( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
       default:
             return 'Нет такой функции';
             break
@@ -321,6 +330,10 @@ const trigonometFunc = {
     this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
     return this.massPQ[n] = Math.sin(this.massPQ[n]);
   },
+  tg_Sin_arctg(n, fi, a) {
+    this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
+    return this.massPQ[n] = Math.tan(this.massPQ[n]);
+  },
   ch_Sin_arctg(n, fi, a) {
     let temp1 = 0;
     this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
@@ -396,7 +409,28 @@ const trigonometFunc = {
     }
     return this.massPQ[n] = Math.sin(this.massPQ2[n]);
   },
+  Drob_smal_tg(n, fi, a) {
+    let pq1 = a,
+    pqCh = a*a + fi*fi;
 
+    if (n === 1) {
+      this.massPQ2[n] = pq1;
+    } else {
+      this.massPQ2[n] = pq1 - (pqCh/(pq1+this.massPQ2[n-1]));
+    }
+    return this.massPQ[n] = Math.tan(this.massPQ2[n]);
+  },
+  Drob_smal_th(n, fi, a) {
+    let pq1 = a,
+    pqCh = a*a + fi*fi;
+
+    if (n === 1) {
+      this.massPQ2[n] = pq1;
+    } else {
+      this.massPQ2[n] = pq1 - (pqCh/(pq1+this.massPQ2[n-1]));
+    }
+    return this.massPQ[n] = Math.tanh(this.massPQ2[n]);
+  },
 
   changedZiro(x) {
     if (x==0) {

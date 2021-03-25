@@ -181,7 +181,11 @@ rFiAlgoritm = {
           return pogresnost;
           break;
       case 35 :       //  Погрешность для дроби sin
-          pogresnost = Math.abs( Math.cosh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          pogresnost = Math.abs( Math.sinh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
+      case 36 :       //  Погрешность для дроби sin
+          pogresnost = Math.abs( Math.tan(globalVar.getFi(newX)) - arg );
           return pogresnost;
           break;
       default:
@@ -325,7 +329,15 @@ rFiAlgoritm = {
       case 35 :       //  Погрешность для дроби
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
-
+      case 36 :       //  Погрешность для дроби
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+      case 37 :       //  Погрешность для дроби
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+      case 38 :       //  Погрешность для дроби
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
       default:
         return 'Нет погрешности для fi';
         break

@@ -68,7 +68,10 @@ const tableHeader2 = {
   32 : standartHeder,
   33 : standartHeder,
   34 : standartHeder,
-  35 : standartHeder
+  35 : standartHeder,
+  36 : standartHeder,
+  37 : standartHeder,
+  38 : standartHeder,
 };
 
 const funcIamges = {
@@ -293,6 +296,24 @@ const funcIamges = {
     secondImg : "../../img/func-34.png",
     altImgText: 'Drob_smal_sin(n, pq1, pqCh, pqZ)',
     text: 'Функция  Вычисления sin(Дроби) по сокращённому алгоритму'
+  },
+  36 : {
+    mainImg :   "../../img/func-34.png",
+    secondImg : "../../img/func-34.png",
+    altImgText: 'Drob_smal_sin(n, pq1, pqCh, pqZ)',
+    text: 'Функция  Вычисления tg(Дроби) по сокращённому алгоритму'
+  },
+  37 : {
+    mainImg :   "../../img/func-26.png",
+    secondImg : "../../img/func-26.png",
+    altImgText: 'Drob_smal_sin(n, pq1, pqCh, pqZ)',
+    text: 'Функция  Вычисления tg(sin_atan)'
+  },
+  38 : {
+    mainImg :   "../../img/func-28.png",
+    secondImg : "../../img/func-28.png",
+    altImgText: 'Drob_smal_sin(n, pq1, pqCh, pqZ)',
+    text: 'Функция  Вычисления th(sin_atan)'
   },
 };
 let tableWidth = 1200;
