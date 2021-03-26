@@ -117,7 +117,7 @@ const trigonometFunc = {
       case 34 :       //  Вычисления для Cos(дроби) по сокращённому алгоритму
           return this.Drob_smal_cos( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
-      case 35 :       //  Вычисления для Cos(дроби) по сокращённому алгоритму
+      case 35 :       //  Вычисления для sin(дроби) по сокращённому алгоритму
           return this.Drob_smal_sin( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
       case 36 :       //  Вычисления для tg(дроби) по сокращённому алгоритму
@@ -128,6 +128,9 @@ const trigonometFunc = {
           break;
       case 38 :       //  Вычисления для th(дроби) по сокращённому алгоритму
           return this.Drob_smal_th( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 39 :       //  Вычисления для th(sin_arctan(n, fi, a))
+          return this.th_Sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
       default:
             return 'Нет такой функции';
@@ -333,6 +336,10 @@ const trigonometFunc = {
   tg_Sin_arctg(n, fi, a) {
     this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
     return this.massPQ[n] = Math.tan(this.massPQ[n]);
+  },
+  th_Sin_arctg(n, fi, a) {
+    this.massPQ[n] = Math.sqrt(a*a + fi*fi) * ( Math.sin((n+1)*Math.atan(fi/a))/Math.sin(n * Math.atan(fi/a)) ) - a;
+    return this.massPQ[n] = Math.tanh(this.massPQ[n]);
   },
   ch_Sin_arctg(n, fi, a) {
     let temp1 = 0;

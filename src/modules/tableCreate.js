@@ -72,6 +72,7 @@ const tableHeader2 = {
   36 : standartHeder,
   37 : standartHeder,
   38 : standartHeder,
+  39 : standartHeder,
 };
 
 const funcIamges = {
@@ -292,27 +293,33 @@ const funcIamges = {
     text: 'Функция  Вычисления cos(Дроби) по сокращённому алгоритму'
   },
   35 : {
-    mainImg :   "../../img/func-34.png",
-    secondImg : "../../img/func-34.png",
+    mainImg :   "../../img/func-35.png",
+    secondImg : "../../img/func-35.png",
     altImgText: 'Drob_smal_sin(n, pq1, pqCh, pqZ)',
     text: 'Функция  Вычисления sin(Дроби) по сокращённому алгоритму'
   },
   36 : {
-    mainImg :   "../../img/func-34.png",
-    secondImg : "../../img/func-34.png",
+    mainImg :   "../../img/func-36.png",
+    secondImg : "../../img/func-36.png",
     altImgText: 'Drob_smal_sin(n, pq1, pqCh, pqZ)',
     text: 'Функция  Вычисления tg(Дроби) по сокращённому алгоритму'
   },
   37 : {
-    mainImg :   "../../img/func-26.png",
-    secondImg : "../../img/func-26.png",
+    mainImg :   "../../img/func-37.png",
+    secondImg : "../../img/func-37.png",
     altImgText: 'Drob_smal_sin(n, pq1, pqCh, pqZ)',
     text: 'Функция  Вычисления tg(sin_atan)'
   },
   38 : {
-    mainImg :   "../../img/func-28.png",
-    secondImg : "../../img/func-28.png",
-    altImgText: 'Drob_smal_sin(n, pq1, pqCh, pqZ)',
+    mainImg :   "../../img/func-38.png",
+    secondImg : "../../img/func-38.png",
+    altImgText: 'Drob_smal_th(n, fi, a)',
+    text: 'Функция  Вычисления th(sin_atan)'
+  },
+  39 : {
+    mainImg :   "../../img/func-39.png",
+    secondImg : "../../img/func-39.png",
+    altImgText: 'th_Sin_arctg(n, fi, a)',
     text: 'Функция  Вычисления th(sin_atan)'
   },
 };
