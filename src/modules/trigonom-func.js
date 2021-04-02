@@ -132,6 +132,9 @@ const trigonometFunc = {
       case 39 :       //  Вычисления для th(sin_arctan(n, fi, a))
           return this.th_Sin_arctg( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
+      case 40 :       //  Вычисления для th(дроби) по сокращённому алгоритму
+          return this.Drob_smal_sh( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
       default:
             return 'Нет такой функции';
             break
@@ -437,6 +440,26 @@ const trigonometFunc = {
       this.massPQ2[n] = pq1 - (pqCh/(pq1+this.massPQ2[n-1]));
     }
     return this.massPQ[n] = Math.tanh(this.massPQ2[n]);
+  },
+  Drob_smal_sh(n, fi, a) {
+    let pq1 = a,
+    pqCh = a*a + fi*fi;
+
+    if (n === 1) {
+      this.massPQ2[n] = pq1;
+    } else {
+      this.massPQ2[n] = pq1 - (pqCh/(pq1+this.massPQ2[n-1]));
+    }
+    if ( this.massPQ2[n] > 10) {
+      return this.massPQ[n] = Math.sinh(10);
+    } else {
+      if ( this.massPQ2[n] < -10) {
+        return this.massPQ[n] = Math.sinh(-10);
+      }
+      else {
+        return this.massPQ[n] = Math.sinh(this.massPQ2[n]);
+      }
+    }
   },
 
   changedZiro(x) {

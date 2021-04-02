@@ -73,6 +73,7 @@ const tableHeader2 = {
   37 : standartHeder,
   38 : standartHeder,
   39 : standartHeder,
+  40 : standartHeder,
 };
 
 const funcIamges = {
@@ -321,6 +322,12 @@ const funcIamges = {
     secondImg : "../../img/func-39.png",
     altImgText: 'th_Sin_arctg(n, fi, a)',
     text: 'Функция  Вычисления th(sin_atan)'
+  },
+  40 : {
+    mainImg :   "../../img/func-40.png",
+    secondImg : "../../img/func-40.png",
+    altImgText: 'Drob_smal_sh(n, fi, a)',
+    text: 'Функция  Вычисления sh(sin_atan)'
   },
 };
 let tableWidth = 1200;
