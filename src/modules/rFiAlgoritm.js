@@ -27,6 +27,14 @@ rFiAlgoritm = {
     Rez = (this.colNegative / globalVar.getNumb()) * Math.PI;
     return Rez;
   },
+  argumentFi_1(mass, i) {  // где mas - массив с подходящими для которых нужно вычислить fi
+    let Rez = 0;
+    if (mass < 1) {          // Если очередной элемент массива отрицательный
+        this.colNegative += 1;
+    };
+    Rez = (this.colNegative / globalVar.getNumb()) * Math.PI;
+    return Rez;
+  },
   clearRFi() {
     this.summ = 0;
     this.colNegative = 0;
@@ -188,6 +196,35 @@ rFiAlgoritm = {
           pogresnost = Math.abs( Math.tan(globalVar.getFi(newX)) - arg );
           return pogresnost;
           break;
+
+      case 43 :       //  Погрешность для exp(Drob)
+          pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+          return pogresnost;
+          break;
+      case 44 :       //  Погрешность для sin(exp(Drob))
+          pogresnost = Math.abs( Math.sinh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
+      case 45 :       //  Погрешность для cos(exp(Drob))
+          pogresnost = Math.abs( Math.cosh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
+      case 46 :       //  Погрешность для tg(exp(Drob))
+          pogresnost = Math.abs( Math.tanh(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
+      case 47 :       //  Погрешность для sin_sqrt_expDrob
+          pogresnost = Math.abs( Math.sinh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
+      case 48 :       //  Погрешность для cos_sqrt_expDrob
+          pogresnost = Math.abs( Math.cosh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
+      case 49 :       //  Погрешность для tg(exp(Drob))
+          pogresnost = Math.abs( Math.tanh(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
       default:
         return 'Нет погрешности для r';
         break
@@ -319,6 +356,11 @@ rFiAlgoritm = {
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
 
+      case 31 :       //  Погрешность для дроби
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;
+
       case 33 :       //  Погрешность для дроби
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
@@ -336,6 +378,28 @@ rFiAlgoritm = {
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
       case 38 :       //  Погрешность для дроби
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+
+      case 43 :       //  Погрешность для exp(дроби)
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+      case 44 :       //  Погрешность для sin(exp(дроби))
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+      case 45 :       //  Погрешность для cos(exp(дроби))
+        pogresnost = Math.abs( Math.atan(Math.sinh(globalVar.getFi(newX))) - arg );
+        return pogresnost;
+      case 46 :       //  Погрешность для cos(exp(дроби))
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+      case 47 :       //  Погрешность для sin(exp(дроби))
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+      case 48 :       //  Погрешность для cos(exp(дроби))
+        pogresnost = Math.abs( Math.atan(Math.sinh(globalVar.getFi(newX))) - arg );
+        return pogresnost;
+      case 49 :       //  Погрешность для tg(exp(дроби))
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
       default:

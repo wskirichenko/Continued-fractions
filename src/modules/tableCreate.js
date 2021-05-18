@@ -74,6 +74,15 @@ const tableHeader2 = {
   38 : standartHeder,
   39 : standartHeder,
   40 : standartHeder,
+  41 : standartHeder,
+  42 : standartHeder,
+  43 : standartHeder,
+  44 : standartHeder,
+  45 : standartHeder,
+  46 : standartHeder,
+  47 : standartHeder,
+  48 : standartHeder,
+  49 : standartHeder,
 };
 
 const funcIamges = {
@@ -328,6 +337,60 @@ const funcIamges = {
     secondImg : "../../img/func-40.png",
     altImgText: 'Drob_smal_sh(n, fi, a)',
     text: 'Функция  Вычисления sh(sin_atan)'
+  },
+  41 : {
+    mainImg :   "../../img/func-41.png",
+    secondImg : "../../img/func-41.png",
+    altImgText: 'Drob_smal_ch(n, fi, a)',
+    text: 'Функция  Вычисления ch(sin_atan)'
+  },
+  42 : {
+    mainImg :   "../../img/func-42.png",
+    secondImg : "../../img/func-42.png",
+    altImgText: 'sin_sinDivsin(n, fi)',
+    text: 'Функция  Вычисления sin(sin(n+1)/sin(n))'
+  },
+  43 : {
+    mainImg :   "../../img/func-43.png",
+    secondImg : "../../img/func-43.png",
+    altImgText: 'exp_Drob_smal(n, fi)',
+    text: 'Функция  Вычисления exp(Drob)'
+  },
+  44 : {
+    mainImg :   "../../img/func-44.png",
+    secondImg : "../../img/func-44.png",
+    altImgText: 'sin_expDrob_smal(n, fi)',
+    text: 'Функция  Вычисления sin(exp(Drob))'
+  },
+  45 : {
+    mainImg :   "../../img/func-45.png",
+    secondImg : "../../img/func-45.png",
+    altImgText: 'cos_expDrob_smal(n, fi)',
+    text: 'Функция  Вычисления cos(exp(Drob))'
+  },
+  46 : {
+    mainImg :   "../../img/func-46.png",
+    secondImg : "../../img/func-46.png",
+    altImgText: 'tg_expDrob_smal(n, fi)',
+    text: 'Функция  Вычисления tg(exp(Drob))'
+  },
+  47 : {
+    mainImg :   "../../img/func-47.png",
+    secondImg : "../../img/func-47.png",
+    altImgText: 'sin_sqrt_expDrob(n, fi)',
+    text: 'Функция  Вычисления sin(sqrt*exp(Drob)-b)'
+  },
+  48 : {
+    mainImg :   "../../img/func-48.png",
+    secondImg : "../../img/func-48.png",
+    altImgText: 'cos_sqrt_expDrob(n, fi)',
+    text: 'Функция  Вычисления cos(sqrt*exp(Drob)-b)'
+  },
+  49 : {
+    mainImg :   "../../img/func-49.png",
+    secondImg : "../../img/func-49.png",
+    altImgText: 'tg_sqrt_expDrob(n, fi)',
+    text: 'Функция  Вычисления tg(sqrt*exp(Drob)-b)'
   },
 };
 let tableWidth = 1200;
