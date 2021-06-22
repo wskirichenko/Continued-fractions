@@ -161,7 +161,41 @@ const trigonometFunc = {
           break;    
       case 49 :       //  Вычисления для дроби по сокращённому алгоритму cos(sqrt*exp(Drobi)-1)
           return this.tg_sqrt_expDrob( countPQ, globalVar.getFi(newX) );
+          break;
+      case 50 :       //  Вычисления для дроби по сокращённому алгоритму sqrt*exp(Drobi)-1
+          return this.e_sqrt_expDrob( countPQ, globalVar.getFi(newX) );
           break;      
+      case 51 :       //  Вычисления для функции суммы косинусов + 1
+          return this.summCos_1( countPQ, globalVar.getFi(newX) );
+          break;
+      case 52 :       //  Вычисления для функции суммы косинусов + 1
+          return this.summSin_1( countPQ, globalVar.getFi(newX) );
+          break;
+      case 53 :       //  Вычисления для sin( sin(n fi)/sin(n-1 fi) )
+          return this.e_sin_sinDiv( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 54 :       //  Вычисления для дроби по сокращённому алгоритму 2
+          return this.Drob_smal_2( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 55 :       //  Вычисления для sin( sqrt(a^2+fi^2) * sin(n fi)/sin(n-1 fi) )
+          return this.sin_e_sinDiv( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 56 :       //  Вычисления для sin( sqrt(a^2+fi^2) * sin(n fi)/sin(n-1 fi) )
+          return this.tg_e_sinDiv( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 57 :       //  Вычисления для sin(sin(n+1)/sin(n))
+          return this.sin_x_sinDivsin( countPQ, globalVar.getFi(newX) );
+          break;
+      case 58 :       //  Вычисления для cos(sin(n+1)/sin(n))
+          return this.cos_x_sinDivsin( countPQ, globalVar.getFi(newX) );
+          break;
+      case 59 :       //  Вычисления для tg(sin(n+1)/sin(n))
+          return this.tg_x_sinDivsin( countPQ, globalVar.getFi(newX) );
+          break;
+      case 60 :       //  Вычисления для sin(x*sin((n+1)x)/sin(nx))
+          return this.sin_x_SinxDivSinx( countPQ, globalVar.getFi(newX) );
+          break;
+          
       default:
             return 'Нет такой функции';
             break
@@ -555,6 +589,7 @@ const trigonometFunc = {
   sin_sqrt_expDrob(n, fi) {
     let pq1 = 1,
         pqCh = 1 + (Math.atan(fi) * Math.atan(fi));
+        porog = 3.55;
 
     if (n === 1) {
       this.massPQ2[n] = pq1;
@@ -562,11 +597,11 @@ const trigonometFunc = {
       this.massPQ2[n] = pq1 - (pqCh/(pq1+this.massPQ2[n-1]));
     };
 
-    if ( this.massPQ2[n] > 90) {
-      return this.massPQ[n] = Math.sin(Math.sqrt(1+fi*fi) * Math.exp(90) - 1);
+    if ( this.massPQ2[n] > porog) {
+      return this.massPQ[n] = Math.sin(Math.sqrt(1+fi*fi) * Math.exp(porog) - 1);
     } else {
-      if ( this.massPQ2[n] < -90 ) {
-        return this.massPQ[n] = Math.sin(Math.sqrt(1+fi*fi) * Math.exp(-90) - 1);;
+      if ( this.massPQ2[n] < -porog ) {
+        return this.massPQ[n] = Math.sin(Math.sqrt(1+fi*fi) * Math.exp(-porog) - 1);
       }
       else {
         this.massPQ[n] = Math.sin(Math.sqrt(1+fi*fi) * Math.exp(this.massPQ2[n]) - 1);
@@ -579,6 +614,7 @@ const trigonometFunc = {
   cos_sqrt_expDrob(n, fi) {
     let pq1 = 1,
         pqCh = 1 + (Math.atan(fi) * Math.atan(fi));
+        porog = 3.55;
 
     if (n === 1) {
       this.massPQ2[n] = pq1;
@@ -586,11 +622,11 @@ const trigonometFunc = {
       this.massPQ2[n] = pq1 - (pqCh/(pq1+this.massPQ2[n-1]));
     };
 
-    if ( this.massPQ2[n] > 90) {
-      return this.massPQ[n] = Math.cos(Math.sqrt(1+fi*fi) * Math.exp(90) - 1);
+    if ( this.massPQ2[n] > porog) {
+      return this.massPQ[n] = Math.cos(Math.sqrt(1+fi*fi) * Math.exp(porog) - 1);
     } else {
-      if ( this.massPQ2[n] < -90 ) {
-        return this.massPQ[n] = Math.cos(Math.sqrt(1+fi*fi) * Math.exp(-90) - 1);;
+      if ( this.massPQ2[n] < -porog ) {
+        return this.massPQ[n] = Math.cos(Math.sqrt(1+fi*fi) * Math.exp(-porog) - 1);;
       }
       else {
         this.massPQ[n] = Math.cos(Math.sqrt(1+fi*fi) * Math.exp(this.massPQ2[n]) - 1);
@@ -603,6 +639,7 @@ const trigonometFunc = {
   tg_sqrt_expDrob(n, fi) {
     let pq1 = 1,
         pqCh = 1 + (Math.atan(fi) * Math.atan(fi));
+        porog = 3.55;
 
     if (n === 1) {
       this.massPQ2[n] = pq1;
@@ -610,14 +647,39 @@ const trigonometFunc = {
       this.massPQ2[n] = pq1 - (pqCh/(pq1+this.massPQ2[n-1]));
     };
 
-    if ( this.massPQ2[n] > 90) {
-      return this.massPQ[n] = Math.tan(Math.sqrt(1+fi*fi) * Math.exp(90) - 1);
+    if ( this.massPQ2[n] > porog) {
+      return this.massPQ[n] = Math.tan(Math.sqrt(1+fi*fi) * Math.exp(porog) - 1);
     } else {
-      if ( this.massPQ2[n] < -90 ) {
-        return this.massPQ[n] = Math.tan(Math.sqrt(1+fi*fi) * Math.exp(-90) - 1);;
+      if ( this.massPQ2[n] < -porog ) {
+        return this.massPQ[n] = Math.tan(Math.sqrt(1+fi*fi) * Math.exp(-porog) - 1);;
       }
       else {
         this.massPQ[n] = Math.tan(Math.sqrt(1+fi*fi) * Math.exp(this.massPQ2[n]) - 1);
+        return this.massPQ[n];
+
+      }
+    }
+  },
+
+  e_sqrt_expDrob(n, fi) {
+    let pq1 = 1,
+        pqCh = 1 + (Math.atan(fi) * Math.atan(fi)),
+        porog = 3.55;
+
+    if (n === 1) {
+      this.massPQ2[n] = pq1;
+    } else {
+      this.massPQ2[n] = pq1 - (pqCh/(pq1+this.massPQ2[n-1]));
+    };
+
+    if ( this.massPQ2[n] > porog) {
+      return this.massPQ[n] = Math.sqrt(1+fi*fi) * Math.exp(porog) - 1;
+    } else {
+      if ( this.massPQ2[n] < -porog ) {
+        return this.massPQ[n] = Math.sqrt(1+fi*fi) * Math.exp(-porog) - 1;
+      }
+      else {
+        this.massPQ[n] = Math.sqrt(1+fi*fi) * Math.exp(this.massPQ2[n]) - 1;
         return this.massPQ[n];
 
       }
@@ -642,7 +704,7 @@ const trigonometFunc = {
     if (n === 1) {
       this.massPQ2[n] = pq1;
     } else {
-      this.massPQ2[n] = pq1 - (pqCh/(2-this.massPQ2[n-1]));
+      this.massPQ2[n] = pq1 - (pqCh/(pq1+this.massPQ2[n-1]));
     }
     return this.massPQ[n] = Math.cos(this.massPQ2[n]);
   },
@@ -723,6 +785,68 @@ const trigonometFunc = {
     this.massPQ[n] = Math.sin( Math.sin((n+1)*fi)/Math.sin(n*fi) );
     return this.massPQ[n];
   },
+  summCos_1(n, fi) {
+    if (n === 1) {
+      this.massPQ[n] = 1;
+    } else {
+      this.massPQ[n] = this.massPQ[n-1] + Math.cos((n-1)*fi);
+    }
+    return this.massPQ[n];
+  },
+  summSin_1(n, fi) {
+    if (n === 1) {
+      this.massPQ[n] = 1;
+    } else {
+      this.massPQ[n] = this.massPQ[n-1] + Math.sin((n-1)*fi);
+    }
+    return this.massPQ[n];
+  },
+
+  e_sin_sinDiv(n, fi, a) {
+    this.massPQ[n] =  Math.sqrt(a*a + fi*fi) * ( Math.sin( (n+1) * Math.atan(fi/a) ) / Math.sin(n * Math.atan(fi/a)) );
+    return this.massPQ[n];
+  },
+  Drob_smal_2(n, fi, a) {
+    let pq1 = 2*a,
+        pqCh = a*a + fi*fi;
+
+    if (n === 1) {
+      this.massPQ[n] = pq1;
+    } else {
+      this.massPQ[n] = pq1 - (pqCh/(this.massPQ[n-1]));
+    }
+    return this.massPQ[n];
+  },
+  sin_e_sinDiv(n, fi, a) {
+    this.massPQ[n] = Math.sin( Math.sqrt(a*a + fi*fi) * ( Math.sin( (n+1) * Math.atan(fi/a) ) / Math.sin(n * Math.atan(fi/a)) ) );
+    return this.massPQ[n];
+  },
+  tg_e_sinDiv(n, fi, a) {
+    this.massPQ[n] = Math.tan( Math.sqrt(a*a + fi*fi) * ( Math.sin( (n+1) * Math.atan(fi/a) ) / Math.sin(n * Math.atan(fi/a)) ) );
+    return this.massPQ[n];
+  },
+  sin_x_sinDivsin(n, fi) {
+    let pi_2 = Math.PI/2 - 0.001;
+    this.massPQ[n] = Math.sin(fi * ( Math.sin((n+1)*pi_2)/Math.sin(n*pi_2) ) );
+    // this.massPQ[n] = ( Math.sin((n+1)*pi_2)/Math.sin(n*pi_2) ) ;
+    return this.massPQ[n];
+  },
+  cos_x_sinDivsin(n, fi) {
+    let pi_2 = Math.PI/2 - 0.001;
+    this.massPQ[n] = Math.cos( fi * (Math.sin((n+1)*pi_2)/Math.sin(n*pi_2)) );
+    return this.massPQ[n];
+  },
+  tg_x_sinDivsin(n, fi) {
+    let pi_2 = Math.PI/2 - 0.001;
+    this.massPQ[n] = Math.tan( fi * (Math.sin((n+1)*pi_2)/Math.sin(n*pi_2)) );
+    return this.massPQ[n];
+  },
+
+  sin_x_SinxDivSinx(n, fi) {
+    this.massPQ[n] = Math.sin(fi * ( Math.sin((n+1)*fi)/Math.sin(n*fi) ) );
+    return this.massPQ[n];
+  },
+
 
   changedZiro(x) {
     if (x==0) {

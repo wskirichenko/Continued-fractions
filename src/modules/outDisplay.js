@@ -160,7 +160,7 @@ const outDisplay = {
           return rFiAlgoritm.getMassR(countPQ);
           break
       case 'argumentFi' :   // Столбик таблицы с результатами вычисления аргумента fi (massFi)
-          if (numberFunc == 43) {
+          if ( (numberFunc == 43)  ) {
             this.fiTmp = rFiAlgoritm.argumentFi_1(trigonometFunc.massPQ[countPQ], countPQ);
           } else {
             this.fiTmp = rFiAlgoritm.argumentFi(trigonometFunc.massPQ[countPQ], countPQ);

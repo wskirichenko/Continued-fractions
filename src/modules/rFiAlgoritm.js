@@ -197,6 +197,10 @@ rFiAlgoritm = {
           return pogresnost;
           break;
 
+      case 42 :       //  Погрешность для дроби sin
+          pogresnost = Math.abs( Math.sinh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
       case 43 :       //  Погрешность для exp(Drob)
           pogresnost = Math.abs( globalVar.getFi(newX) - arg );
           return pogresnost;
@@ -222,6 +226,19 @@ rFiAlgoritm = {
           return pogresnost;
           break;
       case 49 :       //  Погрешность для tg(exp(Drob))
+          pogresnost = Math.abs( Math.tanh(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
+
+      case 57 :       //  Погрешность для sin(x*sin/sin)
+          pogresnost = Math.abs( Math.sinh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
+      case 58 :       //  Погрешность для sin(x*sin/sin)
+          pogresnost = Math.abs( Math.cosh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
+      case 59 :       //  Погрешность для tg(exp(Drob))
           pogresnost = Math.abs( Math.tanh(globalVar.getFi(newX)) - arg );
           return pogresnost;
           break;
@@ -381,6 +398,9 @@ rFiAlgoritm = {
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
 
+      case 42 :       //  Погрешность для exp(дроби)
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
       case 43 :       //  Погрешность для exp(дроби)
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
@@ -400,6 +420,16 @@ rFiAlgoritm = {
         pogresnost = Math.abs( Math.atan(Math.sinh(globalVar.getFi(newX))) - arg );
         return pogresnost;
       case 49 :       //  Погрешность для tg(exp(дроби))
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+
+      case 57 :       //  Погрешность для sin(x*sin/sin)
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+      case 58 :       //  Погрешность для cos(exp(дроби))
+        pogresnost = Math.abs( Math.atan(Math.sinh(globalVar.getFi(newX))) - arg );
+        return pogresnost;
+      case 59 :       //  Погрешность для sin(x*sin/sin)
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
       default:

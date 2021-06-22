@@ -83,6 +83,17 @@ const tableHeader2 = {
   47 : standartHeder,
   48 : standartHeder,
   49 : standartHeder,
+  50 : standartHeder,
+  51 : standartHeder,
+  52 : standartHeder,
+  53 : standartHeder,
+  54 : standartHeder,
+  55 : standartHeder,
+  56 : standartHeder,
+  57 : standartHeder,
+  58 : standartHeder,
+  59 : standartHeder,
+  60 : standartHeder,
 };
 
 const funcIamges = {
@@ -391,6 +402,72 @@ const funcIamges = {
     secondImg : "../../img/func-49.png",
     altImgText: 'tg_sqrt_expDrob(n, fi)',
     text: 'Функция  Вычисления tg(sqrt*exp(Drob)-b)'
+  },
+  50 : {
+    mainImg :   "../../img/func-49.png",
+    secondImg : "../../img/func-49.png",
+    altImgText: 'e_sqrt_expDrob(n, fi)',
+    text: 'Функция  Вычисления sqrt*exp(Drob)-b)'
+  },
+  51 : {
+    mainImg :   "../../img/func-05.png",
+    secondImg : "../../img/func-05.png",
+    altImgText: 'summCos_1(n, fi)',
+    text: 'Функция сумма косинусов cos(n fi) +1 '
+  },
+  52 : {
+    mainImg :   "../../img/func-01.png",
+    secondImg : "../../img/func-01.png",
+    altImgText: 'summSin_1(n, fi)',
+    text: 'Функция сумма синусов sin(n fi) +1 '
+  },
+  53 : {
+    mainImg :   "../../img/func-53.png",
+    secondImg : "../../img/func-53.png",
+    altImgText: 'e_sin_sinDiv(n, fi, a)',
+    text: 'Функция синус от предела Никипорца e*sin( sin(n fi)/sin((n-1)fi) ) '
+  },
+  54 : {
+    mainImg :   "../../img/func-54.png",
+    secondImg : "../../img/func-54.png",
+    altImgText: 'Drob_smal_2(n, fi, a)',
+    text: 'Функция  Вычисления Дроби 2 по сокращённому алгоритму'
+  },
+  55 : {
+    mainImg :   "../../img/func-55.png",
+    secondImg : "../../img/func-55.png",
+    altImgText: 'sin_e_sinDiv(n, fi, a)',
+    text: 'Функция  Вычисления для sin( sqrt(a^2+fi^2) * sin(n fi)/sin(n-1 fi) )'
+  },
+  56 : {
+    mainImg :   "../../img/func-56.png",
+    secondImg : "../../img/func-56.png",
+    altImgText: 'tg_e_sinDiv(n, fi, a)',
+    text: 'Функция  Вычисления для tg( sqrt(a^2+fi^2) * sin(n fi)/sin(n-1 fi) )'
+  },
+  57 : {
+    mainImg :   "../../img/func-57.png",
+    secondImg : "../../img/func-57.png",
+    altImgText: 'sin_x_sinDiv(n, fi)',
+    text: 'Функция  Вычисления для sin( x*(sin(n+1)/sin(n)) )'
+  },
+  58 : {
+    mainImg :   "../../img/func-58.png",
+    secondImg : "../../img/func-58.png",
+    altImgText: 'cos_x_sinDiv(n, fi)',
+    text: 'Функция  Вычисления для cos( x*(sin(n+1)/sin(n)) )'
+  },
+  59 : {
+    mainImg :   "../../img/func-59.png",
+    secondImg : "../../img/func-59.png",
+    altImgText: 'tg_x_sinDiv(n, fi)',
+    text: 'Функция  Вычисления для tg( x*(sin(n+1)/sin(n)) )'
+  },
+  60 : {
+    mainImg :   "../../img/func-57.png",
+    secondImg : "../../img/func-57.png",
+    altImgText: 'sin_x_SinxDivSinx(n, fi)',
+    text: 'Функция  Вычисления для sin( x*((sin(n+1)x)/sin(nx)) )'
   },
 };
 let tableWidth = 1200;
