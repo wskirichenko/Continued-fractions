@@ -230,6 +230,13 @@ rFiAlgoritm = {
           return pogresnost;
           break;
 
+      case 55 :       //  Погрешность для sin(x*sin/sin)
+          let b_1 = 2,
+              B101 = globalVar.getFi(newX);
+              pogresnost = Math.abs( Math.sqrt( Math.abs((Math.sin(b_1)*Math.cosh(B101))*(Math.sin(b_1)*Math.cosh(B101)) + (Math.cos(b_1)*Math.sinh(B101))*(Math.cos(2)*Math.sinh(B101))) ) / Math.exp(b_1*B101/2) - arg );
+          return pogresnost;
+          break;
+
       case 57 :       //  Погрешность для sin(x*sin/sin)
           pogresnost = Math.abs( Math.sinh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
           return pogresnost;
@@ -242,7 +249,19 @@ rFiAlgoritm = {
           pogresnost = Math.abs( Math.tanh(globalVar.getFi(newX)) - arg );
           return pogresnost;
           break;
-      default:
+      case 60 :       //  Погрешность для 
+          let B37 =  globalVar.getFi(newX);
+          pogresnost =  Math.abs( Math.sqrt(Math.sin(Math.cos(B37)) * Math.cosh(Math.sin(B37)) * Math.sin(Math.cos(B37)) * Math.cosh(Math.sin(B37)) + Math.cos(Math.cos(B37)) * Math.sinh(Math.sin(B37)) * Math.cos(Math.cos(B37)) * Math.sinh(Math.sin(B37))) / Math.exp(Math.abs(Math.sin(B37))) - arg );
+          return pogresnost;
+
+      case 63 :       //  Погрешность для cos(cos(x*sin/sin))
+          let b_2 = 2,
+              B102 = globalVar.getFi(newX);
+              pogresnost = Math.abs( Math.sqrt( Math.abs((Math.sin(b_2)*Math.cosh(B102))*(Math.sin(b_2)*Math.cosh(B102)) + (Math.cos(b_2)*Math.sinh(B102))*(Math.cos(2)*Math.sinh(B102))) ) / Math.exp(b_2*B102/2) - arg );
+          return pogresnost;
+          break;
+
+       default:
         return 'Нет погрешности для r';
         break
     };
@@ -423,6 +442,7 @@ rFiAlgoritm = {
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
 
+
       case 57 :       //  Погрешность для sin(x*sin/sin)
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
@@ -431,6 +451,9 @@ rFiAlgoritm = {
         return pogresnost;
       case 59 :       //  Погрешность для sin(x*sin/sin)
         pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+      case 60 :       //  Погрешность для tg(exp(дроби))
+        pogresnost = Math.abs( Math.PI - Math.abs( Math.atan( (Math.sinh(globalVar.getFi2(newX) * Math.sin(globalVar.getFi(newX)))) / (Math.sin( globalVar.getFi2(newX) * Math.cos(globalVar.getFi(newX)))) )) - arg );
         return pogresnost;
       default:
         return 'Нет погрешности для fi';

@@ -192,10 +192,18 @@ const trigonometFunc = {
       case 59 :       //  Вычисления для tg(sin(n+1)/sin(n))
           return this.tg_x_sinDivsin( countPQ, globalVar.getFi(newX) );
           break;
-      case 60 :       //  Вычисления для sin(x*sin((n+1)x)/sin(nx))
-          return this.sin_x_SinxDivSinx( countPQ, globalVar.getFi(newX) );
+      case 60 :       //  Вычисления для sin(a*sin((n+1)x)/sin(nx))
+          return this.sin_x_SinxDivSinx( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;
-          
+      case 61 :       //  Вычисления для cos(a*sin((n+1)x)/sin(nx))
+          return this.cos_x_SinxDivSinx( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 62 :       //  Вычисления для tg(a*sin((n+1)x)/sin(nx))
+          return this.tg_x_SinxDivSinx( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;  
+      case 63 :       //  Вычисления для sin( sqrt(a^2+fi^2) * sin(n fi)/sin(n-1 fi) )
+          return this.cos_e_sinDiv( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;                
       default:
             return 'Нет такой функции';
             break
@@ -842,8 +850,20 @@ const trigonometFunc = {
     return this.massPQ[n];
   },
 
-  sin_x_SinxDivSinx(n, fi) {
-    this.massPQ[n] = Math.sin(fi * ( Math.sin((n+1)*fi)/Math.sin(n*fi) ) );
+  sin_x_SinxDivSinx(n, fi, a) {
+    this.massPQ[n] = Math.sin( a * ( Math.sin((n+1)*fi)/Math.sin(n*fi) ) );
+    return this.massPQ[n];
+  },
+  cos_x_SinxDivSinx(n, fi, a) {
+    this.massPQ[n] = Math.cos( a * ( Math.sin((n+1)*fi)/Math.sin(n*fi) ) );
+    return this.massPQ[n];
+  },
+  tg_x_SinxDivSinx(n, fi, a) {
+    this.massPQ[n] = Math.tan( a * ( Math.sin((n+1)*fi)/Math.sin(n*fi) ) );
+    return this.massPQ[n];
+  },
+  cos_e_sinDiv(n, fi, a) {
+    this.massPQ[n] = Math.cos( Math.sqrt(a*a + fi*fi) * ( Math.sin( (n+1) * Math.atan(fi/a) ) / Math.sin(n * Math.atan(fi/a)) ) );
     return this.massPQ[n];
   },
 
