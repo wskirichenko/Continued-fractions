@@ -19,6 +19,11 @@ rFiAlgoritm = {
     this.massR[i] = Math.exp( (1/globalVar.getNumb()) * this.summ );   // корень n-й степени из произведение подходящих
     return this.massR[i];
   },
+  modulR_summ(mass, i) {
+    this.summ = this.summ + Math.abs(mass); // Сумма 
+    this.massR[i] =  this.summ / i;   // сумма делённая на количество (среднеарифметическое)
+    return this.massR[i];
+  },
   argumentFi(mass, i) {  // где mas - массив с подходящими для которых нужно вычислить fi
     let Rez = 0;
     if (mass < 0) {          // Если очередной элемент массива отрицательный
@@ -261,6 +266,15 @@ rFiAlgoritm = {
           return pogresnost;
           break;
 
+      case 68 :       //  Погрешность для sin(n*fi)
+          pogresnost = Math.abs( 1/2 - arg );
+          return pogresnost;
+          break;
+      case 69 :       //  Погрешность для cos(n*fi)
+          pogresnost = Math.abs( 1/2 - arg );
+          return pogresnost;
+          break;
+
        default:
         return 'Нет погрешности для r';
         break
@@ -455,6 +469,16 @@ rFiAlgoritm = {
       case 60 :       //  Погрешность для tg(exp(дроби))
         pogresnost = Math.abs( Math.PI - Math.abs( Math.atan( (Math.sinh(globalVar.getFi2(newX) * Math.sin(globalVar.getFi(newX)))) / (Math.sin( globalVar.getFi2(newX) * Math.cos(globalVar.getFi(newX)))) )) - arg );
         return pogresnost;
+      
+      case 68 :       //  Погрешность для sin(n*fi)
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;
+      case 69 :       //  Погрешность для cos(n*fi)
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;
+
       default:
         return 'Нет погрешности для fi';
         break

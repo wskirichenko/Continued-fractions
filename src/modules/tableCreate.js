@@ -97,6 +97,12 @@ const tableHeader2 = {
   61 : standartHeder,
   62 : standartHeder,
   63 : standartHeder,
+  64 : standartHeder,
+  65 : standartHeder,
+  66 : standartHeder,
+  67 : standartHeder,
+  68 : standartHeder,
+  69 : standartHeder,
 };
 
 const funcIamges = {
@@ -489,6 +495,30 @@ const funcIamges = {
     secondImg : "../../img/func-63.png",
     altImgText: 'cos_e_sinDiv(n, fi, a)',
     text: 'Функция  Вычисления для cos( sqrt(a^2+fi^2) * sin(n fi)/sin(n-1 fi) )'
+  },
+  66 : {
+    mainImg :   "../../img/func-63.png",
+    secondImg : "../../img/func-63.png",
+    altImgText: 'cos_e_sinDiv(n, fi)',
+    text: 'Функция  Вычисления для sh( fi * ctg(n) )'
+  },
+  67 : {
+    mainImg :   "../../img/func-63.png",
+    secondImg : "../../img/func-63.png",
+    altImgText: 'cos_e_sinDiv(n, fi)',
+    text: 'Функция  Вычисления для sh( fi * ctg(n) )'
+  },
+  68 : {
+    mainImg :   "../../img/func-00.png",
+    secondImg : "../../img/func-00.png",
+    altImgText: 'sin_newRFi(n, fi)',
+    text: 'Функция  Вычисления для sin(n * fi)'
+  },
+  69 : {
+    mainImg :   "../../img/func-05.png",
+    secondImg : "../../img/func-05.png",
+    altImgText: 'cos_newRFi(n, fi)',
+    text: 'Функция  Вычисления для cos(n * fi)'
   },
 };
 let tableWidth = 1200;

@@ -203,7 +203,25 @@ const trigonometFunc = {
           break;  
       case 63 :       //  Вычисления для sin( sqrt(a^2+fi^2) * sin(n fi)/sin(n-1 fi) )
           return this.cos_e_sinDiv( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
-          break;                
+          break;    
+      case 64 :       //  Вычисления для sh(x* sin(n fi)/sin(n-1 fi))
+          return this.sh_x_sinDivsin( countPQ, globalVar.getFi(newX) );
+          break;         
+      case 65 :       //  Вычисления для ch(x* sin(n fi)/sin(n-1 fi))
+          return this.ch_x_sinDivsin( countPQ, globalVar.getFi(newX) );
+          break;    
+      case 66 :       //  Вычисления для th(x* sin(n fi)/sin(n-1 fi))
+          return this.sh_ctg( countPQ, globalVar.getFi(newX) );
+          break;   
+      case 67 :       //  Вычисления для ch(x* sin(n fi)/sin(n-1 fi))
+          return this.sh_Drobi( countPQ, globalVar.getFi(newX),  globalVar.getFi2() );
+          break; 
+      case 68 :       //  Вычисления для sin(n fi) new algorithm
+          return this.sin_newRFi( countPQ, globalVar.getFi(newX) );
+          break;       
+      case 69 :       //  Вычисления для sin(n fi) new algorithm
+          return this.cos_newRFi( countPQ, globalVar.getFi(newX) );
+          break;    
       default:
             return 'Нет такой функции';
             break
@@ -867,6 +885,58 @@ const trigonometFunc = {
     return this.massPQ[n];
   },
 
+  sh_x_sinDivsin(n, fi) {
+    let pi_2 = Math.PI/2 - 0.001,
+        chislo = 10000000;
+        this.massPQ[n] = Math.sinh(fi * ( Math.sin((n+1)*pi_2)/Math.sin(n*pi_2) ) );
+    if ( this.massPQ[n] > chislo) {
+      return this.massPQ[n] = chislo //Math.sinh(chislo);
+    } else {
+      if ( this.massPQ[n] < -chislo) {
+        return this.massPQ[n] = -chislo // Math.sinh(-chislo);
+      }
+      else {
+        return this.massPQ[n] = Math.sinh(fi * ( Math.sin((n+1)*pi_2)/Math.sin(n*pi_2) ) );
+      }
+    }
+    return this.massPQ[n];
+  },
+  ch_x_sinDivsin(n, fi) {
+    let pi_2 = Math.PI/2 - 0.001;
+    this.massPQ[n] = Math.cosh(fi * ( Math.sin((n+1)*pi_2)/Math.sin(n*pi_2) ) );
+    return this.massPQ[n];
+  },
+  sh_ctg(n, fi) {
+    let chislo = 10000000;
+    this.massPQ[n] = Math.sinh(fi * ( Math.cos(n) ) );
+    if ( Math.abs(this.massPQ[n]) > chislo) {
+      return this.massPQ[n] = chislo;
+    } else {
+      return this.massPQ[n];
+    }
+  },
+
+  sh_Drobi(n, fi, a) {
+    let pq1 = a,
+        pqCh = a*a + fi*fi;
+
+    if (n === 1) {
+      this.massPQ2[n] = pq1;
+    } else {
+      this.massPQ2[n] = pq1 - (pqCh/(this.massPQ2[n-1]));
+    }
+    this.massPQ[n] = Math.sinh(this.massPQ2[n]);
+    return this.massPQ[n];
+  },
+
+  sin_newRFi(n, fi) {
+    this.massPQ[n] = Math.sin(n*fi);
+    return this.massPQ[n];
+  },
+  cos_newRFi(n, fi) {
+    this.massPQ[n] = Math.cos(n*fi);
+    return this.massPQ[n];
+  },
 
   changedZiro(x) {
     if (x==0) {
