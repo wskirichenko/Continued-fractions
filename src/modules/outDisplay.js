@@ -154,7 +154,7 @@ const outDisplay = {
           return this.PQtemp
           break;
       case 'modulR' :       // Столбик таблицы с результатами вычисления модуля r (massR)
-          if ( (numberFunc == 68)  || (numberFunc == 69) ) {
+          if ( (numberFunc == 68)  || (numberFunc == 69) || (numberFunc == 70) || (numberFunc == 71) || (numberFunc == 72) || (numberFunc == 73) ) {
             this.rTmp = rFiAlgoritm.modulR_summ(trigonometFunc.massPQ[countPQ], countPQ);
           } else {
             this.rTmp = rFiAlgoritm.modulR(trigonometFunc.massPQ[countPQ], countPQ);

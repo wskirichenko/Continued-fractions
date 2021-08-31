@@ -24,16 +24,17 @@ const col7_Header = {   // Массив с заголоквами таблицы
 };
 
 const tableHeader2 = {
-  0 : { // Массив с заголоквами таблицы - 4 колонки
-    title : "Tаблица ",
-    headers : [
-      "Номер №", "Значения подходящих", "Значения модуля r",
-      "Значения аргумента fi"
-    ],
-    colName: [
-      "number", "pq", "modulR", "argumentFi"
-    ]
-  },
+  // 0 : { // Массив с заголоквами таблицы - 4 колонки
+  //   title : "Tаблица ",
+  //   headers : [
+  //     "Номер №", "Значения подходящих", "Значения модуля r",
+  //     "Значения аргумента fi"
+  //   ],
+  //   colName: [
+  //     "number", "pq", "modulR", "argumentFi"
+  //   ]
+  // },
+  0  : standartHeder,
   1  : standartHeder,
   2  : standartHeder,
   3  : standartHeder,
@@ -103,6 +104,14 @@ const tableHeader2 = {
   67 : standartHeder,
   68 : standartHeder,
   69 : standartHeder,
+  70 : standartHeder,
+  71 : standartHeder,
+  72 : standartHeder,
+  73 : standartHeder,
+  74 : standartHeder,
+  75 : standartHeder,
+  76 : standartHeder,
+  77 : standartHeder,
 };
 
 const funcIamges = {
@@ -519,6 +528,49 @@ const funcIamges = {
     secondImg : "../../img/func-05.png",
     altImgText: 'cos_newRFi(n, fi)',
     text: 'Функция  Вычисления для cos(n * fi)'
+  },
+  70 : {
+    mainImg :   "../../img/func-01.png",
+    secondImg : "../../img/func-01.png",
+    altImgText: 'sin_newRFi_summ(n, fi)',
+    text: 'Функция  Вычисления для суммы sin(n * fi)'
+  },
+  71 : {
+    mainImg :   "../../img/func-05.png",
+    secondImg : "../../img/func-05.png",
+    altImgText: 'cos_newRFi_summ(n, fi)',
+    text: 'Функция  Вычисления для суммы cos(n * fi)'
+  },
+  72 : {
+    mainImg :   "../../img/func-06.png",
+    secondImg : "../../img/func-06.png",
+    altImgText: 'sin_newRFi_summ(n, fi)',
+    text: 'Функция  Вычисления для суммы (-1)^(n+1) * sin(n * fi)'
+  },
+  73 : {
+    mainImg :   "../../img/func-07.png",
+    secondImg : "../../img/func-07.png",
+    altImgText: 'cos_newRFi_summ(n, fi)',
+    text: 'Функция  Вычисления для суммы (-1)^(n+1) * cos(n * fi)'
+  },
+
+  75 : {
+    mainImg :   "../../img/func-75.png",
+    secondImg : "../../img/func-75.png",
+    altImgText: 'tg(y*ctg (n*fi))',
+    text: 'Функция  Вычисления для tg(y*ctg (n*fi))'
+  },
+  76 : {
+    mainImg :   "../../img/func-76.png",
+    secondImg : "../../img/func-76.png",
+    altImgText: 'tg(y*2*sin(n*fi))',
+    text: 'Функция  Вычисления для tg(y*2sin(n*fi))'
+  },
+  77 : {
+    mainImg :   "../../img/func-76.png",
+    secondImg : "../../img/func-76.png",
+    altImgText: 'tg(y*2*cos(n*fi))',
+    text: 'Функция  Вычисления для tg(y*cos(n*fi))'
   },
 };
 let tableWidth = 1200;

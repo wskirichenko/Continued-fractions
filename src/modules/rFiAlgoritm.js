@@ -74,7 +74,7 @@ rFiAlgoritm = {
     let pogresnost = 0;
     switch(numberFunc) {                           // где numberFunc - номер вызываемой функции для вычисления
       case 0 :       //  Погрешность для Sin
-          pogresnost = Math.abs( arg - Math.sin(globalVar.getFi(newX)) ); // Неверно вычислена
+          pogresnost = Math.abs( arg - 1 ); // Неверно вычислена
           return pogresnost;
           break;
       case 1 :       //  Погрешность для суммы Sin
@@ -267,14 +267,27 @@ rFiAlgoritm = {
           break;
 
       case 68 :       //  Погрешность для sin(n*fi)
-          pogresnost = Math.abs( 1/2 - arg );
+          pogresnost = Math.abs( 2/Math.PI - arg );
           return pogresnost;
           break;
       case 69 :       //  Погрешность для cos(n*fi)
-          pogresnost = Math.abs( 1/2 - arg );
+          pogresnost = Math.abs( 2/Math.PI - arg );
+          return pogresnost;
+          break;
+      case 70 :       //  Погрешность для Summ sin(n*fi)
+          pogresnost = Math.abs( 2/Math.PI - arg );
+          return pogresnost;
+          break;
+      case 71 :       //  Погрешность для Summ cos(n*fi)
+          pogresnost = Math.abs( (1/(4*(Math.sin(globalVar.getFi(newX)/2)))) - arg );
           return pogresnost;
           break;
 
+      case 77 :       //  Погрешность для Summ cos(n*fi)
+          // pogresnost = Math.abs( Math.tanh(globalVar.getFi(newX)) - arg );
+          pogresnost = Math.abs( Math.cosh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;
        default:
         return 'Нет погрешности для r';
         break
@@ -285,7 +298,7 @@ rFiAlgoritm = {
     let pogresnost = 0;
     switch(numberFunc) {                           // где numberFunc - номер вызываемой функции для вычисления
       case 0 :       //  Погрешность для Sin
-          pogresnost = Math.abs( arg - 0 ); // Неверно вычислена
+          pogresnost = Math.abs( Math.PI/2 - arg ); // Неверно вычислена
           return pogresnost;
           break;
       case 1 :       //  Погрешность для суммы Sin
@@ -478,7 +491,37 @@ rFiAlgoritm = {
         pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
         break;
+      case 70 :       //  Погрешность для Суммы sin(n*fi)
+        pogresnost = Math.abs( globalVar.getFi(newX)/2 - arg );
+        return pogresnost;
+        break;
+      case 71 :       //  Погрешность для Суммы cos(n*fi)
+        pogresnost = Math.abs( Math.PI/2 + globalVar.getFi(newX)/2 - arg );
+        return pogresnost;
+        break;
+      case 72 :       //  Погрешность для Суммы (-1)^(n+1) * sin(n*fi)
+        pogresnost = Math.abs( Math.PI/2 - globalVar.getFi(newX)/2 - arg );
+        return pogresnost;
+        break;
+      case 73 :       //  Погрешность для Суммы (-1)^(n+1) * sin(n*fi)
+        pogresnost = Math.abs( globalVar.getFi(newX)/2 - arg );
+        return pogresnost;
+        break;
 
+      case 75 :       //  Погрешность для tg(y*ctg (n*fi))
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;
+      case 76 :       //  Погрешность для tg(y*2*sin (n*fi))
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;
+      case 77 :       //  Погрешность для tg(y*2*sin (n*fi))
+        // pogresnost = Math.abs( Math.PI/2 - arg );
+        pogresnost = Math.abs( Math.atan(Math.sinh(globalVar.getFi(newX))) - arg );
+
+        return pogresnost;
+        break;
       default:
         return 'Нет погрешности для fi';
         break
