@@ -10,6 +10,7 @@ let resultTable = {
 rFiAlgoritm = {
   description: "rFi-Algoritm",
   summ : 0,                     // Сумма элементов массива для r/fi-алгоритма
+  summFi : 0,                    // Сумма элементов массива fi для r/fi-алгоритма
   colNegative : 0,              // Кол-во отрицательных подходящих
   massR : [],
   massFi : [],
@@ -38,6 +39,12 @@ rFiAlgoritm = {
         this.colNegative += 1;
     };
     Rez = (this.colNegative / globalVar.getNumb()) * Math.PI;
+    return Rez;
+  },
+  argumentFi_summ(mass, i) {  // где mas - массив с подходящими для которых нужно вычислить fi
+    let Rez = 0;
+    this.summFi = this.summFi + Math.abs(mass); // Сумма 
+    Rez = this.summFi / i;
     return Rez;
   },
   clearRFi() {
@@ -285,9 +292,62 @@ rFiAlgoritm = {
 
       case 77 :       //  Погрешность для Summ cos(n*fi)
           // pogresnost = Math.abs( Math.tanh(globalVar.getFi(newX)) - arg );
-          pogresnost = Math.abs( Math.cosh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          // pogresnost = Math.abs( Math.cosh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          pogresnost = Math.abs( Math.sinh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
           return pogresnost;
           break;
+      case 84 :       //  Погрешность для cos(n*fi)
+          pogresnost = Math.abs( 1 - arg );
+          return pogresnost;
+          break;
+      case 87 :       //  Погрешность для cos(n*fi)
+          pogresnost = Math.abs( 1 - arg );
+          return pogresnost;
+          break;
+      case 88 :       //  Погрешность для Summ cos(n*fi)
+          pogresnost = Math.abs( Math.tanh(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;    
+      case 89 :       //  Погрешность для Summ cos(n*fi)
+          pogresnost = Math.abs( Math.tanh(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;       
+      case 90 :       //  Погрешность для Summ cos(n*fi)
+          pogresnost = Math.abs( Math.tanh(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;  
+      case 91 :       //  Погрешность для Summ cos(n*fi)
+          pogresnost = Math.abs( Math.tanh(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;           
+      case 92 :       //  Погрешность для Summ cos(n*fi)
+          pogresnost = Math.abs( 1 - arg );
+          return pogresnost;
+          break;    
+      case 93 :       //  Погрешность для Summ cos(n*fi)
+          pogresnost = Math.abs( 1 - arg );
+          return pogresnost;
+          break;  
+      case 94 :       //  Погрешность для Summ cos(n*fi)
+          let y1 = globalVar.getFi(newX);
+          pogresnost = Math.abs( Math.sqrt( (Math.cos(y1) + Math.cos(y1) * Math.sin(y1)) * (Math.cos(y1) + Math.cos(y1) * Math.sin(y1)) + Math.sin(y1)*Math.sin(y1)*Math.sin(y1)*Math.sin(y1) ) - arg );
+          return pogresnost;
+          break;      
+      case 95 :       //  Погрешность для Summ cos(n*fi)
+          let y2 = globalVar.getFi(newX);
+          pogresnost = Math.abs( Math.sqrt( (Math.cos(y2) + Math.cos(y2) * Math.sin(y2)) * (Math.cos(y2) + Math.cos(y2) * Math.sin(y2)) + Math.sin(y2)*Math.sin(y2)*Math.sin(y2)*Math.sin(y2) ) - arg );
+          return pogresnost;
+          break;  
+      case 96 :       //  Погрешность для Summ cos(n*fi)
+          let y3 = globalVar.getFi(newX);
+          pogresnost = Math.abs( Math.sqrt( (Math.cos(y3) + Math.cos(y3) * Math.sin(y3)) * (Math.cos(y3) + Math.cos(y3) * Math.sin(y3)) + Math.sin(y3)*Math.sin(y3)*Math.sin(y3)*Math.sin(y3) ) - arg );
+          return pogresnost;
+          break;      
+      case 97 :       //  Погрешность для Summ cos(n*fi)
+          pogresnost = Math.abs( Math.sinh(globalVar.getFi(newX))/Math.exp(globalVar.getFi(newX)) - arg );
+          return pogresnost;
+          break;            
+          
        default:
         return 'Нет погрешности для r';
         break
@@ -518,10 +578,76 @@ rFiAlgoritm = {
         break;
       case 77 :       //  Погрешность для tg(y*2*sin (n*fi))
         // pogresnost = Math.abs( Math.PI/2 - arg );
-        pogresnost = Math.abs( Math.atan(Math.sinh(globalVar.getFi(newX))) - arg );
-
+        // pogresnost = Math.abs( Math.atan(Math.sinh(globalVar.getFi(newX))) - arg );
+        pogresnost = Math.abs( Math.PI/2 - arg );
         return pogresnost;
         break;
+
+      case 80 :       //  Погрешность для th(y * ctg(n*fi))
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;  
+      case 81 :       //  Погрешность для sh(y * ctg(n*fi))
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;
+      case 82 :       //  Погрешность для ch(y * ctg(n*fi))
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;  
+
+      case 84 :       //  Погрешность для cos(n*fi)
+        pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+        return pogresnost;
+        break;
+      case 87 :       //  Погрешность для ch(y * ctg(n*fi))
+        pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+        return pogresnost;
+        break;  
+      case 88 :       //  Погрешность для ch(y * ctg(n*fi))
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;    
+      case 89 :       //  Погрешность для ch(y * ctg(n*fi))
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;    
+      case 90 :       //  Погрешность для tg(cos/sin)
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;    
+      case 91 :       //  Погрешность для tg(cos/sin)
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break; 
+      case 92 :       //  Погрешность для tg(cos/sin)
+        pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+        return pogresnost;
+        break; 
+      case 92 :       //  Погрешность для tg(cos/sin)
+        pogresnost = Math.abs( globalVar.getFi(newX) - arg );
+        return pogresnost;
+        break; 
+      case 94 :       //  Погрешность для tg(cos/sin)
+        let y1 = globalVar.getFi(newX);
+        pogresnost = Math.abs( Math.atan((Math.sin(y1)*Math.sin(y1)) / ( Math.cos(y1) + Math.cos(y1)*Math.sin(y1)) ) - arg );
+        return pogresnost;
+        break; 
+      case 95 :       //  Погрешность для tg(cos/sin)
+        let y2 = globalVar.getFi(newX);
+        pogresnost = Math.abs( Math.atan((Math.sin(y2)*Math.sin(y2)) / ( Math.cos(y2) + Math.cos(y2)*Math.sin(y2)) ) - arg );
+        return pogresnost;
+        break; 
+      case 96 :       //  Погрешность для tg(cos/sin)
+        let y3 = globalVar.getFi(newX);
+        pogresnost = Math.abs( Math.atan((Math.sin(y3)*Math.sin(y3)) / ( Math.cos(y3) + Math.cos(y3)*Math.sin(y3)) ) - arg );
+        return pogresnost;
+        break;         
+      case 97 :       //  Погрешность для tg(cos/sin)
+        pogresnost = Math.abs( Math.PI/2 - arg );
+        return pogresnost;
+        break;     
+
       default:
         return 'Нет погрешности для fi';
         break

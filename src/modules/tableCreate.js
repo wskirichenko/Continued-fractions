@@ -23,6 +23,17 @@ const col7_Header = {   // Массив с заголоквами таблицы
   ]
 };
 
+const newHeder = { // Массив с заголоквами таблицы - 6 колонки
+  title : "Tаблица ",
+  headers : [
+    "Номер, n", "Значения r_n", "Значения fi_n", 
+    "Значения модуля r", "Значения аргумента fi"
+  ],
+  colName: [
+    "number", "pq", "fi_n", "modulR", "argumentFi"
+  ]
+};
+
 const tableHeader2 = {
   // 0 : { // Массив с заголоквами таблицы - 4 колонки
   //   title : "Tаблица ",
@@ -112,6 +123,25 @@ const tableHeader2 = {
   75 : standartHeder,
   76 : standartHeder,
   77 : standartHeder,
+  78 : standartHeder,
+  80 : standartHeder,
+  81 : standartHeder,
+  82 : standartHeder,
+  83 : newHeder,
+  84 : standartHeder,
+  85 : standartHeder,
+  86 : standartHeder,
+  87 : standartHeder,
+  88 : standartHeder,
+  89 : standartHeder,
+  90 : standartHeder,
+  91 : standartHeder,
+  92 : standartHeder,
+  93 : standartHeder,
+  94 : standartHeder,
+  95 : standartHeder,
+  96 : standartHeder,
+  97 : standartHeder,
 };
 
 const funcIamges = {
@@ -571,6 +601,121 @@ const funcIamges = {
     secondImg : "../../img/func-76.png",
     altImgText: 'tg(y*2*cos(n*fi))',
     text: 'Функция  Вычисления для tg(y*cos(n*fi))'
+  },
+  78 : {
+    mainImg :   "../../img/func-76.png",
+    secondImg : "../../img/func-76.png",
+    altImgText: 'cos(y*ctg(n*fi))',
+    text: 'Функция  Вычисления для cos(y*ctg(n*fi))'
+  },
+
+  80 : {
+    mainImg :   "../../img/func-80.png",
+    secondImg : "../../img/func-80.png",
+    altImgText: 'th(y*ctg(n*fi))',
+    text: 'Функция  Вычисления для th(y*ctg(n*fi))'
+  },
+  81 : {
+    mainImg :   "../../img/func-81.png",
+    secondImg : "../../img/func-81.png",
+    altImgText: 'sh(y*ctg(n*fi))',
+    text: 'Функция  Вычисления для sh(y*ctg(n*fi))'
+  },
+  82 : {
+    mainImg :   "../../img/func-82.png",
+    secondImg : "../../img/func-82.png",
+    altImgText: 'ch(y*ctg(n*fi))',
+    text: 'Функция  Вычисления для ch(y*ctg(n*fi))'
+  },
+  83 : {
+    mainImg :   "../../img/func-82.png",
+    secondImg : "../../img/func-82.png",
+    altImgText: 'sqrt(a^2 + b^2)',
+    text: 'Функция  Вычисления для sqrt(a^2 + b^2)'
+  },
+  84 : {
+    mainImg :   "../../img/func-81.png",
+    secondImg : "../../img/func-81.png",
+    altImgText: ' cos(fi) + Summ sin(n)/Summ sin(n) * sin(fi)',
+    text: 'Функция  Вычисления для cos(fi) + Summ sin(n)/Summ sin(n) * sin(fi)'
+  },
+  85 : {
+    mainImg :   "../../img/func-81.png",
+    secondImg : "../../img/func-81.png",
+    altImgText: ' cos(fi) + 2*sin(n*y)*sin(fi)',
+    text: 'Функция  Вычисления для  cos(fi) + 2*sin(n*y)*sin(fi)'
+  },
+  86 : {
+    mainImg :   "../../img/func-82.png",
+    secondImg : "../../img/func-82.png",
+    altImgText: 'cos(fi) + 2*cos(n*y)*sin(fi)',
+    text: 'Функция  Вычисления для  cos(fi) + 2*cos(n*y)*sin(fi)'
+  },
+  87 : {
+    mainImg :   "../../img/func-83.png",
+    secondImg : "../../img/func-83.png",
+    altImgText: 'cos(fi) + ctg(n*y)*sin(fi)',
+    text: 'Функция  Вычисления для  cos(fi) + ctg(n*y)*sin(fi)'
+  },
+  88 : {
+    mainImg :   "../../img/func-83.png",
+    secondImg : "../../img/func-83.png",
+    altImgText: 'cos(fi)+4sin^2(fi) + summ(cos(2n-1)fi)',
+    text: 'Функция  Вычисления для cos(fi)+4sin^2(fi) + summ(cos(2n-1)fi)'
+  },
+  89 : {
+    mainImg :   "../../img/func-81.png",
+    secondImg : "../../img/func-81.png",
+    altImgText: 'cos(fi)+4sin^2(fi) + summ((-1)^(n+1)*sin(2n-1)fi)',
+    text: 'Функция  Вычисления для cos(fi)+4sin^2(fi) + summ((-1)^(n+1)*sin(2n-1)fi)'
+  },
+  90 : {
+    mainImg :   "../../img/func-90.png",
+    secondImg : "../../img/func-90.png",
+    altImgText: ' tg( fi * Summ cos(2n-1)/Summ sin(2n-1) )',
+    text: 'Функция  Вычисления для tg( fi * Summ cos(2n-1)/Summ sin(2n-1) )'
+  },
+  91 : {
+    mainImg :   "../../img/func-91.png",
+    secondImg : "../../img/func-91.png",
+    altImgText: ' tg( fi * Summ cos(2n)/Summ sin(2n) )',
+    text: 'Функция  Вычисления для tg( fi * Summ cos(2n)/Summ sin(2n) )'
+  },
+  92 : {
+    mainImg :   "../../img/func-92.png",
+    secondImg : "../../img/func-92.png",
+    altImgText: ' cos(fi) + ( Summ cos(2n-1)/Summ sin(2n-1) ) * sin(fi)',
+    text: 'Функция  Вычисления для cos(fi) + ( Summ cos(2n-1)/Summ sin(2n-1) ) * sin(fi)'
+  },
+  93 : {
+    mainImg :   "../../img/func-93.png",
+    secondImg : "../../img/func-93.png",
+    altImgText: ' cos(fi) + ( Summ cos(2n)/Summ sin(2n) ) * sin(fi)',
+    text: 'Функция  Вычисления для cos(fi) + ( Summ cos(2n)/Summ sin(2n) ) * sin(fi)'
+  },
+  94 : {
+    mainImg :   "../../img/func-94.png",
+    secondImg : "../../img/func-94.png",
+    altImgText: 'cos(fi) + ( Summ sin(2n)/Summ sin(2n-1) ) * sin(fi)',
+    text: 'Функция  Вычисления для cos(fi) + ( Summ sin(2n)/Summ sin(2n-1) ) * sin(fi)'
+  },
+  95 : {
+    mainImg :   "../../img/func-95.png",
+    secondImg : "../../img/func-95.png",
+    altImgText: 'cos(fi) + ( Summ cos(2n)/Summ cos(2n-1) ) * sin(fi)',
+    text: 'Функция  Вычисления для cos(fi) + ( Summ cos(2n)/Summ cos(2n-1) ) * sin(fi)'
+  },
+  96 : {
+    mainImg :   "../../img/func-96.png",
+    secondImg : "../../img/func-96.png",
+    altImgText: 'cos(fi) + ( Summ znakperem cos(2n)/Summ cos(2n-1) ) * sin(fi)',
+    text: 'Функция  Вычисления для cos(fi) + ( Summ znakperem cos(2n)/Summ cos(2n-1) ) * sin(fi)'
+  },
+  97 : {
+    mainImg :   "../../img/func-94.png",
+    secondImg : "../../img/func-94.png",
+    altImgText: 'sin( Summ cis(2n-1)/Summ sin(2n-1) ) ',
+    text: 'Функция  Вычисления для sin( Summ cis(2n-1)/Summ sin(2n-1) )'
   },
 };
 let tableWidth = 1200;

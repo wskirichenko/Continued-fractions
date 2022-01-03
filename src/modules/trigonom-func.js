@@ -244,9 +244,79 @@ const trigonometFunc = {
       case 77 :       //  Вычисления для tg(y*2cos (n*fi))
           return this.tgY_2cosX( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
           break;   
+      case 78 :       //  Вычисления для tg(y*2cos (n*fi))
+          return this.cosYCtgFi( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;   
+
+      case 80 :       //  Вычисления для th(y * ctg(n*fi))
+          return this.thY_ctgX( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 81 :       //  Вычисления для sh(y * ctg(n*fi))
+          return this.shY_ctgX( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;
+      case 82 :       //  Вычисления для ch(y * ctg(n*fi))
+          return this.chY_ctgX( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;     
+      case 83 :       //  Вычисления для ch(y * ctg(n*fi))
+          // return this.summSin_R_Fi ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          return this.cos_summCtg_R_Fi ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          
+          break;   
+      case 831 :       //  Вычисления для ch(y * ctg(n*fi))
+          // return this.atan_b_a ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          return this.atan_b_a_2 ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;  
+      case 84 :       //  Вычисления для cosfi) + 2*sin(n*y)*sin(fi)
+          return this.summ_cos_na_summ_sin ( countPQ, globalVar.getFi(newX) );
+          break;  
+
+      case 85 :       //  Вычисления для cosfi) + 2*sin(n*y)*sin(fi)
+          return this.cos_p_2sin_sin ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;  
+      case 86 :       //  Вычисления для cosfi) + 2*cos(n*y)*sin(fi)
+          return this.cos_p_2cos_sin ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;            
+      case 87 :       //  Вычисления для cosfi) + ctg(n*y)*sin(fi)
+          return this.cos_p_ctg_sin ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;  
+      case 88 :       //  Вычисления для cos(fi)+4sin^2(fi) + summ(cos(2n-1)fi)
+          // return this.cos_p_4sin_summ_cos ( countPQ, globalVar.getFi(newX) );
+          return this.tg_summ_cos_na_summ_sin ( countPQ, globalVar.getFi(newX) );
+          break;  
+      case 89 :       //  Вычисления для cos(fi)+4sin^2(fi) + summ((-1)^(n+1)*sin(2n-1)fi)
+          // return this.cos_p_4sin_summ_sin ( countPQ, globalVar.getFi(newX) );
+          return this.tg_4sin_summ_cos ( countPQ, globalVar.getFi(newX) );
+          break;  
+          
+      case 90 :       //  Вычисления для tg( fi * Summ cos(2n-1)/Summ sin(2n-1) )
+          return this.tg_summ_cos_na_summ_sin_necetn ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;  
+      case 91 :       //  Вычисления для tg( fi * Summ cos(2n)/Summ sin(2n) )
+          return this.tg_summ_cos_na_summ_sin_chetn ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;            
+      case 92 :       //  Вычисления для tg( fi * Summ cos(2n)/Summ sin(2n) )
+          return this.cos_p_summ_cos_na_summ_sin_nechetn_sin ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break; 
+      case 93 :       //  Вычисления для tg( fi * Summ cos(2n)/Summ sin(2n) )
+          return this.cos_p_summ_cos_na_summ_sin_chetn_sin ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break; 
+      case 94 :       //  Вычисления для tg( fi * Summ cos(2n)/Summ sin(2n) )
+          return this.cos_p_summ_sinChet_na_summ_sinNechet ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break; 
+      case 95 :       //  Вычисления для tg( fi * Summ cos(2n)/Summ sin(2n) )
+          return this.cos_p_summ_cosChet_na_summ_cosNechet ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;           
+      case 96 :       //  Вычисления для tg( fi * Summ cos(2n)/Summ sin(2n) )
+          return this.cos_p_summ_cosZnakChet_na_summ_cosZnakNechet ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break; 
+      case 97 :       //  Вычисления для tg( fi * Summ cos(2n)/Summ sin(2n) )
+          return this.sin_ot_summ_cosNechet_na_summ_sinNechet ( countPQ, globalVar.getFi(newX), globalVar.getFi2() );
+          break;           
+          
+
       default:
-            return 'Нет такой функции';
-            break
+          return 'Нет такой функции';
+          break
       };
   },
 
@@ -994,7 +1064,183 @@ const trigonometFunc = {
   },
   tgY_2cosX (n, fi, y) {
     // this.massPQ[n] = Math.tan(fi * 2*Math.cos(n*y) );
-    this.massPQ[n] = Math.cos(fi * 2*Math.sin(n*y) );
+    this.massPQ[n] = Math.sin(fi * 2*Math.cos(n*y) );
+    return this.massPQ[n];
+  },
+  cosYCtgFi(n, fi, y) {
+    this.massPQ[n] = Math.cos(fi * 1/Math.tan(n*y) );
+    return this.massPQ[n];
+  },
+
+  thY_ctgX(n, fi, y) {
+    this.massPQ[n] = Math.tanh(fi * 1/Math.tan(n*y) );
+    return this.massPQ[n];
+  },
+  shY_ctgX (n, fi, y) {
+    let porog = 10000
+    this.massPQ[n] = Math.sinh(fi * 1/Math.tan(n*y) );
+    if ( this.massPQ[n] > porog) {
+      return this.massPQ[n] = porog;
+    } else {
+      if ( this.massPQ[n] < -porog ) {
+        return this.massPQ[n] = -porog;
+      }
+      else {
+        return this.massPQ[n];
+      }
+    }
+  },
+  chY_ctgX (n, fi, y) {
+    let porog = 10000
+    this.massPQ[n] = Math.cosh(fi * 1/Math.tan(n*y) );
+    if ( this.massPQ[n] > porog) {
+      return this.massPQ[n] = porog;
+    } else {
+      if ( this.massPQ[n] < -porog ) {
+        return this.massPQ[n] = -porog;
+      }
+      else {
+        return this.massPQ[n];
+      }
+    }
+  },
+
+  summSin_R_Fi(n, fi, f) {
+    let a2 = 0,
+        b2 = 0;
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.sin(n*fi);
+    a2 = (this.massPQ2[n] + Math.cos(f)) * (this.massPQ2[n] + Math.cos(f));
+    b2 = Math.sin(f) * Math.sin(f);
+    this.massPQ[n] = Math.sqrt(a2 + b2);
+    return this.massPQ[n];
+  },
+  atan_b_a(n, fi, f) {
+    let a = 0,
+        b = 0;
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.sin(n*fi);
+    a = this.massPQ2[n] + Math.cos(f);
+    b = Math.sin(f);
+    this.massPQ3[n] = Math.atan(b/a);
+    return this.massPQ3[n];
+  },
+  cos_summCtg_R_Fi(n, fi, f) {
+    let a2 = 0,
+        b2 = 0;
+    this.massPQ2[n] = Math.cos(fi)+ 1/Math.tan(n*f)*Math.sin(fi) +Math.cos(f);
+    a2 = ( this.massPQ2[n] * this.massPQ2[n] );
+    b2 = Math.sin(f) * Math.sin(f);
+    this.massPQ[n] = Math.sqrt(a2 + b2);
+    return this.massPQ[n];
+  },
+  atan_b_a_2(n, fi, f) {
+    let a = 0,
+        b = 0;
+    a = Math.cos(fi) + 1/Math.tan(n*fi)*Math.sin(fi) + Math.cos(f);;
+    b = Math.sin(f);
+    this.massPQ3[n] = Math.atan(b/a);
+    return this.massPQ3[n];
+  },
+
+  summ_cos_na_summ_sin(n, fi) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos(n*fi);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin(n*fi);
+    this.massPQ[n] = Math.cos(fi) + this.massPQ2[n]/this.massPQ3[n] * Math.sin(fi);
+    return this.massPQ[n];
+  },
+
+  cos_p_2sin_sin(n, fi, x) {
+    this.massPQ[n] = Math.cos(fi) + 2*Math.sin(n*x) * Math.sin(fi);
+    return this.massPQ[n];
+  },
+  cos_p_2cos_sin(n, fi, x) {
+    this.massPQ[n] = Math.cos(fi) + 2*Math.cos(n*x) * Math.sin(fi);
+    return this.massPQ[n];
+  },
+  cos_p_ctg_sin(n, fi, x) {
+    this.massPQ[n] = Math.cos(fi) + 1/Math.tan(n*x) * Math.sin(fi);
+    return this.massPQ[n];
+  },
+  cos_p_4sin_summ_cos(n, fi) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n-1)*fi);
+    this.massPQ[n] = Math.cos(fi) + 4*(Math.sin(fi)*Math.sin(fi)) * this.massPQ2[n];
+    return this.massPQ[n];
+  },
+  cos_p_4sin_summ_sin(n, fi) {
+    if (n % 2 === 0) {
+      this.massPQ2[n] = this.massPQ2[n-1] - Math.sin((2*n-1)*fi);
+    } else {
+      this.massPQ2[n] = this.massPQ2[n-1] + Math.sin((2*n-1)*fi);
+    }
+    this.massPQ[n] = Math.cos(fi) + 4*Math.cos(fi)*Math.sin(fi) * this.massPQ2[n];
+    return this.massPQ[n];
+  },
+  tg_summ_cos_na_summ_sin(n, fi) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos(n*fi);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin(n*fi);
+    this.massPQ[n] = Math.tan(this.massPQ2[n]/this.massPQ3[n]); 
+    return this.massPQ[n];
+  },
+  tg_4sin_summ_cos(n, fi) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n-1)*fi);
+    this.massPQ[n] = Math.tan(4*Math.sin(fi)*this.massPQ2[n]); 
+    return this.massPQ[n];
+  },
+
+  tg_summ_cos_na_summ_sin_necetn (n, y, f) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n-1)*f);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n-1)*f);
+    this.massPQ[n] =  Math.tan( y * this.massPQ2[n]/this.massPQ3[n] );
+    return this.massPQ[n];
+  },
+  tg_summ_cos_na_summ_sin_chetn (n, y, f) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n)*f);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n)*f);
+    this.massPQ[n] =  Math.tan( y * this.massPQ2[n]/this.massPQ3[n] );
+    return this.massPQ[n];
+  },
+
+  cos_p_summ_cos_na_summ_sin_nechetn_sin(n, y, f) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n-1)*f);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n-1)*f);
+    this.massPQ[n] =  Math.cos(y) + this.massPQ2[n]/this.massPQ3[n] * Math.sin(y);
+    return this.massPQ[n];
+  },
+  cos_p_summ_cos_na_summ_sin_chetn_sin(n, y, f) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n)*f);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n)*f);
+    this.massPQ[n] =  Math.cos(y) + this.massPQ2[n]/this.massPQ3[n] * Math.sin(y);
+    return this.massPQ[n];
+  },
+
+
+  cos_p_summ_sinChet_na_summ_sinNechet(n, y, f) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.sin((2*n)*y);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n-1)*y);
+    this.massPQ[n] =  Math.cos(y) + this.massPQ2[n]/this.massPQ3[n] * Math.sin(y);
+    return this.massPQ[n];
+  },
+  cos_p_summ_cosChet_na_summ_cosNechet(n, y, f) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n)*y);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.cos((2*n-1)*y);
+    this.massPQ[n] =  Math.cos(y) + this.massPQ2[n]/this.massPQ3[n] * Math.sin(y);
+    return this.massPQ[n];
+  },
+
+  cos_p_summ_cosZnakChet_na_summ_cosZnakNechet(n, y, f) {
+    if (n % 2 === 0) {
+      this.massPQ2[n] = this.massPQ2[n-1] - Math.cos((2*n)*y);
+      this.massPQ3[n] = this.massPQ3[n-1] - Math.cos((2*n-1)*y);
+    } else {
+      this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n)*y);
+      this.massPQ3[n] = this.massPQ3[n-1] + Math.cos((2*n-1)*y);
+    }
+    this.massPQ[n] =  Math.cos(y) + this.massPQ2[n]/this.massPQ3[n] * Math.sin(y);
+    return this.massPQ[n];
+  },
+  sin_ot_summ_cosNechet_na_summ_sinNechet(n, y, f) {
+    this.massPQ2[n] = this.massPQ2[n-1] + Math.cos((2*n-1)*y);
+    this.massPQ3[n] = this.massPQ3[n-1] + Math.sin((2*n-1)*y);
+    this.massPQ[n] =  Math.sin(y * this.massPQ2[n]/this.massPQ3[n] );
     return this.massPQ[n];
   },
 
@@ -1013,5 +1259,6 @@ const trigonometFunc = {
     this.massPQ = [];
     this.massPQ2 = [];
     this.massPQ3 = [];
+    rFiAlgoritm.summFi = [];
   }
 };

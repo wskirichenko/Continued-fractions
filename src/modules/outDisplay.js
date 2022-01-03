@@ -166,7 +166,12 @@ const outDisplay = {
           if ( (numberFunc == 43)  ) {
             this.fiTmp = rFiAlgoritm.argumentFi_1(trigonometFunc.massPQ[countPQ], countPQ);
           } else {
-            this.fiTmp = rFiAlgoritm.argumentFi(trigonometFunc.massPQ[countPQ], countPQ);
+            if ( (numberFunc == 83)  ) {
+              this.fiTmp = rFiAlgoritm.argumentFi_summ(trigonometFunc.massPQ3[countPQ], countPQ);
+
+            } else {
+              this.fiTmp = rFiAlgoritm.argumentFi(trigonometFunc.massPQ[countPQ], countPQ);
+            }
           }
           rFiAlgoritm.setMassFi( this.fiTmp, countPQ );
           return rFiAlgoritm.getMassFi(countPQ);
@@ -181,6 +186,10 @@ const outDisplay = {
           break
       case 'pqExp' :        // Пока используется только для функции 127
           this.PQtemp = trigonometFunc.getFunction(127, countPQ, newX)
+          return this.PQtemp
+          break
+      case 'fi_n' :        // Пока используется только для функции 83
+          this.PQtemp = trigonometFunc.getFunction(831, countPQ, newX)
           return this.PQtemp
           break
 
